@@ -1,0 +1,17 @@
+<div class="container w-25">
+  <h2 class="my-3">To do this you will have to update your profile</h2>
+  <%= simple_form_for locallect_path(current_user.id) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs bg-light p-3">
+      <%= f.input :age %>
+      <%= f.input :job %>
+      <%= f.input :gender %>
+      <%= f.input :base_location, label: "Where do you consider yourself to be a locallectual?" %>
+      <%= f.input :years_in_city, label: "How long have you been in this city for?" %>
+      <%= f.input :explorer_location, label: "Where do you seek to get to know locals?" %>
+    </div>
+    <div class="form-actions my-3">
+      <%= f.button :submit, "Update", class: "btn btn-outline-dark" %>
+    </div>
+  <% end %>
+</div>
