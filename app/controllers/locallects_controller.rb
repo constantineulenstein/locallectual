@@ -12,4 +12,12 @@ class LocallectsController < ApplicationController
 
   def update
   end
+
+  def new
+    @locallect = Locallect.new
+    @explorer = Explorer.new
+  end
+
+  def create
+  end
 end
