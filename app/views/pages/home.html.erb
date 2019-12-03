@@ -1,12 +1,12 @@
 <!-- CODE FOR THE BANNER -->
-<div class="home-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/1000445/pexels-photo-1000445.jpeg?cs=srgb&dl=adult-backlit-beach-1000445.jpg&fm=jpg);">
+<div class="home-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1541786867110-d742cfa9c232?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2675&q=80);">
   <div class="home-banner-container">
     <h1>Locallectual</h1>
     <p>Discover, Host, Repeat!</p>
     <%= simple_form_for :search, url: locallects_path, method: :get do |f| %>
       <div class="search-form-control form-group mt-5 banner-search">
         <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search for a place..."/>
-        <button name="button" type="Search" class="btn btn-flat btn-primary">
+        <button name="button" type="Search" class="btn btn-flat btn-primary" id="home-button">
           <i class="fas fa-search"></i>
         </button>
       </div>
@@ -21,7 +21,7 @@
 <div class="primary-explain-container">
   <% @users.first(5).each do |user| %>
     <div class="card-explain">
-      <div class="avatar">
+      <div class="home-avatar">
         <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <div class="card-explain-infos">
           <br>
