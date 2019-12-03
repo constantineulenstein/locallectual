@@ -1,0 +1,41 @@
+
+.card-explain {
+  overflow: hidden;
+  height: 350px;
+  width: 295px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-explain img {
+  width: 80%;
+  object-fit: cover;
+  border-radius: 50%;
+  height: 160px;
+ }
+
+.card-explain h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-explain p {
+  font-size: 15px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-explain .card-explain-infos {
+  padding: 16px;
+}
+
+.avatar {
+  width: 200px;
+  text-align: center;
+}

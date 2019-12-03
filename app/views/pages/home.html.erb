@@ -1,4 +1,3 @@
-
 <!-- CODE FOR THE BANNER -->
 <div class="home-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/1000445/pexels-photo-1000445.jpeg?cs=srgb&dl=adult-backlit-beach-1000445.jpg&fm=jpg);">
   <div class="home-banner-container">
@@ -14,20 +13,21 @@
     <% end %>
   </div>
 </div>
-
+<br>
 <div class="how-it-works">
   <h2>Meet the locallects around the world</h2>
 </div>
-
-
 <!-- CONTAINER FOR THE CARDS -->
 <div class="primary-explain-container">
   <% @users.first(5).each do |user| %>
     <div class="card-explain">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="card-explain-infos">
-        <h2><%= user.first_name %></h2>
-        <p><%= user.base_location %></p>
+      <div class="avatar">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-explain-infos">
+          <br>
+          <h2><%= user.first_name %></h2>
+          <p><%= user.base_location %></p>
+        </div>
       </div>
     </div>
   <% end %>
