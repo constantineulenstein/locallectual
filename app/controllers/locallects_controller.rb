@@ -15,14 +15,6 @@ class LocallectsController < ApplicationController
     authorize @locallect
   end
 
-  def new
-    @locallect = Locallect.new
-    @explorer = Explorer.new
-  end
-
-  def create
-  end
-
   private
 
   def find_user
