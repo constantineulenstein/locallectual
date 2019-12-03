@@ -8,6 +8,7 @@ class LocallectsController < ApplicationController
 
   def show
     authorize @locallect
+    @friendship = Friendship.new
   end
 
   def edit

@@ -11,10 +11,15 @@ class FriendshipsController < ApplicationController
     redirect_to locallect_path(user.id)
   end
 
-  def new
-  end
-
   def create
+    @locallect = User.find(params[:locallect_id])
+    @friendship = Friendship.create(request_message: params[:friendship][:request_message])
+    @friendship.approved = false
+    @friendship.locallect_id = @locallect.id
+    @friendship.explorer_id = current_user.id
+    @friendship.save
+    redirect_to locallect_path(@locallect)
+    authorize @friendship
   end
 
   def destroy
