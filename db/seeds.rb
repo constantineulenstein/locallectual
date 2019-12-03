@@ -10,7 +10,7 @@ User.destroy_all
 Locallect.destroy_all
 Explorer.destroy_all
 
-30.times do
+10.times do
   user = User.create(email: Faker::Internet.email,
                      password: "123456",
                      first_name: Faker::Name.first_name,
@@ -19,16 +19,19 @@ Explorer.destroy_all
                      job: Faker::Job.title,
                      gender: Faker::Gender.binary_type,
                      karma: rand(1..10),
-                     hobby: ['Reading', 'Hiking', 'Fishing', 'Art', 'Theatre', 'Food', 'Animal Watching', 'Live Music', 'Night Life'].to_a.sample)
+                     hobby: ['Reading', 'Hiking', 'Fishing', 'Art', 'Theatre', 'Food', 'Animal Watching', 'Live Music', 'Night Life'].to_a.sample,
+                     base_location: Faker::Address.city,
+                     explorer_location: Faker::Address.city,
+                     years_in_city: rand(5..40)
+                     )
 
   Explorer.create(user_id: user.id,
-                  count: rand(1..100),
-                  location: Faker::Address.city)
+                  count: rand(1..100)
+                  )
 
   Locallect.create(user_id: user.id,
-                   count: rand(1..100),
-                   location: Faker::Address.city,
-                   years_in_city: rand(5..40))
+                   count: rand(1..100)
+                   )
 end
 
 puts "created #{User.count} users"
