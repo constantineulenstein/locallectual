@@ -41,17 +41,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
   # ensure that no password is needed for any change except for email and password
   def update_resource(resource, params)
-    resource.update_without_password(without_password_params)
-    resource.update_with_password(with_password_params)
+    if params[:current_password].present? || params[:password].present? || params[:password_confirmation].present? || params[:email] != current_user.email
+      super
+    else
+      resource.update_without_password(custom_params)
+    end
   end
 
-  def without_password_params
-    params[:user].permit(:first_name, :last_name, :job, :base_location, :explorer_location, :years_in_city, :gender)
+  def custom_params
+    params[:user].permit(:first_name, :last_name, :age, :job, :base_location, :explorer_location, :years_in_city, :gender)
   end
 
-  def with_password_params
-    params[:user].permit(:email, :password)
-  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
