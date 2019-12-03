@@ -1,1 +1,99 @@
 // Specific CSS for your home-page
+
+.home-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  margin: 0 0 30px 0;
+}
+
+.home-banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.home-banner p {
+  font-size: 22px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.home-banner-container {
+  text-align: center;
+}
+
+.banner-search {
+  display: flex;
+}
+
+.how-it-works {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  margin-bottom: 30px;
+}
+
+.title-containers {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.primary-explain-container {
+  display: flex;
+  margin: 5px 0 40px 0;
+  justify-content: space-around;
+}
+
+.explain-containers {
+  width: 550px;
+  border-top: solid thin;
+}
+
+.card-explain {
+  overflow: hidden;
+  height: 150px;
+  width: 550px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.top {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.card-explain img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+ }
+
+.card-explain h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-explain p {
+  font-size: 15px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-explain .card-explain-infos {
+  padding: 16px;
+}
