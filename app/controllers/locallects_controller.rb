@@ -1,6 +1,6 @@
 class LocallectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :find_user, only: [:show, :update]
+  before_action :find_user, only: [:show]
 
   def index
     @locallects = policy_scope(User).search_by_base_location(params[:search][:query]).order(created_at: :desc)
@@ -13,11 +13,6 @@ class LocallectsController < ApplicationController
   def edit
     @locallect = User.find(current_user.id)
     authorize @locallect
-  end
-
-  def update
-    @locallect.update(user_params)
-    redirect_to locallect_path(@user)
   end
 
   def new
