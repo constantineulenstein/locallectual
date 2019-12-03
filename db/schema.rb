@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_053955) do
+ActiveRecord::Schema.define(version: 2019_12_02_101849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "explorers", force: :cascade do |t|
     t.integer "count"
-    t.string "location"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,8 +36,6 @@ ActiveRecord::Schema.define(version: 2019_12_02_053955) do
 
   create_table "locallects", force: :cascade do |t|
     t.integer "count"
-    t.string "location"
-    t.integer "years_in_city"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -83,6 +80,9 @@ ActiveRecord::Schema.define(version: 2019_12_02_053955) do
     t.string "gender"
     t.integer "karma"
     t.string "hobby"
+    t.string "base_location"
+    t.string "explorer_location"
+    t.integer "years_in_city"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
