@@ -16,49 +16,19 @@
 </div>
 
 <div class="how-it-works">
-  <h2>How it works</h2>
+  <h2>Meet the locallects around the world</h2>
 </div>
 
-<div class="title-containers">
-  <h3>Be the explorer</h3>
-  <h3>Be the locallect</h3>
-</div>
 
 <!-- CONTAINER FOR THE CARDS -->
 <div class="primary-explain-container">
-  <div class="explain-containers">
-    <div class="card-explain top">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="card-explain-infos">
-        <h2>Get to know your new city</h2>
-        <p>Locallectual lets you connect with real locals in the places you visit, get endless tips and recommendations by simply searching!</p>
-      </div>
-    </div>
-
+  <% @users.first(5).each do |user| %>
     <div class="card-explain">
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
       <div class="card-explain-infos">
-        <h2>Make local contacts</h2>
-        <p>If you're staying in a new city, what could be better than a local to help you out during those tough first few weeks</p>
+        <h2><%= user.first_name %></h2>
+        <p><%= user.base_location %></p>
       </div>
     </div>
-  </div>
-
-  <div class="explain-containers">
-    <div class="card-explain top">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="card-explain-infos">
-        <h2>Expand your network</h2>
-        <p>Show off the hidden gems of your home and make friends for life at the same time!</p>
-      </div>
-    </div>
-
-    <div class="card-explain">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="card-explain-infos">
-        <h2>Help others</h2>
-        <p>Increase your karma points by hosting explorers in your city, then spend that karma on locallects the next time you travel</p>
-      </div>
-    </div>
-  </div>
+  <% end %>
 </div>
