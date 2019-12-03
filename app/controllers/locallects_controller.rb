@@ -8,19 +8,12 @@ class LocallectsController < ApplicationController
 
   def show
     authorize @locallect
+    @friendship = Friendship.new
   end
 
   def edit
     @locallect = User.find(current_user.id)
     authorize @locallect
-  end
-
-  def new
-    @locallect = Locallect.new
-    @explorer = Explorer.new
-  end
-
-  def create
   end
 
   private

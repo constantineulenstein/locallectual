@@ -14,6 +14,7 @@ class User < ApplicationRecord
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
+  mount_uploader :photo, PhotoUploader
 
   # Creating Locallect and Explorer model right after User was created for later linking friendships
   def data_assignment
