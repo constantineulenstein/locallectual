@@ -9,6 +9,8 @@ gem 'puma'
 gem 'rails', '5.2.3'
 gem 'redis'
 
+gem 'pg_search', '~> 2.3.0'
+
 gem 'pundit'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
