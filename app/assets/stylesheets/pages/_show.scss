@@ -1,0 +1,28 @@
+.page-bottom {
+
+  height: 300px;
+  display: flex;
+  margin: auto 160px;
+}
+
+.left-box {
+  background-color: white;
+  height: auto;
+  width: 963px;
+
+  border-radius: 10px;
+  text-align: center;
+}
+
+.right-box{
+  background-color: white;
+  height: auto;
+  flex-grow: 1;
+  padding: 0px 40px;
+
+  margin-left: 30px;
+  border-radius: 10px;
+  text-align: center;
+  min-width: 100px;
+
+}
