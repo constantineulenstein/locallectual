@@ -8,6 +8,9 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :validatable
   after_create :data_assignment
   # Utilizing pg_search for searching baselocation of locallects
+  after_create :get_city_img_url
+
+  after_update :get_city_img_url, if: :base_location_changed?
   include PgSearch::Model
   pg_search_scope :search_by_base_location,
     against: [ :base_location ],
@@ -31,4 +34,21 @@ class User < ApplicationRecord
     Transaction.joins([{ locallect: :user }, { explorer: :user }]).where(users: { id: self.id })
   end
 
+  def get_city_img_url
+    location = self.base_location.downcase
+    # extracts location from instance
+
+    url = open("https://api.unsplash.com/search/photos?page=1&query=#{location}&per_page=1&client_id=#{ENV['UNSPLASH_URL']}").read
+    results = JSON.parse(url)
+    # resultant image from unsplash api
+
+    unless results['results'] == []
+      api_image = results['results'][0]['urls']['raw']
+      # passes photo obtained from api to view as long as there is a result to pass
+
+      uploaded = Cloudinary::Uploader.upload(api_image)
+      self.update(city_image: uploaded["url"])
+      # uploads image from api to cloudinary and grabs url
+    end
+  end
 end
