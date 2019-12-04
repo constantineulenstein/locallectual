@@ -22,9 +22,7 @@
   <% @users.sample(3).each do |user| %>
     <%# @locallects.each do |user| %>
       <div class="col-sm-4">
-        <% unless current_user.id == user.id %>
           <%= render 'shared/locallectslist', :user => user %>
-        <% end %>
       </div>
       <%# end %>
     <% end %>
