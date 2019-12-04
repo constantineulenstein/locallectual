@@ -1,18 +1,20 @@
 <!-- below is the previous code -->
 <div class="container mt-4">
-  <% if current_user.nil? %>
-    <% @locallects.each do |user| %>
-      <%= link_to locallect_path(user.id) do %>
-        <%= render 'locallectslist', :user => user %>
+  <div class="row">
+    <% if current_user.nil? %>
+      <% @locallects.each do |user| %>
+        <div class="col-sm-4">
+          <%= render 'shared/locallectslist', :user => user %>
+        </div>
+      <% end %>
+    <% else %>
+      <% @locallects.each do |user| %>
+        <div class="col-sm-4">
+          <% unless current_user.id == user.id %>
+            <%= render 'shared/locallectslist', :user => user %>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
-  <% else %>
-    <% @locallects.each do |user| %>
-      <% unless current_user.id == user.id %>
-        <%= link_to locallect_path(user.id) do %>
-          <%= render 'locallectslist', :user => user %>
-        <% end %>
-      <% end %>
-    <% end %>
-  <% end %>
+  </div>
 </div>

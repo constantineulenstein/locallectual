@@ -27,13 +27,11 @@
 <div class="container">
   <!-- This link will be used to have the friendship message pop up and create the friendship request through javasscript. Hereby make background grey and set position of friendwhip request to fixed -->
   <%= link_to "Meet #{@locallect.first_name}", "#", id: "friendship-request-button" %>
-
   <%= simple_form_for(@friendship, url: locallect_friendships_path(@locallect), method: :post) do |f| %>
     <%= f.input :request_message %>
     <%= f.button :submit, "Send" %>
   <% end %>
-
-<!--   <form action="<%= locallect_friendships_path(@locallect.id) %>" method='POST'>
+  <!--   <form action="<%= locallect_friendships_path(@locallect.id) %>" method='POST'>
     <label for="message">Request Message</label>
     <input type="text" name="request_message">
     <input type="submit">
