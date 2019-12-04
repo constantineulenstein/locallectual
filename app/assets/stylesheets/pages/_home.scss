@@ -16,11 +16,7 @@
 
 .primary-explain-container {
   display: flex;
+  flex-wrap: wrap;
   margin: 5px 0 40px 0;
   justify-content: space-around;
-}
-
-.explain-containers {
-  width: 550px;
-  border-top: solid thin;
 }
