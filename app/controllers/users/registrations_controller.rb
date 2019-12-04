@@ -49,7 +49,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def custom_params
-    params[:user].permit(:first_name, :last_name, :age, :job, :base_location, :explorer_location, :years_in_city, :gender, :photo)
+    params[:user].permit(:first_name, :last_name, :age, :job, :base_location, :birth_location, :bio, :arrival_date, :gender, :photo)
   end
 
 
