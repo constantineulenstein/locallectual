@@ -8,6 +8,7 @@
   top: 8px;
   bottom: 8px;
   right: 8px;
+  padding: 0 auto;
 }
 
 .search-form-control .form-control {
@@ -23,8 +24,24 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-#home-button {
-  display: flex;
-  justify-content: center;
-  // text-align: center;
+
+.nav-search-form-control {
+  position: relative;
+  width: 500px;
+  bottom: 15px;
+  margin-left: 480px;
 }
+
+.nav-search-form-control .btn {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 8px;
+}
+
+.nav-search-form-control .form-control {
+  height: 3.5rem;
+  border: black;
+  width: 100%;
+}
+
