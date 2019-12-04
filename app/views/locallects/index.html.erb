@@ -1,8 +1,14 @@
-<div class="container">
-  <% @locallects.each do |locallect| %>
-    <%= link_to locallect_path(locallect.id) do  %>
-      <p><%= locallect.first_name %> <%= locallect.last_name %></p>
-      <p><%= @photo %></p>
+<!-- below is the previous code -->
+<div class="container mt-4">
+  <% if current_user.nil? %>
+    <% @locallects.each do |user| %>
+      <%= render 'locallectslist', :user => user %>
+    <% end %>
+  <% else %>
+    <% @locallects.each do |user| %>
+      <% unless current_user.id == user.id %>
+        <%= render 'locallectslist', :user => user %>
+      <% end %>
     <% end %>
   <% end %>
 </div>

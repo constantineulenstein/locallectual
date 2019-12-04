@@ -27,11 +27,15 @@ class User < ApplicationRecord
 
   # through replacement such that User.friendships is possible
   def friendships
-    Friendship.joins([{ locallect: :user }, { explorer: :user }]).where(users: { id: self.id })
+    # Friendship.joins({ locallect: :user }, { explorer: :user }).where(users: { id: self.id })
+
+    # fl = Friendship.joins({ locallect: :user }).where(users: { id: self.id })
+    # fe = Friendship.joins({ explorer: :user }).where(users: { id: self.id })
+    Friendship.joins("JOIN explorers e ON e.id = friendships.explorer_id JOIN locallects l ON l.id = friendships.locallect_id JOIN users ue on ue.id = e.user_id JOIN users ul ON ul.id = l.user_id").where("ue.id = ? OR ul.id = ?", self.id, self.id)
   end
   # through replacement such that User.transactions is possible
   def transactions
-    Transaction.joins([{ locallect: :user }, { explorer: :user }]).where(users: { id: self.id })
+    Transaction.joins("JOIN explorers e ON e.id = transactions.explorer_id JOIN locallects l ON l.id = transactions.locallect_id JOIN users ue on ue.id = e.user_id JOIN users ul ON ul.id = l.user_id").where("ue.id = ? OR ul.id = ?", self.id, self.id)
   end
 
   def get_city_img_url
