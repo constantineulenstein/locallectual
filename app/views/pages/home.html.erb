@@ -19,16 +19,18 @@
 </div>
 <!-- CONTAINER FOR THE CARDS -->
 <div class="primary-explain-container">
-  <% @users.first(5).each do |user| %>
-    <div class="card-explain">
-      <div class="home-avatar">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-explain-infos">
-          <br>
-          <h2><%= user.first_name %></h2>
-          <p><%= user.base_location %></p>
+  <% @users.sample(5).each do |user| %>
+    <%= link_to locallect_path(user.id) do %>
+      <div class="card-explain">
+        <div class="home-avatar">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-explain-infos">
+            <br>
+            <h2><%= user.first_name %></h2>
+            <p><%= user.base_location %></p>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
