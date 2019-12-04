@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Friendship requests sent</h2>
+  <% @friendship_requests_sent.each do |thing| %>
+    <p>thing.request_message</p>
+  <% end %>
+
+  <h2>Friendship requests</h2>
+  <% @friendship_requests.each do |thing| %>
+    <p><%= thing %></p>
+    <%= link_to 'Approve', friendship_request_approve_path(current_user.id, thing.id), class: "btn btn-outline-success mr-3" %>
+    <%= link_to 'Reject', friendship_request_reject_path(current_user.id, thing.id), class: "btn btn-outline-danger" %>
+  <% end %>
+
+  <h2>Friendships</h2>
+  <% @friendships_approved.each do |thing| %>
+    <%= thing %>
+  <% end %>
+
+</div>
