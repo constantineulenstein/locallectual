@@ -1,5 +1,4 @@
 
-
 User.destroy_all
 Locallect.destroy_all
 Explorer.destroy_all

@@ -1,19 +1,97 @@
 <div class="container">
-  <h2>Friendship requests sent</h2>
-  <% @friendship_requests_sent.each do |thing| %>
-    <p>thing.request_message</p>
-  <% end %>
 
-  <h2>Friendship requests</h2>
-  <% @friendship_requests.each do |thing| %>
-    <p><%= thing %></p>
-    <%= link_to 'Approve', friendship_request_approve_path(current_user.id, thing.id), class: "btn btn-outline-success mr-3" %>
-    <%= link_to 'Reject', friendship_request_reject_path(current_user.id, thing.id), class: "btn btn-outline-danger" %>
-  <% end %>
+<nav>
+  <div class="nav nav-tabs mt-3" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link tab-item active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Connections</a>
+    <a class="nav-item nav-link tab-item" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Friend requests</a>
+    <a class="nav-item nav-link tab-item" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Friend requests sent</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
 
-  <h2>Friendships</h2>
-  <% @friendships_approved.each do |thing| %>
-    <%= thing %>
-  <% end %>
+  <!-- connections -->
+  <div class="tab-pane fade mt-4 show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <!-- iterate over all friendships -->
+    <% @friendships_approved.each do |friendship| %>
+      <!-- iterate over both users connected to this friendship -->
+      <% friendship.users.each do |user| %>
+        <!-- dont show yourself -->
+        <%# unless user.id == current_user.id %>
+          <!-- user-card/clickable to go to their profile -->
+          <%= link_to locallect_path(user.id) do %>
+            <div class="card-friend m-3">
+              <%= user.photo.url.nil? ? (image_tag "user-solid.svg", class: "card-friend-image ml-1") : (cl_image_tag current_user.photo, width: 90, height: 90, crop: :fill, class: "card-friend-image ml-1") %>
+              <div class="d-flex justify-content-between card-friend-content align-items-center">
+                <div class="card-friend-infos ml-5">
+                  <h2><%= user.first_name %> <%= user.last_name %></h2>
+                  <p>Connected since <strong><%= friendship.created_at.strftime("%A, %d %b %Y %l:%M %p") %></strong></p>
+                </div>
+                <div>
+                  <%= link_to "Message #{user.first_name}", "#", class: "btn btn-outline-dark" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <%# end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <!-- friend requests -->
+  <div class="tab-pane mt-4 fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <!-- iterate over all friendships -->
+    <% @friendship_requests.each do |friendship| %>
+      <!-- iterate over both users connected to this friendship -->
+      <% friendship.users.each do |user| %>
+        <!-- dont show yourself -->
+        <%# unless user.id == current_user.id %>
+          <!-- user-card/clickable to go to their profile -->
+          <%= link_to locallect_path(user.id) do %>
+            <div class="card-friend m-3">
+              <%= user.photo.url.nil? ? (image_tag "user-solid.svg", class: "card-friend-image ml-1") : (cl_image_tag current_user.photo, width: 90, height: 90, crop: :fill, class: "card-friend-image ml-1") %>
+              <div class="d-flex justify-content-between card-friend-content align-items-center">
+                <div class="card-friend-infos ml-5">
+                  <h2><%= user.first_name %> <%= user.last_name %></h2>
+                </div>
+                <div>
+                  <%= link_to 'Approve', friendship_request_approve_path(current_user.id, friendship.id), class: "btn btn-outline-success mr-3" %>
+                  <%= link_to 'Reject', friendship_request_reject_path(current_user.id, friendship.id), class: "btn btn-outline-danger" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <%# end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <!-- friend requests sent -->
+  <div class="tab-pane mt-4 fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+    <!-- iterate over all friendships -->
+    <% @friendship_requests_sent.each do |friendship| %>
+      <!-- iterate over both users connected to this friendship -->
+      <% friendship.users.each do |user| %>
+        <!-- dont show yourself -->
+        <%# unless user.id == current_user.id %>
+          <!-- user-card/clickable to go to their profile -->
+          <%= link_to locallect_path(user.id) do %>
+            <div class="card-friend m-3">
+              <%= user.photo.url.nil? ? (image_tag "user-solid.svg", class: "card-friend-image ml-1") : (cl_image_tag current_user.photo, width: 90, height: 90, crop: :fill, class: "card-friend-image ml-1") %>
+              <div class="d-flex justify-content-between card-friend-content align-items-center">
+                <div class="card-friend-infos ml-5">
+                  <h2><%= user.first_name %> <%= user.last_name %></h2>
+                  <p>Request sent on <strong><%= friendship.created_at.strftime("%A, %d %b %Y %l:%M %p") %></strong></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <%# end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
 
 </div>
