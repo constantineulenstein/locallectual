@@ -13,7 +13,7 @@
   <div class="left-box text-center pt-5">
     <h2><%= @locallect.first_name %> <%= @locallect.last_name %></h2>
     <br>
-    <p>Lived in <%= @locallect.base_location %> for <%= @locallect.years_in_city %> years</p>
+    <p>Lived in <%= @locallect.base_location %> since <%#= @locallect.arrival_date.strftime("%B %Y") %></p>
     <p>Interests: <%=  @locallect.hobby %></p>
   </div>
   <div class="right-box pt-5">

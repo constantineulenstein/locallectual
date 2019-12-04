@@ -12,9 +12,9 @@
             <%= f.input :age, input_html: {value: current_user.age} %>
             <%= f.input :job, input_html: {value: current_user.job} %>
             <%= f.input :gender, input_html: {value: current_user.gender} %>
-            <%= f.input :base_location, label: "Where do you consider yourself to be a locallectual?", input_html: {value: current_user.base_location} %>
-            <%= f.input :years_in_city, label: "How long have you been in this city for?", input_html: {value: current_user.years_in_city} %>
-            <%= f.input :explorer_location, label: "Where do you seek to get to know locals?", input_html: {value: current_user.explorer_location} %>
+            <%= f.input :base_location, label: "Where do you consider yourself to be a locallectual / Where do you seek to get to know locals?", input_html: {value: current_user.base_location} %>
+            <%= f.input :arrival_date, label: "How long have you been in this city for?", input_html: {value: current_user.arrival_date} %>
+            <%= f.input :birth_location, label: "Where are you from?", input_html: {value: current_user.birth_location} %>
             <%= f.input :photo, label: "Please upload a photo of you", input_html: {value: @user.photo} %>
             <%= f.input :photo_cache, as: :hidden %>
           </div>

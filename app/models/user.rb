@@ -47,7 +47,7 @@ class User < ApplicationRecord
     # resultant image from unsplash api
 
     unless results['results'] == []
-      api_image = results['results'][0]['urls']['raw']
+      api_image = results['results'][0]['urls']['regular']
       # passes photo obtained from api to view as long as there is a result to pass
 
       uploaded = Cloudinary::Uploader.upload(api_image)

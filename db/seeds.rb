@@ -11,11 +11,9 @@ Explorer.destroy_all
                       age: rand(18..80),
                       job: Faker::Job.title,
                       gender: Faker::Gender.binary_type,
-                      karma: rand(1..10),
                       hobby: ['Reading', 'Hiking', 'Fishing', 'Art', 'Theatre', 'Food', 'Animal Watching', 'Live Music', 'Night Life'].to_a.sample,
                       base_location: Faker::Address.city,
-                      explorer_location: Faker::Address.city,
-                      years_in_city: rand(5..40))
+                      birth_location: Faker::Address.city)
 
   gender = user.gender == "Male" ? "men" : "women"
   url = "https://randomuser.me/api/portraits/#{gender}/#{i}.jpg"
@@ -31,11 +29,10 @@ jeff = User.create(email: "jeff@gmail.com",
                    age: 45,
                    job: "Fireman",
                    gender: "Male",
-                   karma: rand(1..10),
                    hobby: "Swimming",
                    base_location: "Shanghai",
-                   explorer_location: "Paris",
-                   years_in_city: rand(5..40),
+                   birth_location: "Paris",
+
                    remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012068/nxzy7fjsjght1mowd3t0.jpg"
                    )
 
@@ -46,11 +43,9 @@ elliot = User.create(email: "elliot@gmail.com",
                      age: 22,
                      job: "Foot Specialist",
                      gender: "Male",
-                     karma: rand(1..10),
                      hobby: "Scuba Diving",
                      base_location: "UK",
-                     explorer_location: "Shanghai",
-                     years_in_city: rand(5..40),
+                     birth_location: "Shanghai",
                      remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012083/btt73tsfl2zdap0mqerq.jpg"
                      )
 
@@ -61,11 +56,9 @@ const = User.create(email: "constantin@gmail.com",
                     age: 23,
                     job: "Programmer",
                     gender: "Male",
-                    karma: rand(1..10),
                     hobby: "Hiking",
                     base_location: "Germany",
-                    explorer_location: "Shanghai",
-                    years_in_city: rand(5..40),
+                    birth_location: "Shanghai",
                     remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575011826/btpnaxpn2tebv1hhznt0.jpg"
                     )
 
@@ -76,11 +69,9 @@ dan = User.create(email: "dan@gmail.com",
                   age: 50,
                   job: "Waiter",
                   gender: "Male",
-                  karma: rand(1..10),
                   hobby: "Sky Diving",
                   base_location: "United States",
-                  explorer_location: "Germany",
-                  years_in_city: rand(5..40),
+                  birth_location: "Germany",
                   remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012140/f4ezad5dgitnq8h5mg6e.jpg"
                   )
 
@@ -92,11 +83,9 @@ dan = User.create(email: "dan@gmail.com",
                        age: rand(18..80),
                        job: Faker::Job.title,
                        gender: Faker::Gender.binary_type,
-                       karma: rand(1..10),
                        hobby: ['Reading', 'Hiking', 'Fishing', 'Art', 'Theatre', 'Food', 'Animal Watching', 'Live Music', 'Night Life'].to_a.sample,
                        base_location: "Shanghai",
-                       explorer_location: Faker::Address.city,
-                       years_in_city: rand(5..40))
+                       birth_location: Faker::Address.city)
 
    gender = user.gender == "Male" ? "men" : "women"
    url = "https://randomuser.me/api/portraits/#{gender}/#{i}.jpg"
