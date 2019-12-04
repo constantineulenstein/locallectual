@@ -1,7 +1,30 @@
+<div class="home-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images2.minutemediacdn.com/image/upload/c_crop,h_1165,w_2078,x_0,y_123/v1559320068/shape/mentalfloss/70705-istock-957174246.jpg?itok=3kqY-PWd);">
+  <div class="home-banner-container">
+
+    <p>"A little nonsense now and then is relished by the wisest men!"</p>
+
+  </div>
+  <img class="show-profile-image" src="http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012083/btt73tsfl2zdap0mqerq.jpg" alt="profile image">
+</div>
+
+<div class="mgt50"></div>
+
+<div class="page-bottom" >
+  <div class="left-box text-center pt-5">
+    <h2><%= @locallect.first_name %> <%= @locallect.last_name %></h2>
+    <br>
+    <p>Lived in <%= @locallect.base_location %> for <%= @locallect.years_in_city %> years</p>
+    <p>Interests: <%=  @locallect.hobby %></p>
+  </div>
+  <div class="right-box pt-5">
+    <h2>Bio</h2>
+    <p> As a native Brit, Elliot has always had a deep love of the ocean. Her summers were spent at the beach packing peanut butter & jelly sandwiches and hopping on the bus for the short trip from Irvine, CA to Newport Beach, even before she could drive. Catherine enjoyed hanging out all day watching the surf action.</p>
+  </div>
+</div>
+
+<div class="mgt50"></div>
+
 <div class="container">
-  <p><%= @locallect.first_name %></p>
-
-
   <!-- This link will be used to have the friendship message pop up and create the friendship request through javasscript. Hereby make background grey and set position of friendwhip request to fixed -->
   <%= link_to "Meet #{@locallect.first_name}", "#", id: "friendship-request-button" %>
 
