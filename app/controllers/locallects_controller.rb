@@ -3,7 +3,6 @@ class LocallectsController < ApplicationController
   before_action :find_user, only: [:show]
 
   def index
-    raise
     if params[:search].present?
       @locallects = policy_scope(User).search_by_base_location(params[:search][:query]).order(created_at: :desc)
     end
