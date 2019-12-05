@@ -1,10 +1,10 @@
 <div class="messages-container">
 
-  <div class="recipient-info">
+  <div class="recipient-info col-sm-4">
     <h1>Name</h1>
     <h2>Other info</h2>
   </div>
-  <div class="message-list">
+  <div class="message-list col-sm-8">
     <%= @conversation.subject %>
 
     <% receipts = @conversation.receipts_for current_user %>
@@ -15,7 +15,6 @@
           <img src="" />
           <div class="card-product-infos">
             <%= message = receipt.message.body %>
-            <%= read = receipt.is_unread? %>
           </div>
         </div>
       <% end %>
@@ -23,8 +22,6 @@
         <%= text_field_tag(:send_message) %>
         <%= submit_tag "Submit" %>
       <% end %>
-
-
     </div>
   </div>
 </div>
