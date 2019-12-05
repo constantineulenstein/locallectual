@@ -186,7 +186,7 @@ languages = ['Abkhaz',
              'Yoruba',
              'Zhuang, Chuang']
 
-1.times do |i|
+5.times do |i|
   user = User.create!(email: Faker::Internet.email,
                       password: "123456",
                       first_name: Faker::Name.first_name,
@@ -195,7 +195,7 @@ languages = ['Abkhaz',
                       job: Faker::Job.title,
                       gender: Faker::Gender.binary_type,
                       hobby: ['Reading', 'Hiking', 'Fishing', 'Art', 'Theatre', 'Food', 'Animal Watching', 'Live Music', 'Night Life'].sample,
-                      base_location: Faker::Address.city,
+                      base_location: "Shanghai",
                       language_list: languages.sample,
                       birth_location: Faker::Address.city)
 
@@ -259,22 +259,22 @@ dan = User.create(email: "dan@gmail.com",
                   )
 
 1.times do |i|
-   user = User.create!(email: Faker::Internet.email,
-                       password: "123456",
-                       first_name: Faker::Name.first_name,
-                       last_name: Faker::Name.last_name,
-                       birthday: Faker::Date.birthday,
-                       job: Faker::Job.title,
-                       gender: Faker::Gender.binary_type,
-                       hobby: ['Reading', 'Hiking', 'Fishing', 'Art', 'Theatre', 'Food', 'Animal Watching', 'Live Music', 'Night Life'].to_a.sample,
-                       base_location: "Shanghai",
-                       birth_location: Faker::Address.city)
+  user = User.create!(email: Faker::Internet.email,
+                      password: "123456",
+                      first_name: Faker::Name.first_name,
+                      last_name: Faker::Name.last_name,
+                      birthday: Faker::Date.birthday,
+                      job: Faker::Job.title,
+                      gender: Faker::Gender.binary_type,
+                      hobby: ['Reading', 'Hiking', 'Fishing', 'Art', 'Theatre', 'Food', 'Animal Watching', 'Live Music', 'Night Life'].to_a.sample,
+                      base_location: "Shanghai",
+                      birth_location: Faker::Address.city)
 
-   gender = user.gender == "Male" ? "men" : "women"
-   url = "https://randomuser.me/api/portraits/#{gender}/#{i}.jpg"
+  gender = user.gender == "Male" ? "men" : "women"
+  url = "https://randomuser.me/api/portraits/#{gender}/#{i}.jpg"
 
-   user.remote_photo_url = url
-   user.save!
+  user.remote_photo_url = url
+  user.save!
 end
 
 
