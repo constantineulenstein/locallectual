@@ -1,0 +1,12 @@
+
+<div class="conversations-container">
+  <h1>Conversations</h1>
+  <% current_user.mailbox.inbox.each do |conversation| %>
+    <div class="card-conversation">
+      <img src="">
+      <div class="card-product-infos">
+        <%= link_to conversation.subject, conversation_path(conversation.id) %>
+      </div>
+    </div>
+<% end %>
+</div>

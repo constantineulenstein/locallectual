@@ -70,4 +70,19 @@ class User < ApplicationRecord
       # uploads image from api to cloudinary and grabs url
     end
   end
+
+  acts_as_messageable
+
+  #identification for messaging
+  def name
+    return self.first_name + self.last_name
+  end
+
+  def mailboxer_email(object)
+    #Check if an email should be sent for that object
+    #if true
+    return self.email
+    #if false
+    #return nil
+  end
 end
