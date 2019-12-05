@@ -48,6 +48,6 @@ class LocallectsController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :age, :gender, :base_location, :years_in_city, :job, :explorer_location)
+    params.require(:user).permit(:first_name, :last_name, :age, :gender, :base_location, :arrival_date, :job, :birth_location, :mother_tongue)
   end
 end

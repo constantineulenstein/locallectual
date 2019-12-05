@@ -10,8 +10,9 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :validatable
   after_create :data_assignment
   # Utilizing pg_search for searching baselocation of locallects
-  after_create :get_city_img_url
 
+  after_create :get_city_img_url
+  
   after_update :get_city_img_url, if: :base_location_changed?
   include PgSearch::Model
   pg_search_scope :search_by_base_location,
@@ -21,10 +22,8 @@ class User < ApplicationRecord
   }
   mount_uploader :photo, PhotoUploader
 
-  # scope
+  acts_as_taggable_on :languages
 
-  scope :gender, -> (gender) {where("gender = ?", gender)}
-  scope :age, -> (age) {where("age = ?", age)}
 
   # Creating Locallect and Explorer model right after User was created for later linking friendships
   def data_assignment
