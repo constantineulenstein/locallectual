@@ -200,6 +200,7 @@ class LocallectsController < ApplicationController
   end
 
   def show
+
     authorize @locallect
     @friendship = Friendship.new
   end

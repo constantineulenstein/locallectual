@@ -13,10 +13,10 @@ class User < ApplicationRecord
 
   after_create :get_city_img_url, :calculate_age
 
-  after_update :get_city_img_url, if: :base_location_changed?
+  after_update :get_city_img_url, if: :saved_change_to_base_location?
 
   after_update :calculate_age
-
+  
   include PgSearch::Model
   pg_search_scope :search_by_base_location,
     against: [ :base_location ],
@@ -54,20 +54,29 @@ class User < ApplicationRecord
   end
 
   def get_city_img_url
-    location = self.base_location.downcase
-    # extracts location from instance
+    # puts "-" * 200
+    unless self.base_location.nil?
+      location = self.base_location.downcase
+      # extracts location from instance
 
-    url = open("https://api.unsplash.com/search/photos?page=1&query=#{location}&per_page=1&client_id=#{ENV['UNSPLASH_URL']}").read
-    results = JSON.parse(url)
-    # resultant image from unsplash api
+      url = open("https://api.unsplash.com/search/photos?page=1&query=#{location}&per_page=1&client_id=#{ENV['UNSPLASH_URL']}").read
+      results = JSON.parse(url)
+      # resultant image from unsplash api
+      if results['results'] == []
+        api_image = "http://www.chsn.org.au/wp-content/uploads/2016/03/people-helping-people1.jpg"
 
-    unless results['results'] == []
-      api_image = results['results'][0]['urls']['regular']
-      # passes photo obtained from api to view as long as there is a result to pass
+        uploaded = Cloudinary::Uploader.upload(api_image)
+        self.update!(city_image: uploaded["url"])
 
-      uploaded = Cloudinary::Uploader.upload(api_image)
-      self.update(city_image: uploaded["url"])
-      # uploads image from api to cloudinary and grabs url
+        # uploads image from api to cloudinary and grabs url
+      else
+        api_image = results['results'][0]['urls']['regular']
+        # passes photo obtained from api to view as long as there is a result to pass
+
+        uploaded = Cloudinary::Uploader.upload(api_image)
+        self.update!(city_image: uploaded["url"])
+        # uploads image from api to cloudinary and grabs url
+      end
     end
   end
 
