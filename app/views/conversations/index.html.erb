@@ -1,9 +1,11 @@
 
-<div class="conversations-container"> <h1>Conversations</h1> <% if
-current_user.mailbox.inbox == [] %> <h3>You have no conversations yet</h3> <%
-end %>
+<div class="conversations-container">
+  <h1>Conversations</h1>
+  <% if current_user.mailbox.conversations == [] %>
+    <h3>You have no conversations yet</h3>
+  <% end %>
 
-  <% current_user.mailbox.inbox.each do |conversation| %>
+  <% current_user.mailbox.conversations.each do |conversation| %>
     <div class="card-conversation">
       <img src="">
       <div class="card-product-infos">

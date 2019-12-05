@@ -18,7 +18,7 @@ class ConversationsController < ApplicationController
   private
 
   def find_convo
-    current_user.mailbox.inbox.each do |conversation|
+    current_user.mailbox.conversations.each do |conversation|
       if conversation.id == params[:id].to_i
         @conversation = conversation
       end
