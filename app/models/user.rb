@@ -11,9 +11,12 @@ class User < ApplicationRecord
   after_create :data_assignment
   # Utilizing pg_search for searching baselocation of locallects
 
-  after_create :get_city_img_url
-  
+  after_create :get_city_img_url, :calculate_age
+
   after_update :get_city_img_url, if: :base_location_changed?
+
+  after_update :calculate_age
+
   include PgSearch::Model
   pg_search_scope :search_by_base_location,
     against: [ :base_location ],
@@ -29,6 +32,12 @@ class User < ApplicationRecord
   def data_assignment
     Locallect.create(user_id: self.id)
     Explorer.create(user_id: self.id)
+  end
+
+  def calculate_age
+    year = Date.today.year - self.birthday.year
+    self.age = year
+
   end
 
   # through replacement such that User.friendships is possible
