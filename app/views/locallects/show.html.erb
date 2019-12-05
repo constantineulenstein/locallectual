@@ -1,10 +1,11 @@
-<div class="home-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images2.minutemediacdn.com/image/upload/c_crop,h_1165,w_2078,x_0,y_123/v1559320068/shape/mentalfloss/70705-istock-957174246.jpg?itok=3kqY-PWd);">
+<div class="home-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @locallect.city_image %>);">
   <div class="home-banner-container">
 
     <p>"A little nonsense now and then is relished by the wisest men!"</p>
 
   </div>
-  <img class="show-profile-image" src="http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012083/btt73tsfl2zdap0mqerq.jpg" alt="profile image">
+  <%= cl_image_tag @locallect.photo, width: 300, height: 300, crop: :fill, class: "show-profile-image"%>
+  <!-- <img class="show-profile-image" src="http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012083/btt73tsfl2zdap0mqerq.jpg" alt="profile image"> -->
 </div>
 
 <div class="mgt50"></div>
