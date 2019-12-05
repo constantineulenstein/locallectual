@@ -1,0 +1,30 @@
+<div class="messages-container">
+
+  <div class="recipient-info">
+    <h1>Name</h1>
+    <h2>Other info</h2>
+  </div>
+  <div class="message-list">
+    <%= @conversation.subject %>
+
+    <% receipts = @conversation.receipts_for current_user %>
+
+    <div class="conversations-container">
+      <% receipts.each do |receipt| %>
+        <div class="card-conversation">
+          <img src="" />
+          <div class="card-product-infos">
+            <%= message = receipt.message.body %>
+            <%= read = receipt.is_unread? %>
+          </div>
+        </div>
+      <% end %>
+      <%= form_tag(reply_path(id: @conversation.id), method: :get) do %>
+        <%= text_field_tag(:send_message) %>
+        <%= submit_tag "Submit" %>
+      <% end %>
+
+
+    </div>
+  </div>
+</div>

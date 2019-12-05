@@ -11,9 +11,12 @@ class User < ApplicationRecord
   after_create :data_assignment
   # Utilizing pg_search for searching baselocation of locallects
 
-  after_create :get_city_img_url
+  after_create :get_city_img_url, :calculate_age
 
   after_update :get_city_img_url, if: :saved_change_to_base_location?
+
+  after_update :calculate_age
+  
   include PgSearch::Model
   pg_search_scope :search_by_base_location,
     against: [ :base_location ],
@@ -29,6 +32,12 @@ class User < ApplicationRecord
   def data_assignment
     Locallect.create(user_id: self.id)
     Explorer.create(user_id: self.id)
+  end
+
+  def calculate_age
+    year = Date.today.year - self.birthday.year
+    self.age = year
+
   end
 
   # through replacement such that User.friendships is possible
@@ -69,5 +78,20 @@ class User < ApplicationRecord
         # uploads image from api to cloudinary and grabs url
       end
     end
+  end
+
+  acts_as_messageable
+
+  #identification for messaging
+  def name
+    return self.first_name + self.last_name
+  end
+
+  def mailboxer_email(object)
+    #Check if an email should be sent for that object
+    #if true
+    return self.email
+    #if false
+    #return nil
   end
 end

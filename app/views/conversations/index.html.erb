@@ -1,0 +1,14 @@
+
+<div class="conversations-container"> <h1>Conversations</h1> <% if
+current_user.mailbox.inbox == [] %> <h3>You have no conversations yet</h3> <%
+end %>
+
+  <% current_user.mailbox.inbox.each do |conversation| %>
+    <div class="card-conversation">
+      <img src="">
+      <div class="card-product-infos">
+        <%= link_to conversation.subject, conversation_path(conversation.id) %>
+      </div>
+    </div>
+<% end %>
+</div>
