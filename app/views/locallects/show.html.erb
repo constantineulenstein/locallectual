@@ -16,6 +16,7 @@
     <br>
     <p>Lived in <%= @locallect.base_location %> since <%#= @locallect.arrival_date.strftime("%B %Y") %></p>
     <p>Interests: <%=  @locallect.hobby %></p>
+    <%= link_to "Get to know #{@locallect.first_name}", "#", id: "friendship-request-button", class: "btn btn-outline-dark" %>
   </div>
   <div class="right-box pt-5">
     <h2>Bio</h2>
@@ -25,16 +26,10 @@
 
 <div class="mgt50"></div>
 
-<div class="container">
+<div class="container w-50 bg-light" id="friend-request-field">
   <!-- This link will be used to have the friendship message pop up and create the friendship request through javasscript. Hereby make background grey and set position of friendwhip request to fixed -->
-  <%= link_to "Meet #{@locallect.first_name}", "#", id: "friendship-request-button" %>
   <%= simple_form_for(@friendship, url: locallect_friendships_path(@locallect), method: :post) do |f| %>
-    <%= f.input :request_message %>
-    <%= f.button :submit, "Send" %>
+    <%= f.input :request_message, label: "Tell him something about you", class: "friendrequest-text" %>
+    <%= f.button :submit, "Send friend request", class: "btn btn-outline-light", id: "submit-button-friendrequest" %>
   <% end %>
-  <!--   <form action="<%= locallect_friendships_path(@locallect.id) %>" method='POST'>
-    <label for="message">Request Message</label>
-    <input type="text" name="request_message">
-    <input type="submit">
-  </form>-->
 </div>
