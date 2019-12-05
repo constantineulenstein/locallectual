@@ -28,4 +28,8 @@ class MessagePolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def reply?
+    true
+  end
 end
