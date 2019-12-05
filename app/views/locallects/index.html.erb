@@ -28,7 +28,8 @@
     <div class="filter col-sm-3">
       <%= simple_form_for :search, url: locallects_path, method: "GET" do |f| %>
         <div class="form-inputs bg-light p-3">
-          <%= f.input :age %>
+          <%= f.input :start_age %>
+          <%= f.input :end_age %>
           <%= f.input :gender, collection: ["Male", "Female", "Diverse"] %>
           <%= f.input :base_location, input_html: {value: @base_location} %>
           <%= f.input :language_list, collection: @languages, input_html: {class: "select2",  multiple: "multiple"} %>
