@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Filterable
+
   has_one :locallect, dependent: :destroy
   has_one :explorer, dependent: :destroy
   has_many :messages, dependent: :destroy
@@ -14,10 +16,15 @@ class User < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :search_by_base_location,
     against: [ :base_location ],
-    using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
-    }
+  using: {
+    tsearch: { prefix: true } # <-- now `superman batm` will return something!
+  }
   mount_uploader :photo, PhotoUploader
+
+  # scope
+
+  scope :gender, -> (gender) {where("gender = ?", gender)}
+  scope :age, -> (age) {where("age = ?", age)}
 
   # Creating Locallect and Explorer model right after User was created for later linking friendships
   def data_assignment
