@@ -1,50 +1,39 @@
 <!-- below is the previous code -->
-<div class="index-container d-flex">
-  <!-- user cards  -->
-  <div class="container mt-4">
-    <div class="row">
-      <div class="filtertitle">
-        <h2>These are the available Locallects from your preferences:</h2>
-      </div>
-      <% if current_user.nil? %>
-        <% @locallects.each do |user| %>
-          <div class="col-sm-4">
-            <%= render 'shared/locallectslist', :user => user %>
-          </div>
-        <% end %>
-      <% else %>
-        <% @locallects.each do |user| %>
-          <div class="col-sm-4">
-            <% unless current_user.id == user.id %>
+<div class="p-5">
+  <h2>People in <%= @base_location %></h2>
+  <div class="d-flex">
+    <!-- user cards  -->
+    <div class="col-sm-9">
+      <div class="row">
+        <div class="filtertitle">
+        </div>
+        <% if current_user.nil? %>
+          <% @locallects.each do |user| %>
+            <div class="col-sm-4">
               <%= render 'shared/locallectslist', :user => user %>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
+        <% else %>
+          <% @locallects.each do |user| %>
+            <div class="col-sm-4">
+              <% unless current_user.id == user.id %>
+                <%= render 'shared/locallectslist', :user => user %>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
-  <!-- filter menu -->
-  <div class="filter p-3 w-25">
-    <% base_location = params[:search][:query] if params[:search].present? %>
-    <%#= simple_form_for :filter, url: locallects_path, method: "GET" do |f| %>
-      <%#= f.input :gender, label: "gender", as: :radio_buttons, collection: [['female', 'female'], ['male', 'male']], label_method: :second, value_method: :first %>
-      <%#= f.submit "Search", class: "btn btn-primary" %>
-      <%# end %>
-      <form action="/locallects" method="GET">
-        <select name="gender">
-          <option value="All">All</option>
-          <option value="Female">Female</option>
-          <option value="Male">Male</option>
-          <option value="Other">Other</option>
-        </select>
-        <!--  <label for="gender">Gender</label>
-        <input type="text" name="gender"> -->
-        <label for="age">Age</label>
-        <input type="text" name="age">
-        <input type="text" name="base_location" id="" value="<%= base_location %>" placeholder="Location">
-        <label for="languages">Languages</label>
-        <input type="text">
-        <input type="submit" value="filter">
-      </form>
+    <!-- filter menu -->
+    <div class="filter col-sm-3">
+      <%= simple_form_for :search, url: locallects_path, method: "GET" do |f| %>
+        <div class="form-inputs bg-light p-3">
+          <%= f.input :age %>
+          <%= f.input :gender, collection: ["Male", "Female", "Diverse"] %>
+          <%= f.input :base_location, input_html: {value: @base_location} %>
+          <%= f.input :language_list, collection: @languages, input_html: {class: "select2",  multiple: "multiple"} %>
+          <%= f.button :submit, "Search", class: "btn btn-outline-dark" %>
+        </div>
+      <% end %>
     </div>
   </div>
