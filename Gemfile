@@ -11,6 +11,7 @@ gem 'redis'
 
 gem 'pg_search', '~> 2.3.0'
 
+
 gem 'pundit'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
@@ -39,3 +40,5 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
 end
+
+gem 'bootstrap-datepicker-rails'
