@@ -19,7 +19,7 @@
           </div>
         </div>
       <% end %>
-      <%= form_tag conversation_path do %>
+      <%= form_tag(reply_path(id: @conversation.id), method: :get) do %>
         <%= text_field_tag(:send_message) %>
         <%= submit_tag "Submit" %>
       <% end %>

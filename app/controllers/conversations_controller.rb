@@ -1,5 +1,5 @@
 class ConversationsController < ApplicationController
-  before_action :find_convo, only: [:show, :create]
+  before_action :find_convo, only: [:show, :reply]
 
   def index
     @messages = policy_scope(Message)
@@ -9,8 +9,10 @@ class ConversationsController < ApplicationController
     authorize current_user
   end
 
-  def create
+  def reply
     current_user.reply_to_conversation(@conversation, params[:send_message])
+    authorize current_user
+    redirect_to conversation_path(@conversation)
   end
 
   private
