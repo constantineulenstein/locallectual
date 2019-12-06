@@ -1,7 +1,7 @@
 <div class="home-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @locallect.city_image %>);">
   <div class="home-banner-container">
 
-    <p>"A little nonsense now and then is relished by the wisest men!"</p>
+    <p>“Alone, we can do so little; together, we can do so much”</p>
 
   </div>
   <%= cl_image_tag @locallect.photo, width: 300, height: 300, crop: :fill, class: "show-profile-image"%>
@@ -14,7 +14,7 @@
   <div class="left-box text-center pt-5">
     <h2><%= @locallect.first_name %> <%= @locallect.last_name %></h2>
     <br>
-    <p>Lived in <%= @locallect.base_location %> since <%#= @locallect.arrival_date.strftime("%B %Y") %></p>
+    <p>Lives in <%= @locallect.base_location %> <!-- since --> <%#= @locallect.arrival_date.strftime("%B %Y") %></p>
     <p>Interests: <%=  @locallect.hobby %></p>
     <!-- Check if you are friends and friendship was approved -->
     <% if current_user.friendships.any? {|friendship| @locallect.friendships.include?(friendship) && friendship.approved } %>
@@ -37,7 +37,7 @@
   </div>
   <div class="right-box pt-5">
     <h2>Bio</h2>
-    <p> As a native Brit, Elliot has always had a deep love of the ocean. Her summers were spent at the beach packing peanut butter & jelly sandwiches and hopping on the bus for the short trip from Irvine, CA to Newport Beach, even before she could drive. Catherine enjoyed hanging out all day watching the surf action.</p>
+    <p>Being a volunteer and helping others runs in my family. My mom was president of the Pinehurst PTA, she spent a few years leading my girl scout troop, and she always worked for non-for-profit agencies, where yes she would be paid, but she would coordinate volunteers and still be helping others. My dad is also the president of the board of the local Boys and Girls Club. As a local, if I feel honored to give a helping hand to others simply by showing them the need to knows when starting a new life in my city.</p>
   </div>
 </div>
 

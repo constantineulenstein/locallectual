@@ -186,7 +186,7 @@ languages = ['Abkhaz',
              'Yoruba',
              'Zhuang, Chuang']
 
-5.times do |i|
+10.times do |i|
   user = User.create!(email: Faker::Internet.email,
                       password: "123456",
                       first_name: Faker::Name.first_name,
@@ -206,6 +206,48 @@ languages = ['Abkhaz',
   user.save!
 end
 
+10.times do |i|
+  user = User.create!(email: Faker::Internet.email,
+                      password: "123456",
+                      first_name: Faker::Name.first_name,
+                      last_name: Faker::Name.last_name,
+                      birthday: Faker::Date.birthday,
+                      job: Faker::Job.title,
+                      gender: Faker::Gender.binary_type,
+                      hobby: ['Reading', 'Hiking', 'Fishing', 'Art', 'Theatre', 'Food', 'Animal Watching', 'Live Music', 'Night Life'].sample,
+                      base_location: "Munich",
+                      language_list: languages.sample,
+                      birth_location: Faker::Address.city)
+
+  gender = user.gender == "Male" ? "men" : "women"
+  url = "https://randomuser.me/api/portraits/#{gender}/#{i}.jpg"
+
+  user.remote_photo_url = url
+  user.save!
+end
+
+10.times do |i|
+  user = User.create!(email: Faker::Internet.email,
+                      password: "123456",
+                      first_name: Faker::Name.first_name,
+                      last_name: Faker::Name.last_name,
+                      birthday: Faker::Date.birthday,
+                      job: Faker::Job.title,
+                      gender: Faker::Gender.binary_type,
+                      hobby: ['Reading', 'Hiking', 'Fishing', 'Art', 'Theatre', 'Food', 'Animal Watching', 'Live Music', 'Night Life'].sample,
+                      base_location: "Los Angeles",
+                      language_list: languages.sample,
+                      birth_location: Faker::Address.city)
+
+  gender = user.gender == "Male" ? "men" : "women"
+  url = "https://randomuser.me/api/portraits/#{gender}/#{i}.jpg"
+
+  user.remote_photo_url = url
+  user.save!
+end
+
+
+
 jeff = User.create(email: "jeff@gmail.com",
                    password: "123456",
                    first_name: "Jeff",
@@ -214,8 +256,8 @@ jeff = User.create(email: "jeff@gmail.com",
                    gender: "Male",
                    hobby: "Swimming",
                    base_location: "Shanghai",
-                   birth_location: "Paris",
                    birthday: Faker::Date.birthday,
+                   birth_location: "Paris",
                    remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012068/nxzy7fjsjght1mowd3t0.jpg"
                    )
 
@@ -226,7 +268,7 @@ elliot = User.create(email: "elliot@gmail.com",
                      job: "Foot Specialist",
                      gender: "Male",
                      hobby: "Scuba Diving",
-                     base_location: "UK",
+                     base_location: "Shanghai",
                      birthday: Faker::Date.birthday,
                      birth_location: "Shanghai",
                      remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012083/btt73tsfl2zdap0mqerq.jpg"
@@ -239,9 +281,9 @@ const = User.create(email: "constantin@gmail.com",
                     job: "Programmer",
                     gender: "Male",
                     hobby: "Hiking",
-                    base_location: "Germany",
+                    base_location: "Munich",
                     birthday: Faker::Date.birthday,
-                    birth_location: "Shanghai",
+                    birth_location: "Munich",
                     remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575011826/btpnaxpn2tebv1hhznt0.jpg"
                     )
 
@@ -252,10 +294,10 @@ dan = User.create(email: "dan@gmail.com",
                   job: "Waiter",
                   gender: "Male",
                   hobby: "Sky Diving",
+                  base_location: "Los Angeles",
                   birthday: Faker::Date.birthday,
-                  base_location: "United States",
-                  birth_location: "Germany",
-                  remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012140/f4ezad5dgitnq8h5mg6e.jpg"
+                  birth_location: "Los Angeles",
+                  remote_photo_url: "https://avatars2.githubusercontent.com/u/56106195?v=4"
                   )
 
 1.times do |i|
