@@ -139,11 +139,9 @@ ActiveRecord::Schema.define(version: 2019_12_05_072241) do
     t.string "location"
     t.bigint "locallect_id"
     t.bigint "explorer_id"
-    t.bigint "friendship_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["explorer_id"], name: "index_transactions_on_explorer_id"
-    t.index ["friendship_id"], name: "index_transactions_on_friendship_id"
     t.index ["locallect_id"], name: "index_transactions_on_locallect_id"
   end
 
@@ -184,6 +182,5 @@ ActiveRecord::Schema.define(version: 2019_12_05_072241) do
   add_foreign_key "messages", "users"
   add_foreign_key "taggings", "tags"
   add_foreign_key "transactions", "explorers"
-  add_foreign_key "transactions", "friendships"
   add_foreign_key "transactions", "locallects"
 end

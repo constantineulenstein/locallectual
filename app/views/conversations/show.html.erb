@@ -1,15 +1,13 @@
 <div class="messages-container">
-
   <div class="recipient-info col-sm-4">
     <h1><%= @other_chatter.first_name %> <%= @other_chatter.last_name %></h1>
     <h1><%= @other_chatter.gender %></h1>
     <h2>Other info</h2>
+    <p><%= @transaction %></p>
   </div>
   <div class="message-list col-sm-8">
     <%= @conversation.subject %>
-
     <% receipts = @conversation.receipts_for current_user%>
-
     <div class="conversations-container">
       <% receipts.each do |receipt| %>
         <div class="card-conversation">
@@ -26,5 +24,16 @@
     </div>
   </div>
 </div>
-
-<%= link_to "book person", new_conversation_transaction_path(:conversation_id) %>
+<%= simple_form_for(@transaction, url: conversation_transactions_path(@conversation), method: :post) do |f| %>
+  <%#= hidden_field_tag :friendship_id, @friendships.id %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :date, as: :string, input_html: {class: "datepicker bg-white"} %>
+    <%= f.input :location, as: :string %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Book" %>
+  </div>
+<% end %>
+<%#= render :template => 'transactions/new', :locals => { :friendships => current_user.friendships } %>
+<%= link_to "book person", new_conversation_transaction_path(@conversation) %>

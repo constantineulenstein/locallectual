@@ -8,6 +8,7 @@ class ConversationsController < ApplicationController
 
   def show
     authorize current_user
+    @transaction = Transaction.new
     @conversation.participants.each do |participant|
       if current_user.id == participant.id
         @logged_in_chatter = participant
