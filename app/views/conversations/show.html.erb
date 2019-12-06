@@ -6,10 +6,18 @@
 
     <h4><%= @other_chatter.gender %> • <%= @other_chatter.age %> </h4>
 
-    <%= link_to "book person", "#", class: "friendship-request-button" %>
-
     <p><%= @other_chatter.bio %></p>
-    <p><%= @transaction %></p>
+    <% if current_user.transactions.any? {|transaction| @other_chatter.transactions.include?(transaction) } %>
+      <% @other_chatter.transactions.each do |transaction| %>
+        <% if current_user.transactions.include?(transaction) %>
+          <h3>Your next meeting:</h3>
+          <p>Date: <%= transaction.date.strftime("%A, %d %b %Y %l:%M %p") %></p>
+          <p>Location: <%= transaction.location %></p>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= link_to "book person", "#", class: "friendship-request-button" %>
+    <% end %>
 
   </div>
   <div class="message-list col-sm-8">
