@@ -21,7 +21,7 @@ class FriendshipsController < ApplicationController
     @friendship.declined = false
     @friendship.locallect_id = @locallect.id
     @friendship.explorer_id = current_user.id
-    @friendship.save
+    @friendship.save!
     redirect_to locallect_path(@locallect)
     authorize @friendship
   end
