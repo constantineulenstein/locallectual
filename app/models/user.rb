@@ -11,12 +11,12 @@ class User < ApplicationRecord
   after_create :data_assignment
   # Utilizing pg_search for searching baselocation of locallects
 
-  after_create :get_city_img_url, :calculate_age
+  after_create :get_city_img_url
 
   after_update :get_city_img_url, if: :saved_change_to_base_location?
 
   after_update :calculate_age
-  
+
   include PgSearch::Model
   pg_search_scope :search_by_base_location,
     against: [ :base_location ],

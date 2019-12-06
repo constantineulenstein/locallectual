@@ -1,10 +1,20 @@
+.l {
+  justify-content: flex-start;
+}
+
+.r {
+  justify-content: flex-end;
+}
+
 .card-conversation {
+  min-width: 100px;
+  max-width: 350px;
   overflow: hidden;
-  height: 120px;
-  background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background: white;
   display: flex;
-  align-items: center;
+  padding: 5px 10px;
+  margin: 5px 0;
 }
 
 .card-conversation img {
@@ -32,6 +42,6 @@
 }
 
 .conversations-container {
-  width: 1000px;
+  width: 800px;
   margin: 0 auto;
 }
