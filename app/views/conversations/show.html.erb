@@ -1,39 +1,50 @@
 <div class="messages-container">
+
   <div class="recipient-info col-sm-4">
+    <%= cl_image_tag @other_chatter.photo, class: "chatter-photo ml-1" %>
     <h1><%= @other_chatter.first_name %> <%= @other_chatter.last_name %></h1>
-    <h1><%= @other_chatter.gender %></h1>
-    <h2>Other info</h2>
-    <p><%= @transaction %></p>
+    <h4><%= @other_chatter.gender %> • <%= @other_chatter.age %> </h4>
+
+    <%= link_to "book person", new_conversation_transaction_path(:conversation_id) %>
+
+
+    <p><%= @other_chatter.bio %></p>
   </div>
   <div class="message-list col-sm-8">
     <%= @conversation.subject %>
+
     <% receipts = @conversation.receipts_for current_user%>
+
     <div class="conversations-container">
-      <% receipts.each do |receipt| %>
-        <div class="card-conversation">
-          <h4><%= User.find(receipt.message.sender_id).first_name %></h4>
-          <div class="card-product-infos">
-            <%= message = receipt.message.body %>
+      <% receipts.reverse.each do |receipt| %>
+        <% if receipt.message.sender_id == current_user.id %>
+          <div class="single-message-container r">
+            <div class="card-conversation">
+              <div class="card-product-infos">
+                <p><%= User.find(receipt.message.sender_id).first_name %></p>
+                <h4> <%= message = receipt.message.body %></h4>
+              </div>
+            </div>
           </div>
-        </div>
+        <% else %>
+          <div class="single-message-container l">
+            <div class="card-conversation">
+              <div class="card-product-infos">
+                <p><%= User.find(receipt.message.sender_id).first_name %></p>
+                <h4> <%= message = receipt.message.body %></h4>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+
       <% end %>
-      <%= form_tag(reply_path(id: @conversation.id), method: :get) do %>
-        <%= text_field_tag(:send_message) %>
-        <%= submit_tag "Submit" %>
-      <% end %>
+      <div class="single-message-container r">
+        <%= form_tag(reply_path(id: @conversation.id), method: :get) do %>
+          <%= text_field_tag(:send_message) %>
+          <%= submit_tag "Send" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-<%= simple_form_for(@transaction, url: conversation_transactions_path(@conversation), method: :post) do |f| %>
-  <%#= hidden_field_tag :friendship_id, @friendships.id %>
-  <%= f.error_notification %>
-  <div class="form-inputs">
-    <%= f.input :date, as: :string, input_html: {class: "datepicker bg-white"} %>
-    <%= f.input :location, as: :string %>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Book" %>
-  </div>
-<% end %>
-<%#= render :template => 'transactions/new', :locals => { :friendships => current_user.friendships } %>
-<%= link_to "book person", new_conversation_transaction_path(@conversation) %>
