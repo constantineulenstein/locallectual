@@ -63,6 +63,7 @@
   </div>
 </div>
 
+<!-- Will only pop up if meeting takes place -->
 <div class="container w-50 border-radius p-5 friend-request-field">
   <h3 class="my-3">Arrange meeting</h3>
   <%= simple_form_for(@transaction, url: conversation_transactions_path(@conversation), method: :post) do |f| %>
@@ -72,8 +73,11 @@
       <%= f.input :location, as: :string %>
     </div>
     <div class="form-actions">
-      <%= f.button :submit, "Book", class: "submit-button-friendrequest btn btn-outline-light" %>
+      <%= f.button :submit, "Book", class: "btn btn-outline-light" %>
     </div>
+  <% end %>
+  <%= link_to conversation_path(@conversation) do %>
+    <i class="fas fa-times cancel-cross"></i>
   <% end %>
 </div>
 

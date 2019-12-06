@@ -1,3 +1,5 @@
+// works for both friend request as well as meeting arrangement simultaneously
+
 const displayExtraField = (e) => {
   const page = document.querySelector('.to-be-darkened');
   const requestField = document.querySelector('.friend-request-field');
@@ -16,32 +18,35 @@ const displayExtraField = (e) => {
   }
 }
 
-const fadeExtraField = (e) => {
-  const page = document.querySelector('.to-be-darkened');
-  const requestField = document.querySelector('.friend-request-field');
-  requestField.style.display = "none";
-  page.classList.remove("overlay");
+// const fadeExtraField = (e) => {
+//   const page = document.querySelector('.to-be-darkened');
+//   const requestField = document.querySelector('.friend-request-field');
+//   requestField.style.display = "none";
+//   page.classList.remove("overlay");
 
-  const coverByPopupBox = document.querySelectorAll(".cover-by-popup-box").forEach ((e) => {
-    e.style.backgroundImage = "";
-  })
+//   const coverByPopupBox = document.querySelectorAll(".cover-by-popup-box").forEach ((e) => {
+//     e.style.backgroundImage = "";
+//   })
 
-  document.querySelector(".cover-by-popup-banner").style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(${user.city_image})`;
-
-  document.querySelector(".cover-by-popup-image").style.backgroundImage =  `linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(${user.photo.url})`;
-}
+//   if (document.querySelector(".cover-by-popup-image-book")){
+//     document.querySelector(".cover-by-popup-image-book").style.backgroundImage =  `linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(${chatter.photo.url})`;
+//   } else {
+//     document.querySelector(".cover-by-popup-image").style.backgroundImage =  `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(${user.photo.url})`;
+//     document.querySelector(".cover-by-popup-banner").style.backgroundImage = `linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(${user.city_image})`;
+//   }
+// }
 
 
 const newRequest = () => {
   const request = document.querySelector('.friendship-request-button');
-  const submit = document.querySelector('.submit-button-friendrequest');
+  //const submit = document.querySelector('.submit-button-friendrequest');
   if(request) {
     request.addEventListener('click', displayExtraField );
   }
 
-  if(submit) {
-    submit.addEventListener('click', fadeExtraField );
-  }
+  // if(submit) {
+  //   submit.addEventListener('click', fadeExtraField );
+  // }
 }
 
 export { newRequest };
