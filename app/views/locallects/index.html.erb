@@ -1,10 +1,19 @@
 <!-- below is the previous code -->
+<!-- <<<<<<< Updated upstream
 <div class="container mt-4">
   <div class="row">
-    <% if current_user.nil? %>
-      <% @locallects.each do |user| %>
+    <%# if current_user.nil? %>
+      <%# @locallects.each do |user| %>
         <div class="col-sm-4">
-          <%= render 'shared/locallectslist', :user => user %>
+          <%#= render 'shared/locallectslist', :user => user %>
+======= -->
+<div class="p-5">
+  <h2>People in <%= @base_location.capitalize %></h2>
+  <div class="d-flex">
+    <!-- user cards  -->
+    <div class="col-sm-9">
+      <div class="row mt-4">
+        <div class="filtertitle">
         </div>
       <% end %>
     <% else %>

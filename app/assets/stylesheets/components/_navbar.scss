@@ -1,21 +1,3 @@
-.container {
-  width: 100%;
-  margin: 0 auto;
-}
-
-.navbar {
-  height: 75px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-.search {
-  display:flex;
-  align-items: center;
-}
-
-.fas {
-  margin-right: 20px;
-}
 
 .navbar-lewagon {
   justify-content: space-between;
@@ -28,4 +10,8 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-text:hover {
+  text-decoration: none;
 }
