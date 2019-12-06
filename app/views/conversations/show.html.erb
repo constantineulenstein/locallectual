@@ -1,16 +1,17 @@
 <div class="messages-container">
   <div class="recipient-info col-sm-4">
-    <h1>Name</h1>
+    <h1><%= @other_chatter.first_name %> <%= @other_chatter.last_name %></h1>
+    <h1><%= @other_chatter.gender %></h1>
     <h2>Other info</h2>
     <p><%= @transaction %></p>
   </div>
   <div class="message-list col-sm-8">
     <%= @conversation.subject %>
-    <% receipts = @conversation.receipts_for current_user %>
+    <% receipts = @conversation.receipts_for current_user%>
     <div class="conversations-container">
       <% receipts.each do |receipt| %>
         <div class="card-conversation">
-          <img src="" />
+          <h4><%= User.find(receipt.message.sender_id).first_name %></h4>
           <div class="card-product-infos">
             <%= message = receipt.message.body %>
           </div>

@@ -16,7 +16,24 @@
     <br>
     <p>Lived in <%= @locallect.base_location %> since <%#= @locallect.arrival_date.strftime("%B %Y") %></p>
     <p>Interests: <%=  @locallect.hobby %></p>
-    <%= link_to "Get to know #{@locallect.first_name}", "#", id: "friendship-request-button", class: "btn btn-outline-dark" %>
+    <!-- Check if you are friends and friendship was approved -->
+    <% if current_user.friendships.any? {|friendship| @locallect.friendships.include?(friendship) && friendship.approved } %>
+      <% current_user.mailbox.conversations.each do |conversation| %>
+        <% conversation.participants.each do |participant| %>
+          <% if participant == @locallect && participant != current_user %>
+            <%= link_to "Message #{@locallect.first_name}", conversation_path(conversation), class: "btn btn-outline-dark" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <!-- Check if friend request was sent -->
+    <% elsif current_user.friendships.any? {|friendship| @locallect.friendships.include?(friendship)} %>
+      <p class="border">Friend request sent</p>
+    <!-- else show button to send friend request -->
+    <% else %>
+      <%= link_to "Get to know #{@locallect.first_name}", "#", id: "friendship-request-button", class: "btn btn-outline-dark" %>
+    <% end %>
+
+
   </div>
   <div class="right-box pt-5">
     <h2>Bio</h2>
