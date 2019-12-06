@@ -7,6 +7,9 @@ class ConversationsController < ApplicationController
 
   def show
     authorize current_user
+    # @conversation.participants.each do |participant|
+    #   if current_user.id == participant.id
+    #     @
   end
 
   def reply
