@@ -10,6 +10,7 @@ class ConversationsController < ApplicationController
     # @conversation.participants.each do |participant|
     #   if current_user.id == participant.id
     #     @
+    @transaction = Transaction.new
   end
 
   def reply

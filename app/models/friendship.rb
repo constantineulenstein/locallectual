@@ -2,7 +2,6 @@ class Friendship < ApplicationRecord
   belongs_to :locallect
   belongs_to :explorer
   has_many :messages
-  has_many :transactions
   # make sure that you can not have a friendship that already exists
   validates :locallect_id, uniqueness: {scope: :explorer_id}
 
