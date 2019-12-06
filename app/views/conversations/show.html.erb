@@ -1,7 +1,9 @@
-<div class="messages-container">
+<div class="messages-container to-be-darkened">
 
   <div class="recipient-info col-sm-4">
-    <%= cl_image_tag @other_chatter.photo, class: "chatter-photo ml-1" %>
+    <div class= "cover-by-popup-image-book chatter-photo ml-1" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= @other_chatter.photo %>);">
+    </div>
+    <%#= cl_image_tag @other_chatter.photo, class: "chatter-photo ml-1 cover-by-popup-image-book" %>
     <h1><%= @other_chatter.first_name %> <%= @other_chatter.last_name %></h1>
 
     <h4><%= @other_chatter.gender %> • <%= @other_chatter.age %> </h4>
@@ -18,8 +20,8 @@
     <% else %>
       <%= link_to "book person", "#", class: "friendship-request-button" %>
     <% end %>
-
   </div>
+
   <div class="message-list col-sm-8">
     <%= @conversation.subject %>
 
@@ -29,7 +31,7 @@
       <% receipts.reverse.each do |receipt| %>
         <% if receipt.message.sender_id == current_user.id %>
           <div class="single-message-container r">
-            <div class="card-conversation">
+            <div class="card-conversation cover-by-popup-box">
               <div class="card-product-infos">
                 <p><%= User.find(receipt.message.sender_id).first_name %></p>
                 <h4> <%= message = receipt.message.body %></h4>
@@ -38,7 +40,7 @@
           </div>
         <% else %>
           <div class="single-message-container l">
-            <div class="card-conversation">
+            <div class="card-conversation cover-by-popup-box">
               <div class="card-product-infos">
                 <p><%= User.find(receipt.message.sender_id).first_name %></p>
                 <h4> <%= message = receipt.message.body %></h4>
@@ -50,10 +52,12 @@
 
       <% end %>
       <div class="single-message-container r">
+        <div class="card-conversation cover-by-popup-box">
         <%= form_tag(reply_path(id: @conversation.id), method: :get) do %>
-          <%= text_field_tag(:send_message) %>
+          <%= text_field_tag :send_message %>
           <%= submit_tag "Send" %>
         <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -72,4 +76,8 @@
     </div>
   <% end %>
 </div>
+
+<script>
+  const chatter = <%= @other_chatter.to_json.to_s.html_safe %>
+</script>
 

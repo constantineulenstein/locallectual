@@ -1,5 +1,5 @@
 const displayExtraField = (e) => {
-  const page = document.querySelector('#to-be-darkened');
+  const page = document.querySelector('.to-be-darkened');
   const requestField = document.querySelector('.friend-request-field');
   requestField.style.display = "block";
 
@@ -9,13 +9,17 @@ const displayExtraField = (e) => {
   })
 
   document.querySelector(".cover-by-popup-banner").style.backgroundImage = `linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(${user.city_image})`;
+  if (document.querySelector(".cover-by-popup-image")){
+    document.querySelector(".cover-by-popup-image").style.backgroundImage =  `linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(${user.photo.url})`;
+  }
 
-  document.querySelector(".cover-by-popup-image").style.backgroundImage =  `linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(${user.photo.url})`;
-
+  if (document.querySelector(".cover-by-popup-image-book")){
+    document.querySelector(".cover-by-popup-image-book").style.backgroundImage =  `linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(${chatter.photo.url})`;
+  }
 }
 
 const fadeExtraField = (e) => {
-  const page = document.querySelector('#to-be-darkened');
+  const page = document.querySelector('.to-be-darkened');
   const requestField = document.querySelector('.friend-request-field');
   requestField.style.display = "none";
   page.classList.remove("overlay");
