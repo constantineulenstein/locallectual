@@ -9,6 +9,10 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def reply?
+    true
+  end
+
   def update?
     record == user
   end

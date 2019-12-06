@@ -1,29 +1,40 @@
-<!-- below is the previous code -->
-<!-- <<<<<<< Updated upstream
-<div class="container mt-4">
-  <div class="row">
-    <%# if current_user.nil? %>
-      <%# @locallects.each do |user| %>
-        <div class="col-sm-4">
-          <%#= render 'shared/locallectslist', :user => user %>
-======= -->
 <div class="p-5">
   <h2>People in <%= @base_location.capitalize %></h2>
-  <div class="d-flex">
+  <div class="d-flex m-5">
     <!-- user cards  -->
     <div class="col-sm-9">
-      <div class="row mt-4">
+      <div class="row">
         <div class="filtertitle">
         </div>
-      <% end %>
-    <% else %>
-      <% @locallects.each do |user| %>
-        <div class="col-sm-4">
-          <% unless current_user.id == user.id %>
-            <%= render 'shared/locallectslist', :user => user %>
+        <% if current_user.nil? %>
+          <% @locallects.each do |user| %>
+            <div class="col-sm-4">
+              <%= render 'shared/locallectslist', :user => user %>
+            </div>
           <% end %>
+        <% else %>
+          <% @locallects.each do |user| %>
+            <div class="col-sm-4">
+              <% unless current_user.id == user.id %>
+                <%= render 'shared/locallectslist', :user => user %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <!-- filter menu -->
+    <div class="filter col-sm-3">
+      <%= simple_form_for :search, url: locallects_path, method: "GET" do |f| %>
+        <div class="form-inputs bg-light p-3">
+          <div class="inline-block d-flex">
+            <%= f.input :start_age %><%= f.input :end_age %>
+          </div>
+          <%= f.input :gender, collection: ["Male", "Female", "Diverse"] %>
+          <%= f.input :base_location, input_html: {value: @base_location} %>
+          <%= f.input :language_list, collection: @languages, input_html: {class: "select2",  multiple: "multiple"} %>
+          <%= f.button :submit, "Search", class: "btn btn-outline-dark" %>
         </div>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>

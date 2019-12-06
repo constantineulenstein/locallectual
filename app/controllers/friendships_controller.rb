@@ -21,7 +21,7 @@ class FriendshipsController < ApplicationController
     @friendship.declined = false
     @friendship.locallect_id = @locallect.id
     @friendship.explorer_id = current_user.id
-    @friendship.save
+    @friendship.save!
     redirect_to locallect_path(@locallect)
     authorize @friendship
   end
@@ -34,6 +34,7 @@ class FriendshipsController < ApplicationController
     @friendship.approved = true
     @friendship.save
     authorize @friendship
+    current_user.send_message(User.find(@friendship.explorer_id), "Hey, you've got a new connection! Start talking to #{current_user.first_name}!", "Conversation between #{@friendship.users.first.first_name} and #{@friendship.users.last.first_name}")
     redirect_to locallect_friendships_path(current_user)
   end
 

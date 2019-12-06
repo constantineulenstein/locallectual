@@ -27,7 +27,14 @@
                   <p>Connected since <strong><%= friendship.created_at.strftime("%A, %d %b %Y %l:%M %p") %></strong></p>
                 </div>
                 <div>
-                  <%= link_to "Message #{user.first_name}", "#", class: "btn btn-outline-dark" %>
+                  <!-- message button link logic -->
+                  <% current_user.mailbox.conversations.each do |conversation| %>
+                    <% conversation.participants.each do |participant| %>
+                      <% if participant == user && participant != current_user %>
+                        <%= link_to "Message #{user.first_name}", conversation_path(conversation), class: "btn btn-outline-dark" %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
                 </div>
               </div>
             </div>
