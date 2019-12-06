@@ -28,7 +28,8 @@ gem 'carrierwave', '~> 1.2'
 gem 'json'
 gem 'mailboxer'
 
-gem 'acts-as-taggable-on', '~> 6.0'
+
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
