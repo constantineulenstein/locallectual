@@ -1,16 +1,21 @@
 
-<div class="conversations-container">
+<div class="container">
   <h1>Conversations</h1>
-  <% if current_user.mailbox.conversations == [] %>
+  <% if @conversations == [] %>
     <h3>You have no conversations yet</h3>
   <% end %>
 
-  <% current_user.mailbox.conversations.each do |conversation| %>
-    <div class="card-conversation">
-      <img src="">
-      <div class="card-product-infos">
+  <% @conversations.each do |conversation| %>
+    <div class="card-friend m-3">
+      <% conversation.participants.each do |participant| %>
+        <% if current_user.id != participant.id %>
+          <% @other_chatter = participant %>
+        <% end %>
+      <% end %>
+      <%= cl_image_tag @other_chatter.photo, class: "card-friend-image ml-1" %>
+      <div class="card-friend-infos ml-5">
         <%= link_to conversation.subject, conversation_path(conversation.id) %>
       </div>
     </div>
-<% end %>
+  <% end %>
 </div>
