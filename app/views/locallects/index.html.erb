@@ -1,7 +1,6 @@
-<!-- below is the previous code -->
 <div class="p-5">
-  <h2>People in <%= @base_location %></h2>
-  <div class="d-flex">
+  <h2>People in <%= @base_location.capitalize %></h2>
+  <div class="d-flex m-5">
     <!-- user cards  -->
     <div class="col-sm-9">
       <div class="row">
@@ -28,8 +27,9 @@
     <div class="filter col-sm-3">
       <%= simple_form_for :search, url: locallects_path, method: "GET" do |f| %>
         <div class="form-inputs bg-light p-3">
-          <%= f.input :start_age %>
-          <%= f.input :end_age %>
+          <div class="inline-block d-flex">
+            <%= f.input :start_age %><%= f.input :end_age %>
+          </div>
           <%= f.input :gender, collection: ["Male", "Female", "Diverse"] %>
           <%= f.input :base_location, input_html: {value: @base_location} %>
           <%= f.input :language_list, collection: @languages, input_html: {class: "select2",  multiple: "multiple"} %>
