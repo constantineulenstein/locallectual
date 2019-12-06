@@ -52,7 +52,10 @@
   <h3 class="my-3">Become friends with <%= @locallect.first_name %></h3>
   <%= simple_form_for(@friendship, url: locallect_friendships_path(@locallect), method: :post) do |f| %>
   <%= f.input :request_message, label: "Tell something about you", class: "friendrequest-text" %>
-  <%= f.button :submit, "Send friend request", class: "btn btn-outline-light submit-button-friendrequest" %>
+  <%= f.button :submit, "Send friend request", class: "btn btn-outline-light" %>
+  <% end %>
+  <%= link_to locallect_path(@locallect) do %>
+    <i class="fas fa-times cancel-cross"></i>
   <% end %>
 </div>
 
