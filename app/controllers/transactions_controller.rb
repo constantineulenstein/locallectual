@@ -4,9 +4,6 @@ class TransactionsController < ApplicationController
     @transactions = current_user.transactions
   end
 
-  def show
-  end
-
 
   def create
     find_convo
@@ -17,6 +14,8 @@ class TransactionsController < ApplicationController
         @transaction.locallect_id = participant.id
       end
     end
+    @transaction.approved = false
+    @transaction.declined = false
     @transaction.save
     authorize @transaction
     redirect_to conversation_path(@conversation)
@@ -29,6 +28,22 @@ class TransactionsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def approve
+    @transaction = Transaction.find(params[:transaction_id])
+    @transaction.approved = true
+    @transaction.save
+    authorize @transaction
+    redirect_to conversation_path(params[:conversation_id])
+  end
+
+  def reject
+    @transaction = Transaction.find(params[:transaction_id])
+    @transaction.declined = true
+    @transaction.save
+    authorize @transaction
+    redirect_to conversation_path(params[:conversation_id])
   end
 
   private

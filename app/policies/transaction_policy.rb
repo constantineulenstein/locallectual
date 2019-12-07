@@ -28,4 +28,12 @@ class TransactionPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def approve?
+    true
+  end
+
+  def reject?
+    true
+  end
 end
