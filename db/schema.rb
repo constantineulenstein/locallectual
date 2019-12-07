@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_05_072241) do
+ActiveRecord::Schema.define(version: 2019_12_07_044542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,6 +141,8 @@ ActiveRecord::Schema.define(version: 2019_12_05_072241) do
     t.bigint "explorer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "approved"
+    t.boolean "declined"
     t.index ["explorer_id"], name: "index_transactions_on_explorer_id"
     t.index ["locallect_id"], name: "index_transactions_on_locallect_id"
   end
