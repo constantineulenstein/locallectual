@@ -234,7 +234,7 @@ hobbies = ['Reading',
            'Teaching',
            'Volunteer Work']
 
- 
+
 
 
 5.times do |i|
@@ -259,7 +259,7 @@ hobbies = ['Reading',
 
   2.times do
     forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Shanghai", language_list: "English")
-    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id, user_id: user.id)
   end
 end
 
@@ -284,7 +284,7 @@ end
 
   2.times do
     forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Munich", language_list: "English")
-    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id, user_id: user.id)
   end
 end
 
@@ -309,7 +309,7 @@ end
 
   2.times do
     forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Los Angeles", language_list: "English")
-    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id, user_id: user.id)
   end
 end
 

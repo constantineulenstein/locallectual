@@ -1,0 +1,36 @@
+<div class="container w-50 mt-5 p-5 bg-light">
+  <div class="post pb-3 ">
+    <h2 class="d-flex">
+      <%= @forum.title %>
+      <% if policy(@forum).destroy? %>
+        <%= link_to forum_path(@forum.id), method: :delete, data: {confirm: "Arey you sure?"} do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      <% end %>
+    </h2>
+    <br>
+    <p><%= @forum.description %></p>
+  </div>
+  <div class="comments py-3">
+    <h3>Comments</h3>
+    <% @forum.comments.each do |comment| %>
+    <div class="d-flex">
+      <p class="mb-0 mr-3"><%= comment.description %></p>
+      <% if policy(comment).destroy? %>
+        <%= link_to forum_comment_path(comment.id), method: :delete, data: {confirm: "Arey you sure?"} do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      <% end %>
+    </div>
+      <p class="mt-0">Commented on <%= comment.created_at.strftime("%A, %d %b %Y %l:%M %p") %> by <%= User.find(comment.user_id).first_name %> <%= User.find(comment.user_id).last_name %></p>
+    <% end %>
+  </div>
+  <%= simple_form_for(@comment, url: forum_comments_path(@forum), method: :post) do |f| %>
+    <div class="form-inline">
+      <%= f.text_field :description, class: "w-75 mr-3" %>
+      <%= f.button :submit, "Post", class: 'btn btn-outline-dark py-1' %>
+    </div>
+  <% end %>
+  <br>
+  <%= link_to "Go back", forums_path  %>
+</div>
