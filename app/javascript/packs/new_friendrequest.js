@@ -1,9 +1,17 @@
+import places from 'places.js';
 // works for both friend request as well as meeting arrangement simultaneously
 
 const displayExtraField = (e) => {
   const page = document.querySelector('.to-be-darkened');
   const requestField = document.querySelector('.friend-request-field');
   requestField.style.display = "block";
+
+  // check if transaction page, if yes than do autofill
+  const addressInput3 = document.getElementById('transaction_location');
+  if (addressInput3) {
+    places({ container: addressInput3 });
+  };
+
 
   page.classList.add("overlay");
   const coverByPopupBox = document.querySelectorAll(".cover-by-popup-box").forEach ((e) => {
