@@ -3,17 +3,14 @@ class ForumsController < ApplicationController
   def index
     @forums = policy_scope(Forum).all
     search = params[:search]
-
-    if search[:query].present?
-      @forums = @forums.search_by_all(search[:query])
-    elsif search.present?
-      if search[:location].present?
+    if search.present?
+      if search[:query].present?
+        @forums = @forums.search_by_all(search[:query])
+      elsif search[:location].present?
         @forums = @forums.search_by_location(search[:location])
-      end
-      if search[:language_list] != [""]
+      elsif search[:language_list] != [""]
         @forums = @forums.tagged_with(search[:language_list], any: true)
       end
-      @forums = @forums.order(created_at: :desc)
     else
       @forums = policy_scope(Forum).all
     end
@@ -204,6 +201,8 @@ class ForumsController < ApplicationController
 
   def show
     @forum = Forum.find(params[:id])
+    @comment = Comment.new
+    authorize @forum
   end
 
   def new
@@ -211,31 +210,22 @@ class ForumsController < ApplicationController
   end
 
   def create
-    @forum = Forum.new(forum_params)
+    @forum = Forum.create(forum_params)
     @forum.save
     redirect_to forum_path(@forum)
   end
 
-  def edit
-    @forum = Forum.find(params[:id])
-  end
-
-  def update
-    @forum = Forum.find(params[:id])
-    @forum.update(forum_params)
-    @forum.save
-    redirect_to forum_path(@forum)
-  end
 
   def destroy
     @forum = Forum.find(params[:id])
     @forum.destroy
     redirect_to forums_path
+    authorize @forum
   end
 
   private
 
   def forum_params
-    params.require(:forum).permit(:title, :content)
+    params.require(:forum).permit(:title, :description)
   end
 end
