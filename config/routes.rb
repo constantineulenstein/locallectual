@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :locallects, only: [:index, :show, :new, :create, :edit]  do
     resources :friendships, only: [:index, :show, :new, :create, :destroy]
   end
+  resources :forums
 end

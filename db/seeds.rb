@@ -186,7 +186,7 @@ languages = ['Abkhaz',
              'Yoruba',
              'Zhuang, Chuang']
 
-10.times do |i|
+5.times do |i|
   user = User.create!(email: Faker::Internet.email,
                       password: "123456",
                       first_name: Faker::Name.first_name,
@@ -204,9 +204,14 @@ languages = ['Abkhaz',
 
   user.remote_photo_url = url
   user.save!
+
+  2.times do
+    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id)
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
+  end
 end
 
-10.times do |i|
+5.times do |i|
   user = User.create!(email: Faker::Internet.email,
                       password: "123456",
                       first_name: Faker::Name.first_name,
@@ -224,9 +229,14 @@ end
 
   user.remote_photo_url = url
   user.save!
+
+  2.times do
+    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id)
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
+  end
 end
 
-10.times do |i|
+5.times do |i|
   user = User.create!(email: Faker::Internet.email,
                       password: "123456",
                       first_name: Faker::Name.first_name,
@@ -244,6 +254,11 @@ end
 
   user.remote_photo_url = url
   user.save!
+
+  2.times do
+    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id)
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
+  end
 end
 
 
