@@ -18,6 +18,7 @@
             <%= f.input :photo, label: "Please upload a photo of you", input_html: {value: @user.photo} %>
             <%= f.input :photo_cache, as: :hidden %>
             <%= f.input :language_list, collection: @languages, input_html: {class: "select2",  multiple: "multiple", value: current_user.language_list} %>
+            <%= f.input :hobby_list, collection: @hobbies, input_html: {class: "select2",  multiple: "multiple", value: current_user.hobby_list} %>
           </div>
         </div>
         <div class="col-sm-3">
