@@ -188,7 +188,11 @@ languages = ['Abkhaz',
              'Yoruba',
              'Zhuang, Chuang']
 
+<<<<<<< Updated upstream
+     hobbies = ['Reading',
+=======
     @hobbies = ['Reading',
+>>>>>>> Stashed changes
                 'Watching TV',
                 'Family Time',
                 'Going to Movies',
@@ -234,7 +238,11 @@ languages = ['Abkhaz',
                 'Teaching',
                 'Volunteer Work']
 
+<<<<<<< Updated upstream
 5.times do |i|
+=======
+10.times do |i|
+>>>>>>> Stashed changes
   user = User.create!(email: Faker::Internet.email,
                       password: "123456",
                       first_name: Faker::Name.first_name,
