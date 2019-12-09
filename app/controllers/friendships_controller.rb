@@ -23,6 +23,11 @@ class FriendshipsController < ApplicationController
     @friendship.explorer_id = current_user.id
     @friendship.save!
     flash[:alert] = "Friendship request has been sent!"
+    
+    # send email
+    mail = UserMailer.with(user: @locallect, sender: current_user).friendrequest
+    mail.deliver_now
+
     redirect_to locallect_path(@locallect)
     authorize @friendship
   end

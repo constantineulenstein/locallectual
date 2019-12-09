@@ -17,7 +17,13 @@ class TransactionsController < ApplicationController
     @transaction.approved = false
     @transaction.declined = false
     @transaction.save
+
     flash[:alert] = "Meet up request has been sent!"
+
+    # send email
+    mail = UserMailer.with(user: User.find(Locallect.find(@transaction.locallect_id).user_id), sender: current_user, transaction: @transaction, conv: @conversation).transaction
+    mail.deliver_now
+
     authorize @transaction
     redirect_to conversation_path(@conversation)
   end
