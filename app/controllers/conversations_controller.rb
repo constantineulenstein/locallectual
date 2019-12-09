@@ -9,7 +9,7 @@ class ConversationsController < ApplicationController
   def show
     authorize current_user
     @transaction = Transaction.new
-
+    # need to find existing transaction between 2 user to update the record
     @transactions = current_user.transactions
     @transactions = Transaction.geocoded
     @markers = @transactions.map do |t|
