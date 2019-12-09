@@ -234,7 +234,11 @@ hobbies = ['Reading',
            'Teaching',
            'Volunteer Work']
 
+ 
+
+
 5.times do |i|
+
   user = User.create!(email: Faker::Internet.email,
                       password: "123456",
                       first_name: Faker::Name.first_name,
