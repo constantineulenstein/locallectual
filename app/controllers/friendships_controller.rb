@@ -22,6 +22,7 @@ class FriendshipsController < ApplicationController
     @friendship.locallect_id = @locallect.id
     @friendship.explorer_id = current_user.id
     @friendship.save!
+    flash[:alert] = "Friendship request has been sent!"
     redirect_to locallect_path(@locallect)
     authorize @friendship
   end
@@ -33,6 +34,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:friendship_id])
     @friendship.approved = true
     @friendship.save
+    flash[:alert] = "Friendship request has been approved!"
     authorize @friendship
     current_user.send_message(User.find(@friendship.explorer_id), "Hey, you've got a new connection! Start talking to #{current_user.first_name}!", "Conversation between #{@friendship.users.first.first_name} and #{@friendship.users.last.first_name}")
     redirect_to locallect_friendships_path(current_user)
@@ -42,6 +44,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:friendship_id])
     @friendship.declined = true
     @friendship.save
+    flash[:alert] = "Friendship request has been rejected!"
     authorize @friendship
     redirect_to locallect_friendships_path(current_user)
   end

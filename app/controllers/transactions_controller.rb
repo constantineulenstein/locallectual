@@ -17,6 +17,7 @@ class TransactionsController < ApplicationController
     @transaction.approved = false
     @transaction.declined = false
     @transaction.save
+    flash[:alert] = "Meet up request has been sent!"
     authorize @transaction
     redirect_to conversation_path(@conversation)
   end
@@ -34,6 +35,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:transaction_id])
     @transaction.approved = true
     @transaction.save
+    flash[:alert] = "Meet up request has been approved!"
     authorize @transaction
     redirect_to conversation_path(params[:conversation_id])
   end
@@ -42,6 +44,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:transaction_id])
     @transaction.declined = true
     @transaction.save
+    flash[:alert] = "Meet up request has been rejected!"
     authorize @transaction
     redirect_to conversation_path(params[:conversation_id])
   end
