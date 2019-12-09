@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  include Filterable
-
   has_one :locallect, dependent: :destroy
   has_one :explorer, dependent: :destroy
   has_many :messages, dependent: :destroy
@@ -10,19 +8,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
   after_create :data_assignment
-  # Utilizing pg_search for searching baselocation of locallects
-
   after_create :get_city_img_url
-
   after_update :get_city_img_url, if: :saved_change_to_base_location?
-
   after_update :calculate_age
 
+  # Utilizing pg_search for searching baselocation of locallects
   include PgSearch::Model
   pg_search_scope :search_by_base_location,
     against: [ :base_location ],
   using: {
-    tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    tsearch: { prefix: true }
   }
   mount_uploader :photo, PhotoUploader
 
@@ -43,10 +38,6 @@ class User < ApplicationRecord
 
   # through replacement such that User.friendships is possible
   def friendships
-    # Friendship.joins({ locallect: :user }, { explorer: :user }).where(users: { id: self.id })
-
-    # fl = Friendship.joins({ locallect: :user }).where(users: { id: self.id })
-    # fe = Friendship.joins({ explorer: :user }).where(users: { id: self.id })
     Friendship.joins("JOIN explorers e ON e.id = friendships.explorer_id JOIN locallects l ON l.id = friendships.locallect_id JOIN users ue on ue.id = e.user_id JOIN users ul ON ul.id = l.user_id").where("ue.id = ? OR ul.id = ?", self.id, self.id)
   end
   # through replacement such that User.transactions is possible

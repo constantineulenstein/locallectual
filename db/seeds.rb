@@ -2,6 +2,8 @@
 User.destroy_all
 Locallect.destroy_all
 Explorer.destroy_all
+Forum.destroy_all
+Comment.destroy_all
 
 languages = ['Abkhaz',
              'Afar',
@@ -206,7 +208,7 @@ languages = ['Abkhaz',
   user.save!
 
   2.times do
-    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id)
+    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Shanghai", language_list: "English")
     Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
   end
 end
@@ -231,7 +233,7 @@ end
   user.save!
 
   2.times do
-    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id)
+    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Munich", language_list: "English")
     Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
   end
 end
@@ -256,7 +258,7 @@ end
   user.save!
 
   2.times do
-    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id)
+    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Los Angeles", language_list: "English")
     Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
   end
 end
