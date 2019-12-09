@@ -198,7 +198,53 @@ class Users::RegistrationsController < Devise::RegistrationsController
              'Yiddish',
              'Yoruba',
              'Zhuang, Chuang']
-          super
+
+    @hobbies = ['Reading',
+                'Watching TV',
+                'Family Time',
+                'Going to Movies',
+                'Fishing',
+                'Computers',
+                'Gardening',
+                'Walking',
+                'Exercise',
+                'Music',
+                'Night Entertainment',
+                'Hunting',
+                'Team Sports',
+                'Shopping',
+                'Traveling',
+                'Sleeping',
+                'Socializing',
+                'Sweing',
+                'Golf',
+                'Relaxing',
+                'Housework',
+                'Crafts',
+                'Watching Sports',
+                'Bicycling',
+                'Playing Cards',
+                'Hiking',
+                'Cooking',
+                'Swimming',
+                'Camping',
+                'Skiing',
+                'Working on Cars',
+                'Writing',
+                'Boating',
+                'Animal Care',
+                'Bowling',
+                'Painting',
+                'Running',
+                'Dancing',
+                'Horseback Riding',
+                'Tennis',
+                'Theater',
+                'Billards',
+                'Beach',
+                'Teaching',
+                'Volunteer Work']
+              super
   end
 
   # PUT /resource
@@ -231,7 +277,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def custom_params
-    params[:user].permit(:first_name, :last_name, :age, :job, :base_location, :birth_location, :bio, :arrival_date, :gender, :photo, :birthday, language_list: [])
+    params[:user].permit(:first_name, :last_name, :age, :job, :base_location, :birth_location, :bio, :arrival_date, :gender, :photo, :birthday, language_list: [], hobby_list: [])
   end
 
 
