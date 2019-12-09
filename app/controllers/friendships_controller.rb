@@ -22,6 +22,10 @@ class FriendshipsController < ApplicationController
     @friendship.locallect_id = @locallect.id
     @friendship.explorer_id = current_user.id
     @friendship.save!
+    # send email
+    mail = UserMailer.with(user: @locallect, sender: current_user).friendrequest
+    mail.deliver_now
+
     redirect_to locallect_path(@locallect)
     authorize @friendship
   end
