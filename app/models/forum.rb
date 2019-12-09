@@ -9,7 +9,7 @@ class Forum < ApplicationRecord
   }
 
   pg_search_scope :search_by_all,
-    against: [ :mother_tongue],
+    against: [ :description, :title, :location],
     associated_against: {
       comments: [ :description ]
     },

@@ -161,6 +161,8 @@ ActiveRecord::Schema.define(version: 2019_12_09_073649) do
     t.datetime "updated_at", null: false
     t.boolean "approved"
     t.boolean "declined"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["explorer_id"], name: "index_transactions_on_explorer_id"
     t.index ["locallect_id"], name: "index_transactions_on_locallect_id"
   end

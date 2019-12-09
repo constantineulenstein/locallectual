@@ -4,7 +4,9 @@ class ForumsController < ApplicationController
     @forums = policy_scope(Forum).all
     search = params[:search]
 
-    if search.present?
+    if search[:query].present?
+      @forums = @forums.search_by_all(search[:query])
+    elsif search.present?
       if search[:location].present?
         @forums = @forums.search_by_location(search[:location])
       end
