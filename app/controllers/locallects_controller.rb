@@ -13,8 +13,12 @@ class LocallectsController < ApplicationController
       if search[:language_list] != [""]
         @locallects = @locallects.tagged_with(search[:language_list], any: true)
       end
+      if search[:hobby_list] != [""]
+        @locallects = @locallects.tagged_with(search[:hobby_list], any: true)
+      end
     else
       @locallects = policy_scope(User).search_by_base_location(search[:query]).order(created_at: :desc)
+
     end
 
     @languages = ['Abkhaz',
@@ -200,6 +204,53 @@ class LocallectsController < ApplicationController
                   'Yoruba',
                   'Zhuang, Chuang']
     @base_location = search[:query].present? ? search[:query] : search[:base_location]
+
+    @hobbies = ['Reading',
+                'Watching TV',
+                'Family Time',
+                'Going to Movies',
+                'Fishing',
+                'Computers',
+                'Gardening',
+                'Walking',
+                'Exercise',
+                'Music',
+                'Night Entertainment',
+                'Hunting',
+                'Team Sports',
+                'Shopping',
+                'Traveling',
+                'Sleeping',
+                'Socializing',
+                'Sweing',
+                'Golf',
+                'Relaxing',
+                'Housework',
+                'Crafts',
+                'Watching Sports',
+                'Bicycling',
+                'Playing Cards',
+                'Hiking',
+                'Cooking',
+                'Swimming',
+                'Camping',
+                'Skiing',
+                'Working on Cars',
+                'Writing',
+                'Boating',
+                'Animal Care',
+                'Bowling',
+                'Painting',
+                'Running',
+                'Dancing',
+                'Horseback Riding',
+                'Tennis',
+                'Theater',
+                'Billards',
+                'Beach',
+                'Teaching',
+                'Volunteer Work']
+    @hobby = search[:query].present? ? search[:query] : search[:hobby]
   end
 
   def show

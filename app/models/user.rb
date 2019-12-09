@@ -22,6 +22,7 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   acts_as_taggable_on :languages
+  acts_as_taggable_on :hobbies
 
 
   # Creating Locallect and Explorer model right after User was created for later linking friendships

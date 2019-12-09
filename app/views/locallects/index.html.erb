@@ -33,6 +33,7 @@
           <%= f.input :gender, collection: ["Male", "Female", "Diverse"] %>
           <%= f.input :base_location, input_html: {value: @base_location} %>
           <%= f.input :language_list, collection: @languages, input_html: {class: "select2",  multiple: "multiple"} %>
+          <%= f.input :hobby_list, collection: @hobbies, input_html: {class: "select2",  multiple: "multiple"} %>
           <%= f.button :submit, "Search", class: "btn btn-outline-dark" %>
         </div>
       <% end %>
