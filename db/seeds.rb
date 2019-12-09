@@ -2,6 +2,8 @@
 User.destroy_all
 Locallect.destroy_all
 Explorer.destroy_all
+Forum.destroy_all
+Comment.destroy_all
 
 languages = ['Abkhaz',
              'Afar',
@@ -232,7 +234,7 @@ languages = ['Abkhaz',
                 'Teaching',
                 'Volunteer Work']
 
-10.times do |i|
+5.times do |i|
   user = User.create!(email: Faker::Internet.email,
                       password: "123456",
                       first_name: Faker::Name.first_name,
@@ -250,9 +252,14 @@ languages = ['Abkhaz',
 
   user.remote_photo_url = url
   user.save!
+
+  2.times do
+    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Shanghai", language_list: "English")
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
+  end
 end
 
-10.times do |i|
+5.times do |i|
   user = User.create!(email: Faker::Internet.email,
                       password: "123456",
                       first_name: Faker::Name.first_name,
@@ -270,9 +277,14 @@ end
 
   user.remote_photo_url = url
   user.save!
+
+  2.times do
+    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Munich", language_list: "English")
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
+  end
 end
 
-10.times do |i|
+5.times do |i|
   user = User.create!(email: Faker::Internet.email,
                       password: "123456",
                       first_name: Faker::Name.first_name,
@@ -290,6 +302,11 @@ end
 
   user.remote_photo_url = url
   user.save!
+
+  2.times do
+    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Los Angeles", language_list: "English")
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
+  end
 end
 
 
