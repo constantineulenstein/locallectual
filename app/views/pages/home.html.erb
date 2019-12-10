@@ -1,26 +1,27 @@
 <!-- CODE FOR THE BANNER -->
-<div class="home-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
+<!-- <div class="home-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
   <div class="home-banner-container">
     <h1>Locallectual</h1>
     <p class="mt-2">Helping the displaced connect locally</p>
-    <%= simple_form_for :search, url: locallects_path, method: :get do |f| %>
+    <%#= simple_form_for :search, url: locallects_path, method: :get do |f| %>
       <div class="search-form-control form-group mt-5 banner-search">
         <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search for a city"/>
         <button name="button" type="Search" class="btn p-0" id="home-button">
           <i class="fas fa-search"></i>
         </button>
       </div>
-    <% end %>
+    <%# end %>
   </div>
-</div>
+</div> -->
 <!-- CONTAINER FOR THE CARDS -->
-<!-- <main role="main">
+<main role="main">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
+<<<<<<< Updated upstream
     <div class="carousel-inner"> -->
 <!-- <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
         <div class="container">
@@ -40,12 +41,31 @@
           <div class="carousel-caption">
             <h1>Search for Hosts in your City </h1>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+=======
+    <div class="carousel-inner">
+      <div class="carousel-item active"  style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
+        <div class="container "=>
+          <div class="carousel-caption ">
+            <h1>Welcome to Locallectual</h1>
+            <p>Connecting those who have been displaced from their homes with people who can help them integrate into their new ones. Connect with someone now.</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(http://paidforgrades.org/wp-content/uploads/2017/02/volunteer-fb.jpg);">
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1>Be a Host in your City</h1>
+            <p>Have knowledge to share that can help newcommers to your city?</p>
+            <br>
+            <p><a class="btn btn-outline-light" href="users/sign_up" role="button">Sign up today</a></p>
+>>>>>>> Stashed changes
           </div>
         </div>
       </div> -->
 <!-- <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
         <div class="container">
           <div class="carousel-caption text-right">
+<<<<<<< Updated upstream
             <h1>One more for good measure.</h1>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
             <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
@@ -103,18 +123,109 @@
     <div class="col-md-7 order-md-2">
       <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
       <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+=======
+            <h1>Browse the Localletual Forum</h1>
+            <p>Search and share information about your city.</p>
+            <br>
+            <p><a class="btn btn-outline-light" href="/forums" role="button">Browse Forum</a></p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-5 order-md-1">
-    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-  <hr class="featurette-divider">
-  <div class="row featurette">
-    <div class="col-md-7">
-      <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+  <!-- Marketing messaging and featurettes
+
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+  <div class="container marketing">
+    <!-- Three columns of text below the carousel -->
+    <!-- <div class="row">
+      <div class="col-lg-4">
+        <img src="https://images.unsplash.com/photo-1575859225486-f377a3f867bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="" style="height:100px;width:30%" class="m-2" >
+        <h2>About Locallectual</h2>
+        <p>Locallectual is a platform that connects those who have been displaced from their homes with people who can help them integrate into their new ones.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">About Us&raquo;</a></p>
+      </div>
+      <div class="col-lg-4">
+        <img src="https://images.unsplash.com/photo-1575859225486-f377a3f867bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="" style="height:100px;width:30%" class="m-2" >
+        <h2>Be a Host, find a Host</h2>
+        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">Search your City &raquo;</a></p>
+      </div>
+      <div class="col-lg-4">
+        <img src="https://images.unsplash.com/photo-1575859225486-f377a3f867bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="" style="height:100px;width:30%" class="m-2" >
+        <h2>Search our Forums</h2>
+        <p>Search and share information about your city. Browse to learn what topics have already been discussed, current events or post a new topic.</p>
+        <p><a class="btn btn-secondary" href="/forums" role="button">Go to Forums &raquo;</a></p>
+      </div>
+    </div> -->
+    <!-- /.row -->
+    <!-- START THE FEATURETTES -->
+    <hr class="featurette-divider">
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">Be a Host, <span class="text-muted">find a Host.</span></h2>
+        <br>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <%= simple_form_for :search, url: locallects_path, method: :get do |f| %>
+          <div class="search-form-control form-group mb-5 banner-search" style="margin: 0 auto;">
+            <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search for a host in your area..."/>
+            <br>
+            <button name="button" type="Search" class="btn p-0" id="home-button">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img src="https://images.unsplash.com/photo-1575859225486-f377a3f867bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="" style="height:400px;width:90%" class="m-2" >
+      </div>
+>>>>>>> Stashed changes
     </div>
-    <div class="col-md-5">
+    <hr class="featurette-divider">
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">About<span class="text-muted"> Locallectual</span></h2>
+        <br>
+        <p class="lead">Locallectual is a platform that connects those who have been displaced from their homes with people who can help them integrate into their new ones.</p>
+      </div>
+      <div class="col-md-5">
+        <img src="https://images.unsplash.com/photo-1575859225486-f377a3f867bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="" style="height:400px;width:90%" class="m-2" >
+      </div>
     </div>
+    <!--  <hr class="featurette-divider">
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">Be a Host, <span class="text-muted">find a Host.</span></h2>
+        <br>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img src="https://images.unsplash.com/photo-1575859225486-f377a3f867bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="" style="height:400px;width:90%" class="m-2" >
+      </div>
+    </div> -->
+    <hr class="featurette-divider">
+    <!-- /END THE FEATURETTES -->
+  </div>
+  <!-- /.container -->
+  <!-- footer -->
+  <div class="footer">
+    <div class="footer-links">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+    <div class="footer-copyright">
+      <i class="fas fa-heart"></i>
+    </div>
+<<<<<<< Updated upstream
   </div>
   <hr class="featurette-divider">
   <!-- /END THE FEATURETTES -->
@@ -131,3 +242,6 @@
     <i class="fas fa-heart"></i>
   </div>
 </div>
+=======
+  </div>
+>>>>>>> Stashed changes
