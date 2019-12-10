@@ -1,5 +1,6 @@
 //= require jquery
 import "bootstrap";
+import scroll from "./box-scroll.js";
 
 import flatpickr from "flatpickr"
 import "flatpickr/dist/flatpickr.min.css"

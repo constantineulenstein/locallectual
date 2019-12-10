@@ -35,12 +35,13 @@
       <% end %>
       <%= link_to "Change meeting", "#", class: "friendship-request-button"%>
     <% else %>
-      <%= link_to "book person", "#", class: "friendship-request-button" %>
+      <%= link_to "book #{@other_chatter.first_name}", "#", class: "friendship-request-button" %>
     <% end %>
   </div>
   <div class="message-list col-sm-8">
-    <%= @conversation.subject %>
-    <% receipts = @conversation.receipts_for current_user%>
+    <% unordered = @conversation.receipts_for current_user%>
+    <% receipts = unordered.order(created_at: :desc) %>
+
     <div class="conversations-container">
       <% receipts.reverse.each do |receipt| %>
         <% if receipt.message.sender_id == current_user.id %>
