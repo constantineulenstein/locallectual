@@ -6,7 +6,7 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    (user.photo.present? && user.birthday.present?)
   end
 
   def destroy?

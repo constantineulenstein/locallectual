@@ -6,33 +6,29 @@ class FriendshipsController < ApplicationController
     @friendships_approved = policy_scope(current_user.friendships).where("friendships.approved = ?", true)
   end
 
-  def show
-    # will be used in some way for finding explorer who has sent the request?
-    # friendship = Friendship.find(params[:id])
-    # explorer = Explorer.find(friendship.explorer_id)
-    # user = User.find(explorer.user_id)
-    # redirect_to locallect_path(user.id)
-  end
-
   def create
-    @locallect = User.find(params[:locallect_id])
-    @friendship = Friendship.create(request_message: params[:friendship][:request_message])
-    @friendship.approved = false
-    @friendship.declined = false
-    @friendship.locallect_id = @locallect.id
-    @friendship.explorer_id = current_user.id
-    @friendship.save!
-    flash[:alert] = "Friendship request has been sent!"
+    @friendship = Friendship.new
+    if policy(@friendship).create?
+      @locallect = User.find(params[:locallect_id])
+      @friendship = Friendship.create(request_message: params[:friendship][:request_message])
+      @friendship.approved = false
+      @friendship.declined = false
+      @friendship.locallect_id = @locallect.id
+      @friendship.explorer_id = current_user.id
+      @friendship.save!
+      flash[:alert] = "Friendship request has been sent!"
 
-    # send email
-    mail = UserMailer.with(user: @locallect.id, sender: current_user.id).friendrequest
-    mail.deliver_later
+      # send email
+      mail = UserMailer.with(user: @locallect.id, sender: current_user.id).friendrequest
+      mail.deliver_later
 
-    redirect_to locallect_path(@locallect)
-    authorize @friendship
-  end
-
-  def destroy
+      redirect_to locallect_path(@locallect)
+      authorize @friendship
+    else
+      skip_authorization
+      redirect_to edit_user_registration_path
+      flash[:alert] = "You need to add a picture and your birthday to do this!"
+    end
   end
 
   def approve
