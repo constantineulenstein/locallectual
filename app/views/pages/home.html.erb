@@ -1,90 +1,54 @@
-<main role="main">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(http://paidforgrades.org/wp-content/uploads/2017/02/volunteer-fb.jpg);">
-        <div class="container">
-          <div class="carousel-caption text-left">
-            <h1>Who is Locallectual for?</h1>
-            <p>In 2018, over 70.8 million individuals have been forcibly displaced from their homes either by persecution, conflict, violence, or human rights violations. This is a record high, and the numbers are only expected to be greater for future years to come. People who want to help can simply do so by showing them the need-to-knows of their local city. Anywhere from showing someone how to take the bus, to introducing community events or posting information on our forum, Locallectual makes it easy to get involved and make friends along the way.</p>
-            <br>
-            <p><a class="btn btn-outline-light" href="users/sign_up" role="button">Sign up today</a></p>
-          </div>
-        </div>
+<!-- banner1: search-->
+<div class="home-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
+  <div class="home-banner-container">
+    <h1>Locallectual</h1>
+    <p class="mt-2">Helping the displaced connect locally</p>
+    <br>
+    <%= simple_form_for :search, url: locallects_path, method: :get do |f| %>
+      <div class="search-form-control form-group mb-5 banner-search" style="margin: 0 auto;">
+        <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search for a host in your area..."/>
+        <br>
+        <button name="button" type="Search" class="btn p-0" id="home-button">
+          <i class="fas fa-search"></i>
+        </button>
       </div>
-      <div class="carousel-item active"  style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
-        <div class="container "=>
-          <div class="carousel-caption ">
-            <h1>Welcome to Locallectual</h1>
-            <p>Connecting those who have been displaced from their homes with people who can help them integrate into their new ones. Connect with someone now.</p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.lbcc.edu/sites/main/files/imagecache/carousel/main-images/hero-adult_education_copy.jpg?1563728376);">
-        <div class="container">
-          <div class="carousel-caption text-right">
-            <h1>Browse the Localletual Forum</h1>
-            <p>Search and share information about your city.</p>
-            <p><a class="btn btn-outline-light" href="#" role="button">Browse Forum</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+    <% end %>
   </div>
+</div>
+<main role="main">
   <div class="container marketing">
     <!-- START THE FEATURETTES -->
     <hr class="featurette-divider">
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Be a Host, <span class="text-muted">find a Host.</span></h2>
+        <h2 class="featurette-heading">Who is <span class="text-muted">Locallectual for?</span></h2>
         <br>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        <%= simple_form_for :search, url: locallects_path, method: :get do |f| %>
-          <div class="search-form-control form-group mb-5 banner-search" style="margin: 0 auto;">
-            <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search for a host in your area..."/>
-            <br>
-            <button name="button" type="Search" class="btn p-0" id="home-button">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        <% end %>
+        <p class="lead">In 2018, over 70.8 million individuals have been forcibly displaced from their homes either by persecution, conflict, violence, or human rights violations. This is a record high, and the numbers are only expected to be greater for future years to come. People who want to help can simply do so by showing them the need-to-knows of their local city. Anywhere from showing someone how to take the bus, to introducing community events or posting information on our forum, Locallectual makes it easy to get involved and make friends along the way.</p>
       </div>
       <div class="col-md-5 order-md-1">
-        <img src="https://images.unsplash.com/photo-1575859225486-f377a3f867bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="" style="height:400px;width:90%" class="m-2" >
+        <img src="https://images.unsplash.com/photo-1519756635380-96e41605d1fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=2589&q=80" alt="" style="height:300px;width:300px" class="m-2" >
       </div>
     </div>
     <hr class="featurette-divider">
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">About<span class="text-muted"> Locallectual</span></h2>
+        <h2 class="featurette-heading">Why was this <span class="text-muted"> platform created?</span></h2>
         <br>
-        <p class="lead">Locallectual is a platform that connects those who have been displaced from their homes with people who can help them integrate into their new ones.</p>
+        <p class="lead">Currently there are a lack of resources to satisfy the total number of forcibly displaced people, with the majority being women and children. Traditional organizations may also have limitations when identifying some specific needs, disabilities, or other barriers. It is also not uncommon for volunteers and donors to get frustrated when other charities or similar organizations are unable to accept their help or donated items due to internal policy. Strict rules and potential law suites could make it difficult for organizations to accept all help. Locallectual aims to bridge this gap by putting both sides directly in touch.</p>
       </div>
       <div class="col-md-5">
-        <img src="https://images.unsplash.com/photo-1575859225486-f377a3f867bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="" style="height:400px;width:90%" class="m-2" >
+        <img src="https://images.unsplash.com/photo-1533360416430-2b45be60248c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="" style="height:300px;width:300px" class="m-2" >
       </div>
     </div>
     <hr class="featurette-divider">
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Be a Host, <span class="text-muted">find a Host.</span></h2>
+        <h2 class="featurette-heading">What we are  <span class="text-muted">trying to solve?</span></h2>
         <br>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <p class="lead">Locallectual is a friendly platform that provides flexible ways to provide aid and assistance to forcibly displaced people. We put those looking for local insight directly in touch with those looking to help. Locallectual features also allows other methods to provide support via our forum, host an events function, current events page, or donations tool.</p>
       </div>
       <div class="col-md-5 order-md-1">
-        <img src="https://images.unsplash.com/photo-1575859225486-f377a3f867bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="" style="height:400px;width:90%" class="m-2" >
+        <img src="https://images.unsplash.com/photo-1575859225486-f377a3f867bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="" style="height:300px;width:300px" class="m-2" >
       </div>
     </div>
     <hr class="featurette-divider">
