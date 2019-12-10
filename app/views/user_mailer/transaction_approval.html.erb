@@ -1,0 +1,5 @@
+<p>Hi <%= @user.first_name %>,</p>
+
+<p><%= @sender.first_name %> approved the meeting on <%= @transaction.date.strftime("%A, %d %b %Y %l:%M %p") %> at <%= @transaction.location %>!</p>
+
+<%= link_to "Check it out!", conversation_url(@conversation) %>

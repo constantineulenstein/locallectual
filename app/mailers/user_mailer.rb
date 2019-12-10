@@ -23,4 +23,19 @@ class UserMailer < ApplicationMailer
     @conversation = params[:conv]
     mail(to: @user.email, subject: "Someone wants to meet you")
   end
+
+  def transaction_approval
+    @user = params[:user] # Instance variable => available in view
+    @sender = params[:sender]
+    @transaction = params[:transaction]
+    @conversation = params[:conv]
+    mail(to: @user.email, subject: "Meeting confirmed")
+  end
+
+  def friendrequest_approval
+    @user = params[:user] # Instance variable => available in view
+    @sender = params[:sender]
+    mail(to: @user.email, subject: "Friend request accepted")
+  end
+
 end
