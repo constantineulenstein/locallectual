@@ -33,7 +33,7 @@
           <h3><%= @other_chatter.first_name %> unfortunately can not meet on <%= transaction.date.strftime("%A, %d %b %Y %l:%M %p") %></h3>
         <% end %>
       <% end %>
-      <%= link_to "Change meeting", "#", class: "friendship-request-button"%>
+      <p class=""><%= link_to "Change meeting", "#", class: "friendship-request-button btn btn-outline-dark m-2"%></p>
     <% else %>
       <%= link_to "book #{@other_chatter.first_name}", "#", class: "friendship-request-button" %>
     <% end %>
