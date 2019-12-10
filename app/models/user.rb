@@ -33,9 +33,10 @@ class User < ApplicationRecord
   end
 
   def calculate_age
-    year = Date.today.year - self.birthday.year
-    self.age = year
-
+    unless self.birthday.nil?
+      year = Date.today.year - self.birthday.year
+      self.age = year
+    end
   end
 
   # through replacement such that User.friendships is possible
