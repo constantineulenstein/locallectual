@@ -25,7 +25,7 @@ class FriendshipsController < ApplicationController
     flash[:alert] = "Friendship request has been sent!"
 
     # send email
-    mail = UserMailer.with(user: @locallect, sender: current_user).friendrequest
+    mail = UserMailer.with(user: @locallect.id, sender: current_user.id).friendrequest
     mail.deliver_later
 
     redirect_to locallect_path(@locallect)
@@ -43,7 +43,7 @@ class FriendshipsController < ApplicationController
 
     # send email
     user = User.find(Locallect.find(@friendship.locallect_id).user_id).id == current_user.id ? User.find(Explorer.find(@friendship.explorer_id).user_id) : User.find(Locallect.find(@friendship.locallect_id).user_id)
-    mail = UserMailer.with(user: user, sender: current_user).friendrequest_approval
+    mail = UserMailer.with(user: user.id, sender: current_user.id).friendrequest_approval
     mail.deliver_later
 
 
