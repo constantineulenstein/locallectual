@@ -325,6 +325,7 @@ jeff = User.create(email: "jeff@gmail.com",
                    base_location: "Shanghai",
                    birthday: Faker::Date.birthday,
                    birth_location: "Paris",
+                   admin: true,
                    remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012068/nxzy7fjsjght1mowd3t0.jpg"
                    )
 
@@ -338,6 +339,7 @@ elliot = User.create(email: "elliot@gmail.com",
                      base_location: "Shanghai",
                      birthday: Faker::Date.birthday,
                      birth_location: "Shanghai",
+                     admin: true,
                      remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012083/btt73tsfl2zdap0mqerq.jpg"
                      )
 
@@ -351,6 +353,7 @@ const = User.create(email: "constantin@gmail.com",
                     base_location: "Munich",
                     birthday: Faker::Date.birthday,
                     birth_location: "Munich",
+                    admin: true,
                     remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575011826/btpnaxpn2tebv1hhznt0.jpg"
                     )
 
@@ -364,6 +367,7 @@ dan = User.create(email: "dan@gmail.com",
                   base_location: "Los Angeles",
                   birthday: Faker::Date.birthday,
                   birth_location: "Los Angeles",
+                  admin: true,
                   remote_photo_url: "https://avatars2.githubusercontent.com/u/56106195?v=4"
                   )
 

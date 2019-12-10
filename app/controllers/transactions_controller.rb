@@ -30,8 +30,8 @@ class TransactionsController < ApplicationController
 
     # send email
     user = User.find(Locallect.find(@transaction.locallect_id).user_id).id == current_user.id ? User.find(Explorer.find(@transaction.explorer_id).user_id) : User.find(Locallect.find(@transaction.locallect_id).user_id)
-    mail = UserMailer.with(user: user, sender: current_user, transaction: @transaction, conv: @conversation).transaction
-    mail.deliver_now
+    mail = UserMailer.with(user: user.id, sender: current_user.id, transaction: @transaction.id, conv: @conversation.id).transaction
+    mail.deliver_later
 
     authorize @transaction
     redirect_to conversation_path(@conversation)
@@ -55,8 +55,8 @@ class TransactionsController < ApplicationController
 
     # send email
     user = User.find(Locallect.find(@transaction.locallect_id).user_id).id == current_user.id ? User.find(Explorer.find(@transaction.explorer_id).user_id) : User.find(Locallect.find(@transaction.locallect_id).user_id)
-    mail = UserMailer.with(user: user, sender: current_user, transaction: @transaction, conv: @conversation).transaction_approval
-    mail.deliver_now
+    mail = UserMailer.with(user: user.id, sender: current_user.id, transaction: @transaction.id, conv: @conversation.id).transaction_approval
+    mail.deliver_later
 
     authorize @transaction
     redirect_to conversation_path(params[:conversation_id])

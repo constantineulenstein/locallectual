@@ -6,8 +6,8 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.friendrequest.subject
   #
   def friendrequest
-    @user = params[:user] # Instance variable => available in view
-    @sender = params[:sender]
+    @user = User.find(params[:user]) # Instance variable => available in view
+    @sender = User.find(params[:sender])
     mail(to: @user.email, subject: "You've got a new friend request")
   end
 
@@ -17,24 +17,32 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.transaction.subject
   #
   def transaction
-    @user = params[:user] # Instance variable => available in view
-    @sender = params[:sender]
-    @transaction = params[:transaction]
-    @conversation = params[:conv]
+    @user = User.find(params[:user]) # Instance variable => available in view
+    @sender = User.find(params[:sender])
+    @transaction = Transaction.find(params[:transaction])
+    current_user.mailbox.conversations.each do |conversation|
+      if conversation.id == params[:conv].to_i
+        @conversation = conversation
+      end
+    end
     mail(to: @user.email, subject: "Someone wants to meet you")
   end
 
   def transaction_approval
-    @user = params[:user] # Instance variable => available in view
-    @sender = params[:sender]
-    @transaction = params[:transaction]
-    @conversation = params[:conv]
+    @user = User.find(params[:user])# Instance variable => available in view
+    @sender = User.find(params[:sender])
+    @transaction = Transaction.find(params[:transaction])
+    current_user.mailbox.conversations.each do |conversation|
+      if conversation.id == params[:conv].to_i
+        @conversation = conversation
+      end
+    end
     mail(to: @user.email, subject: "Meeting confirmed")
   end
 
   def friendrequest_approval
-    @user = params[:user] # Instance variable => available in view
-    @sender = params[:sender]
+    @user = User.find(params[:user]) # Instance variable => available in view
+    @sender = User.find(params[:sender])
     mail(to: @user.email, subject: "Friend request accepted")
   end
 
