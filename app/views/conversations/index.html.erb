@@ -23,8 +23,16 @@
           <% end %>
         </div>
         <div>
-          <% if @message_count > 0 %>
-            <span class="badge badge-danger h-25"><%= @message_count %></span>
+          <!-- counts number of unopened messages inside message_count variable -->
+          <% message_count = 0 %>
+          <% unread_messages = [] %>
+          <% conversation.receipts.each do |message| %>
+            <% unread_messages << message if message.is_read == false && message.mailbox_type == "inbox" %>
+          <% end %>
+          <% unread_messages.each { message_count += 1 } %>
+
+          <% if message_count > 0 %>
+            <span class="badge badge-danger h-25"><%= message_count %></span>
           <% end %>
         </div>
       </div>

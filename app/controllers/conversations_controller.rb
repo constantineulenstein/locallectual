@@ -1,6 +1,5 @@
 class ConversationsController < ApplicationController
   before_action :find_convo, only: [:show, :reply]
-  before_action :count_new_messages
 
   def index
     @conversations = current_user.mailbox.conversations
@@ -36,23 +35,20 @@ class ConversationsController < ApplicationController
 
   def reply
     current_user.reply_to_conversation(@conversation, params[:send_message])
-    @conversation.receipts[-2].mark_as_unread
-    @conversation.receipts[-1].mark_as_unread
+    if @conversation.receipts[-2].mailbox_type == "inbox"
+      @conversation.receipts[-2].mark_as_unread
+      @conversation.receipts[-1].mark_as_read
+    end
+
+    if @conversation.receipts[-1].mailbox_type == "inbox"
+      @conversation.receipts[-2].mark_as_read
+      @conversation.receipts[-1].mark_as_unread
+    end
     authorize current_user
     redirect_to conversation_path(@conversation)
   end
 
   private
-
-  def count_new_messages
-    # counts number of unopened messages inside message_count variable
-    @message_count = 0
-    unread_messages = []
-    current_user.mailbox.receipts.each do |message|
-      unread_messages << message if message.is_read == false && message.mailbox_type == "inbox"
-    end
-    unread_messages.each { @message_count += 1 }
-  end
 
   def find_convo
     current_user.mailbox.conversations.each do |conversation|
