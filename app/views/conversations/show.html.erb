@@ -43,22 +43,24 @@
     <% receipts = unordered.order(created_at: :desc) %>
 
     <div class="conversations-container">
-      <% receipts.reverse.each do |receipt| %>
+      <% receipts.reverse.each_with_index do |receipt,index| %>
         <% if receipt.message.sender_id == current_user.id %>
           <div class="single-message-container r">
-            <div class="card-conversation cover-by-popup-box">
+            <div class="card-conversation cover-by-popup-box r text-dark">
               <div class="card-product-infos">
-                <p><%= User.find(receipt.message.sender_id).first_name %></p>
-                <h4 class="message-co"> <%= message = receipt.message.body %></h4>
+                <p class="message-co"> <%= message = receipt.message.body %></p>
               </div>
             </div>
+            <div class="p-1"></div>
+              <%= cl_image_tag @logged_in_chatter.photo, class: "avatar ml-1 cover-by-popup-image-book" %>
           </div>
         <% else %>
           <div class="single-message-container l">
-            <div class="card-conversation cover-by-popup-box">
+            <%= cl_image_tag @other_chatter.photo, class: "avatar ml-1 cover-by-popup-image-book" %>
+            <div class="p-1"></div>
+            <div class="card-conversation cover-by-popup-box bg-dark text-white">
               <div class="card-product-infos">
-                <p><%= User.find(receipt.message.sender_id).first_name %></p>
-                <h4> <%= message = receipt.message.body %></h4>
+                <p> <%= message = receipt.message.body %></p>
               </div>
             </div>
           </div>
@@ -69,9 +71,9 @@
           <%= form_tag(reply_path(id: @conversation.id), method: :get) do %>
             <div class="input-container">
               <div class="message-box">
-                <%= text_field_tag :send_message %>
+                <%= text_field_tag :send_message, nil, placeholder: "Type a message..." %>
               </div>
-                <%= submit_tag "Send" , class: "btn btn-primary send-btn"%>
+                <%= submit_tag "Send",class: "bgd-white btn btn-dark send-btn"%>
             </div>
           <% end %>
         </div>

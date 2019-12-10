@@ -4,25 +4,23 @@
 
 .r {
   justify-content: flex-end;
-  margin: 0;
 }
 
 .card-conversation {
-  min-width: 100px;
+  min-width: 50px;
   max-width: 350px;
   overflow: hidden;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  background: white;
+  box-shadow: 0 0 15px rgba(200,200,200,0.2);
+  background: #f2f0f1;
   display: flex;
   padding: 5px 10px;
   margin: 5px 0;
-  border-radius: 7px;
+  border-radius: 5px;
 }
 
-.card-conversation img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
+.avatar {
+  width: 40px;
+  height: 40px;
 }
 
 .card-conversation h2 {
@@ -32,11 +30,12 @@
 }
 
 .card-conversation p {
-  font-size: 12px;
+  font-size: 20px;
+  // color: black;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
-  margin-top: 8px;
+  font-weight: 500;
 }
 
 .card-conversation .card-conversation-infos {
