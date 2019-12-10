@@ -28,6 +28,9 @@ gem 'carrierwave', '~> 1.2'
 gem 'json'
 gem 'mailboxer'
 
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+
 
 gem 'geocoder'
 

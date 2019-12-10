@@ -19,5 +19,9 @@ Rails.application.routes.draw do
   resources :forums do
     resources :comments, only: [:create, :destroy]
   end
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
 end

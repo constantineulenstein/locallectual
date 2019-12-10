@@ -45,3 +45,16 @@
   width: 100%;
 }
 
+.form-inline > * {
+    margin: 0px 3px !important;
+}
+
+.forum-search {
+  position: relative;
+}
+
+.forum-new {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}

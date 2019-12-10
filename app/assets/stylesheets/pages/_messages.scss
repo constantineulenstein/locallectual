@@ -3,12 +3,16 @@
   width: 75vw;
   margin: 0 auto;
   justify-content: center;
+  align-items: center;
 }
 
 .message-list {
+  margin: 50px 0 0 20px;
   overflow: scroll;
-  height: calc(100vh - 75px);
-  background-color: rgb(200,200,200);
+  background-color: white;
+  height: calc(100vh - 75px - 70px - 60px);
+  border-radius: 5px;
+
 }
 
 .message-list::-webkit-scrollbar {
@@ -25,12 +29,55 @@
 }
 
 .recipient-info {
-  padding: 50px;
+  padding: 20px 50px;
+  border-radius: 5px;
+  margin: 50px 0 0 0;
+  overflow: scroll;
   width: 25%;
+  height: calc(100vh - 75px - 70px - 60px);
   text-align: center;
+  background-color: white;
+}
+
+.recipient-info::-webkit-scrollbar {
+  display: none;
 }
 
 .single-message-container {
   display: flex;
   margin: 0 20px;
+}
+
+.send-message-field {
+  position: fixed;
+  bottom: 80px;
+  width: 720px;
+  padding: 0;
+  height: 40px;
+}
+
+.message-box {
+  width: 100%;
+  height: 40px;
+}
+
+.message-box > input {
+  width: 100%;
+  height: 40px;
+}
+
+.input-container {
+  display: flex;
+}
+
+.send-btn {
+  width: 20%;
+}
+
+.message-content {
+  font-size: 19px;
+}
+
+.single-message-container .r {
+  text-align: right;
 }

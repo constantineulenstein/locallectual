@@ -5,14 +5,16 @@
     <p class="mt-2">Helping the displaced connect locally</p>
     <%#= simple_form_for :search, url: locallects_path, method: :get do |f| %>
       <div class="search-form-control form-group mt-5 banner-search">
-        <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search for a city"/>
+        <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search for a host by city..."/>
         <button name="button" type="Search" class="btn p-0" id="home-button">
           <i class="fas fa-search"></i>
         </button>
       </div>
     <%# end %>
   </div>
-</div> -->
+
+
+<br>
 <!-- CONTAINER FOR THE CARDS -->
 <main role="main">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -21,28 +23,20 @@
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
-<<<<<<< Updated upstream
-    <div class="carousel-inner"> -->
-<!-- <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
+
+    <div class="carousel-inner">
+      <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(http://paidforgrades.org/wp-content/uploads/2017/02/volunteer-fb.jpg);">
+
         <div class="container">
           <div class="carousel-caption text-left">
-            <h1>Welcome to Locallectual</h1>
-            <p>This is a platform to connect those who have been displaced from their homes look for people who will help them integrate into their new ones.</p>
+            <h1>Be a Host in your City</h1>
+            <p>Have knowledge to share that can help newcommers to your city?</p>
             <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
           </div>
         </div>
 
       </div>
 
-      <div class="carousel-item">
-      <div class="carousel-item"  style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
-
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Search for Hosts in your City </h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-=======
-    <div class="carousel-inner">
       <div class="carousel-item active"  style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
         <div class="container "=>
           <div class="carousel-caption ">
@@ -58,17 +52,26 @@
             <p>Have knowledge to share that can help newcommers to your city?</p>
             <br>
             <p><a class="btn btn-outline-light" href="users/sign_up" role="button">Sign up today</a></p>
->>>>>>> Stashed changes
+
+            <p>Connecting those who have been displaced from their homes with people who can help them integrate into their new ones.</p>
+            <%= simple_form_for :search, url: locallects_path, method: :get do |f| %>
+              <div class="search-form-control form-group mt-5 banner-search">
+                <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search for a host in your area..."/>
+                <button name="button" type="Search" class="btn p-0" id="home-button">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            <% end %>
           </div>
         </div>
-      </div> -->
-<!-- <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
+      </div>
+      <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.lbcc.edu/sites/main/files/imagecache/carousel/main-images/hero-adult_education_copy.jpg?1563728376);">
         <div class="container">
           <div class="carousel-caption text-right">
-<<<<<<< Updated upstream
-            <h1>One more for good measure.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+
+            <h1>Browse the Localletual Forum</h1>
+            <p>Search and share information about your city.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse Forum</a></p>
           </div>
         </div>
       </div> -->
@@ -83,37 +86,38 @@
 </a>
 </div> -->
 <!-- Marketing messaging and featurettes
-    ================================================== -->
-<!-- Wrap the rest of the page in another container to center all the content. -->
-<div class="container marketing mt-5">
-  <!-- Three columns of text below the carousel -->
-  <div class="row">
-    <div class="col-lg-4">
-      <h2>Connect with Local Hosts </h2>
-      <p>Our platform connects people with local hosts that can meet you to show you around the city, and help with your integration with the city</p>
-      <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-    </div>
-    <!-- /.col-lg-4 -->
-    <div class="col-lg-4">
-      <h2>Be a Part of Our Forums</h2>
-      <p>Take part in the discussion in our forums! Exchange stories, events, exchanges, and any helpful tips to help those in need.</p>
-      <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-    </div>
-    <!-- /.col-lg-4 -->
-    <div class="col-lg-4">
-      <h2>Heading</h2>
-      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-      <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-    </div>
-    <!-- /.col-lg-4 -->
-  </div>
+
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+  <div class="container marketing">
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <h2>About Locallectual</h2>
+        <p>Locallectual is a platform that connects those who have been displaced from their homes with people who can help them integrate into their new ones. New to the city? Find a host.</p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <h2>Be a Host</h2>
+        <p>Have knowledge that can help newcommers integrate to your city better? Become a host. Meet with those who need help integrating</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <h2>Search our Forum</h2>
+        <p>Search and share information about your city. Browse to learn what topics have already been discussed, current events or post a new topic</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <!-- /.col-lg-4 -->
+
   <!-- /.row -->
   <!-- START THE FEATURETTES -->
   <hr class="featurette-divider">
   <div class="row featurette">
     <div class="col-md-7">
-      <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      <h2 class="featurette-heading">Who is Locallectual for? <span class="text-muted">Help others, get invovled, make friends...</span></h2>
+      <br>
+      <p class="lead">In 2018, over 70.8 million individuals have been forcibly displaced from their homes either by persecution, conflict, violence, or human rights violations. This is a record high, and the numbers are only expected to be greater for future years to come. People who want to help can simply do so by showing them the need-to-knows of their local city. Anywhere from showing someone how to take the bus, to introducing community events or posting information on our forum, Locallectual makes it easy to get involved and make friends along the way.</p>
     </div>
     <div class="col-md-5">
     </div>
@@ -121,9 +125,7 @@
   <hr class="featurette-divider">
   <div class="row featurette">
     <div class="col-md-7 order-md-2">
-      <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-=======
+
             <h1>Browse the Localletual Forum</h1>
             <p>Search and share information about your city.</p>
             <br>
@@ -131,6 +133,11 @@
           </div>
         </div>
       </div>
+
+      <h2 class="featurette-heading">Why was this platform created? <span class="text-muted">Learn more...</span></h2>
+      <br>
+      <p class="lead">Currently there are a lack of resources to satisfy the total number of forcibly displaced people, with the majority being women and children. Traditional organizations may also have limitations when identifying some specific needs, disabilities, or other barriers. It is also not uncommon for volunteers and donors to get frustrated when other charities or similar organizations are unable to accept their help or donated items due to internal policy. Strict rules and potential law suites could make it difficult for organizations to accept all help. Locallectual aims to bridge this gap.</p>
+
     </div>
     <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -187,7 +194,7 @@
       <div class="col-md-5 order-md-1">
         <img src="https://images.unsplash.com/photo-1575859225486-f377a3f867bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="" style="height:400px;width:90%" class="m-2" >
       </div>
->>>>>>> Stashed changes
+
     </div>
     <hr class="featurette-divider">
     <div class="row featurette">
@@ -214,18 +221,17 @@
     <hr class="featurette-divider">
     <!-- /END THE FEATURETTES -->
   </div>
-  <!-- /.container -->
-  <!-- footer -->
-  <div class="footer">
-    <div class="footer-links">
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
+
+  <hr class="featurette-divider">
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">What we are trying to solve? <span class="text-muted">One stop platform...</span></h2>
+      <br>
+      <p class="lead">Locallectual is a friendly platform that provides flexible ways to provide aid and assistance to forcibly placed people. We put those looking for local insight directly in touch with those looking to help. Locallectual features also allows other methods to provide support through our forum, hosting events, or donations tool.</p>
     </div>
     <div class="footer-copyright">
       <i class="fas fa-heart"></i>
     </div>
-<<<<<<< Updated upstream
   </div>
   <hr class="featurette-divider">
   <!-- /END THE FEATURETTES -->
@@ -242,6 +248,4 @@
     <i class="fas fa-heart"></i>
   </div>
 </div>
-=======
-  </div>
->>>>>>> Stashed changes
+
