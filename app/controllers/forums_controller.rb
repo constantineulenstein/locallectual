@@ -6,9 +6,11 @@ class ForumsController < ApplicationController
     if search.present?
       if search[:query].present?
         @forums = @forums.search_by_all(search[:query])
-      elsif search[:location].present?
+      end
+      if search[:location].present?
         @forums = @forums.search_by_location(search[:location])
-      elsif search[:language_list] != [""]
+      end
+      if search[:language_list] != [""]
         @forums = @forums.tagged_with(search[:language_list], any: true)
       end
     else

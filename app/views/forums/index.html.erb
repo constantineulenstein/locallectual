@@ -1,18 +1,17 @@
 
-
-
-<div class="pl-5">
+<div class="mx-5 bg-light col-sm-9 forum-search">
   <%= simple_form_for :search, url: forums_path, method: :get do |f| %>
-    <div class="search-form-control form-group mt-5">
-      <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search for content..."/>
-      <button name="button" type="Search" class="btn p-0" id="home-button">
-        <i class="fas fa-search"></i>
-      </button>
+    <div class="form-inputs p-3 form-inline mt-5 d-flex">
+      <%= f.input :query, label: false, placeholder: "Specify content" %>
+      <%= f.input :location, label: false, placeholder: "Specify location" %>
+      <%= f.input :language_list, collection: @languages, input_html: {class: "select2 ml-3",  multiple: "multiple"}, label: false %> <!-- placeholder is  in JS file -->
+      <%= f.button :submit, "Search", class: "btn btn-outline-dark" %>
     </div>
   <% end %>
+  <%= link_to "Add a new post", new_forum_path, class: "btn btn-outline-dark forum-new friendship-request-button"  %>
 </div>
 
-<div class="px-5 d-flex">
+<div class="px-5 mt-3 d-flex">
   <div class="posts col-sm-9">
     <% @forums.each do |forum| %>
     <div class="post border-bottom">
@@ -22,14 +21,23 @@
     </div>
     <% end %>
   </div>
-  <div class="filter col-sm-3">
-      <%= simple_form_for :search, url: forums_path, method: "GET" do |f| %>
-        <div class="form-inputs bg-light p-3">
-          <%= f.input :location %>
-          <%= f.input :language_list, collection: @languages, input_html: {class: "select2",  multiple: "multiple"} %>
-          <%= f.button :submit, "Search", class: "btn btn-outline-dark" %>
-        </div>
-      <% end %>
+</div>
+
+<!-- Will only pop up if add a new post is clicked -->
+<div class="container w-50 border-radius p-5 friend-request-field">
+  <h3 class="my-3">Add a new post</h3>
+  <%= simple_form_for(@forum, url: forums_path, method: :post) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+      <%= f.input :date, as: :string, input_html: {class: "datepicker bg-white"} %>
+      <%= f.input :location, as: :string %>
     </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Book", class: "btn btn-outline-light" %>
+    </div>
+  <% end %>
+  <%= link_to conversation_path(@conversation) do %>
+    <i class="fas fa-times cancel-cross"></i>
+  <% end %>
 </div>
 
