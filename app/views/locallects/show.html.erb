@@ -32,7 +32,7 @@
       <p class="border">Friend request sent</p>
       <!-- else show button to send friend request -->
       <% else %>
-      <%= link_to "Get to know #{@locallect.first_name}", "#", class: "btn btn-outline-dark friendship-request-button" %>
+      <%= link_to "Get to know #{@locallect.first_name}", "#", class: "btn btn-outline-dark request-button" %>
       <% end %>
 
 
@@ -48,7 +48,7 @@
 
 
 <!-- Will only pop up if friend request will be send -->
-<div class="container w-50 border-radius p-5 friend-request-field">
+<div class="container w-50 border-radius p-5 request-field">
   <h3 class="my-3">Become friends with <%= @locallect.first_name %></h3>
   <%= simple_form_for(@friendship, url: locallect_friendships_path(@locallect), method: :post) do |f| %>
   <%= f.input :request_message, label: "Tell something about you", class: "friendrequest-text" %>
