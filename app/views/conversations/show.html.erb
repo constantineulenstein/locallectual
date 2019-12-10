@@ -38,46 +38,46 @@
       <%= link_to "book #{@other_chatter.first_name}", "#", class: "request-button" %>
     <% end %>
   </div>
-  <div class="message-list col-sm-8">
-    <% unordered = @conversation.receipts_for current_user%>
-    <% receipts = unordered.order(created_at: :desc) %>
+  <div class="message-list-container col-sm-8 px-0">
+    <div class="message-list">
+      <% unordered = @conversation.receipts_for current_user%>
+      <% receipts = unordered.order(created_at: :desc) %>
 
-    <div class="conversations-container">
-      <% receipts.reverse.each_with_index do |receipt,index| %>
-        <% if receipt.message.sender_id == current_user.id %>
-          <div class="single-message-container r">
-            <div class="card-conversation cover-by-popup-box r text-dark">
-              <div class="card-product-infos">
-                <p class="message-co"> <%= message = receipt.message.body %></p>
+      <div class="conversations-container">
+        <% receipts.reverse.each_with_index do |receipt,index| %>
+          <% if receipt.message.sender_id == current_user.id %>
+            <div class="single-message-container r">
+              <div class="card-conversation cover-by-popup-box r text-dark">
+                <div class="card-product-infos">
+                  <p class="message-co"> <%= message = receipt.message.body %></p>
+                </div>
               </div>
+              <div class="p-1"></div>
+                <%= cl_image_tag @logged_in_chatter.photo, class: "avatar ml-1 cover-by-popup-image-book" %>
             </div>
-            <div class="p-1"></div>
-              <%= cl_image_tag @logged_in_chatter.photo, class: "avatar ml-1 cover-by-popup-image-book" %>
-          </div>
-        <% else %>
-          <div class="single-message-container l">
-            <%= cl_image_tag @other_chatter.photo, class: "avatar ml-1 cover-by-popup-image-book" %>
-            <div class="p-1"></div>
-            <div class="card-conversation cover-by-popup-box bg-dark text-white">
-              <div class="card-product-infos">
-                <p> <%= message = receipt.message.body %></p>
+          <% else %>
+            <div class="single-message-container l">
+              <%= cl_image_tag @other_chatter.photo, class: "avatar ml-1 cover-by-popup-image-book" %>
+              <div class="p-1"></div>
+              <div class="card-conversation cover-by-popup-box bg-dark text-white">
+                <div class="card-product-infos">
+                  <p> <%= message = receipt.message.body %></p>
+                </div>
               </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-      <div class="send-message-field">
-        <div class="">
-          <%= form_tag(reply_path(id: @conversation.id), method: :get) do %>
-            <div class="input-container">
-              <div class="message-box">
-                <%= text_field_tag :send_message, nil, placeholder: "Type a message..." %>
-              </div>
-                <%= submit_tag "Send",class: "bgd-white btn btn-dark send-btn"%>
             </div>
           <% end %>
-        </div>
+        <% end %>
       </div>
+    </div>
+    <div class="send-message-field">
+      <%= form_tag(reply_path(id: @conversation.id), method: :get) do %>
+        <div class="input-container">
+          <div class="message-box">
+            <%= text_field_tag :send_message, nil, placeholder: "Type a message..." %>
+          </div>
+          <%= submit_tag "Send",class: "bgd-white btn btn-dark send-btn"%>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
