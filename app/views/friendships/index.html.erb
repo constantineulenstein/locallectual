@@ -74,7 +74,7 @@
                 <div class="card-friend-infos ml-5">
                   <h2><%= user.first_name %> <%= user.last_name %></h2>
                 </div>
-                <div>
+                <div class="response-btns">
                   <%= link_to 'Approve', friendship_request_approve_path(current_user.id, friendship.id), class: "btn btn-outline-success mr-3" %>
                   <%= link_to 'Reject', friendship_request_reject_path(current_user.id, friendship.id), class: "btn btn-outline-danger" %>
                 </div>
