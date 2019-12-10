@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  require "sidekiq/web"
-  authenticate :user, lambda { |u| u.admin } do
-    mount Sidekiq::Web => '/sidekiq'
-  end
   get 'comments/create'
   get 'comments/destroy'
   devise_for :users, controllers: {registrations: 'users/registrations'}
@@ -22,6 +18,10 @@ Rails.application.routes.draw do
   end
   resources :forums do
     resources :comments, only: [:create, :destroy]
+  end
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
   end
 
 end
