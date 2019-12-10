@@ -28,9 +28,9 @@
       <%= simple_form_for :search, url: locallects_path, method: "GET" do |f| %>
         <div class="form-inputs bg-light p-3">
           <div class="inline-block d-flex">
-            <%= f.input :start_age %><%= f.input :end_age %>
+            <%= f.input :start_age, input_html: {value: params[:search][:start_age]} %><%= f.input :end_age, input_html: {value: params[:search][:start_age]} %>
           </div>
-          <%= f.input :gender, collection: ["Male", "Female", "Diverse"] %>
+          <%= f.input :gender, collection: ["Male", "Female", "Diverse"], selected: params[:search][:gender] %>
           <%= f.input :base_location, input_html: {value: @base_location} %>
           <%= f.input :language_list, collection: @languages, input_html: {class: "select2",  multiple: "multiple"} %>
           <%= f.input :hobby_list, collection: @hobbies, input_html: {class: "select2",  multiple: "multiple"} %>

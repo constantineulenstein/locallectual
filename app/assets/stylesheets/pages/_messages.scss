@@ -1,16 +1,23 @@
 .messages-container {
   display: flex;
+  width: 75vw;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .message-list {
   overflow: scroll;
-  width: 500px;
   height: calc(100vh - 75px);
+  background-color: rgb(200,200,200);
+}
+
+.message-list::-webkit-scrollbar {
+  display: none;
 }
 
 .chatter-photo {
-  width: 300px;
-  height: 300px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   background-size: cover;
   background-position: center;
@@ -18,9 +25,12 @@
 }
 
 .recipient-info {
+  padding: 50px;
+  width: 25%;
   text-align: center;
 }
 
 .single-message-container {
   display: flex;
+  margin: 0 20px;
 }

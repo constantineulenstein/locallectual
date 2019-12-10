@@ -4,6 +4,7 @@
 
 .r {
   justify-content: flex-end;
+  margin: 0;
 }
 
 .card-conversation {
@@ -15,6 +16,7 @@
   display: flex;
   padding: 5px 10px;
   margin: 5px 0;
+  border-radius: 7px;
 }
 
 .card-conversation img {
@@ -42,6 +44,6 @@
 }
 
 .conversations-container {
-  width: 800px;
+  width: 100%;
   margin: 0 auto;
 }

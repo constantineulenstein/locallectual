@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_073649) do
+ActiveRecord::Schema.define(version: 2019_12_09_123510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 2019_12_09_073649) do
     t.bigint "forum_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["forum_id"], name: "index_comments_on_forum_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "explorers", force: :cascade do |t|
@@ -194,6 +196,7 @@ ActiveRecord::Schema.define(version: 2019_12_09_073649) do
   end
 
   add_foreign_key "comments", "forums"
+  add_foreign_key "comments", "users"
   add_foreign_key "explorers", "users"
   add_foreign_key "forums", "users"
   add_foreign_key "friendships", "explorers"

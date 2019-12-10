@@ -188,53 +188,57 @@ languages = ['Abkhaz',
              'Yoruba',
              'Zhuang, Chuang']
 
-    @hobbies = ['Reading',
-                'Watching TV',
-                'Family Time',
-                'Going to Movies',
-                'Fishing',
-                'Computers',
-                'Gardening',
-                'Walking',
-                'Exercise',
-                'Music',
-                'Night Entertainment',
-                'Hunting',
-                'Team Sports',
-                'Shopping',
-                'Traveling',
-                'Sleeping',
-                'Socializing',
-                'Sweing',
-                'Golf',
-                'Relaxing',
-                'Housework',
-                'Crafts',
-                'Watching Sports',
-                'Bicycling',
-                'Playing Cards',
-                'Hiking',
-                'Cooking',
-                'Swimming',
-                'Camping',
-                'Skiing',
-                'Working on Cars',
-                'Writing',
-                'Boating',
-                'Animal Care',
-                'Bowling',
-                'Painting',
-                'Running',
-                'Dancing',
-                'Horseback Riding',
-                'Tennis',
-                'Theater',
-                'Billards',
-                'Beach',
-                'Teaching',
-                'Volunteer Work']
+hobbies = ['Reading',
+           'Watching TV',
+           'Family Time',
+           'Going to Movies',
+           'Fishing',
+           'Computers',
+           'Gardening',
+           'Walking',
+           'Exercise',
+           'Music',
+           'Night Entertainment',
+           'Hunting',
+           'Team Sports',
+           'Shopping',
+           'Traveling',
+           'Sleeping',
+           'Socializing',
+           'Sweing',
+           'Golf',
+           'Relaxing',
+           'Housework',
+           'Crafts',
+           'Watching Sports',
+           'Bicycling',
+           'Playing Cards',
+           'Hiking',
+           'Cooking',
+           'Swimming',
+           'Camping',
+           'Skiing',
+           'Working on Cars',
+           'Writing',
+           'Boating',
+           'Animal Care',
+           'Bowling',
+           'Painting',
+           'Running',
+           'Dancing',
+           'Horseback Riding',
+           'Tennis',
+           'Theater',
+           'Billards',
+           'Beach',
+           'Teaching',
+           'Volunteer Work']
+
+
+
 
 5.times do |i|
+
   user = User.create!(email: Faker::Internet.email,
                       password: "123456",
                       first_name: Faker::Name.first_name,
@@ -255,7 +259,7 @@ languages = ['Abkhaz',
 
   2.times do
     forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Shanghai", language_list: "English")
-    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id, user_id: user.id)
   end
 end
 
@@ -280,7 +284,7 @@ end
 
   2.times do
     forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Munich", language_list: "English")
-    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id, user_id: user.id)
   end
 end
 
@@ -305,7 +309,7 @@ end
 
   2.times do
     forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Los Angeles", language_list: "English")
-    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id)
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id, user_id: user.id)
   end
 end
 
