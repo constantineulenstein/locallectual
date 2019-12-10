@@ -13,11 +13,11 @@
             </div>
           <% end %>
         <% else %>
-          <% @locallects.each do |user| %>
+          <% @locallects.reject{|x| x == current_user}.each do |user| %>
             <div class="col-sm-4">
-              <% unless current_user.id == user.id %>
-                <%= render 'shared/locallectslist', :user => user %>
-              <% end %>
+              <%# unless current_user.id == user.id %>
+              <%= render 'shared/locallectslist', :user => user %>
+              <%# end %>
             </div>
           <% end %>
         <% end %>
