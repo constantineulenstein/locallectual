@@ -4,7 +4,7 @@ class ConversationsController < ApplicationController
 
   def index
     @conversations = current_user.mailbox.conversations
-    @messages = policy_scope(Message)
+    @messages = policy_scope(User)
   end
 
   def show
