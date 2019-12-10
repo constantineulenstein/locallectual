@@ -7,7 +7,15 @@ class TransactionsController < ApplicationController
 
   def create
     find_convo
-    @transaction = Transaction.create(transaction_params)
+    # check if a transaction already exists
+    partic = @conversation.participants
+    @transaction = Transaction.where("(locallect_id = ? AND explorer_id = ?) OR (locallect_id = ? AND explorer_id = ?)",partic[0].id,partic[1].id,partic[1].id,partic[0].id)[0]
+    if @transaction.nil?
+      @transaction = Transaction.create(transaction_params)
+    else
+    @transaction.update(transaction_params)
+    end
+
     @transaction.explorer_id = current_user.id
     @conversation.participants.each do |participant|
       if participant != current_user
