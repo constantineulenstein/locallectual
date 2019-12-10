@@ -29,7 +29,8 @@ class TransactionsController < ApplicationController
     flash[:alert] = "Meet up request has been sent!"
 
     # send email
-    mail = UserMailer.with(user: User.find(Locallect.find(@transaction.locallect_id).user_id), sender: current_user, transaction: @transaction, conv: @conversation).transaction
+    user = User.find(Locallect.find(@transaction.locallect_id).user_id).id == current_user.id ? User.find(Explorer.find(@transaction.explorer_id).user_id) : User.find(Locallect.find(@transaction.locallect_id).user_id)
+    mail = UserMailer.with(user: user, sender: current_user, transaction: @transaction, conv: @conversation).transaction
     mail.deliver_now
 
     authorize @transaction
@@ -46,10 +47,17 @@ class TransactionsController < ApplicationController
   end
 
   def approve
+    find_convo
     @transaction = Transaction.find(params[:transaction_id])
     @transaction.approved = true
     @transaction.save
     flash[:alert] = "Meet up request has been approved!"
+
+    # send email
+    user = User.find(Locallect.find(@transaction.locallect_id).user_id).id == current_user.id ? User.find(Explorer.find(@transaction.explorer_id).user_id) : User.find(Locallect.find(@transaction.locallect_id).user_id)
+    mail = UserMailer.with(user: user, sender: current_user, transaction: @transaction, conv: @conversation).transaction_approval
+    mail.deliver_now
+
     authorize @transaction
     redirect_to conversation_path(params[:conversation_id])
   end

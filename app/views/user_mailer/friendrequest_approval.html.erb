@@ -1,0 +1,5 @@
+<p>Hi <%= @user.first_name %>,</p>
+
+<p><%= @sender.first_name %> approved your friend request!</p>
+
+<%= link_to "Start chatting!", locallect_friendships_url(@user) %>
