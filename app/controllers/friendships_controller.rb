@@ -26,7 +26,7 @@ class FriendshipsController < ApplicationController
 
     # send email
     mail = UserMailer.with(user: @locallect, sender: current_user).friendrequest
-    mail.deliver_now
+    mail.deliver_later
 
     redirect_to locallect_path(@locallect)
     authorize @friendship
@@ -44,7 +44,7 @@ class FriendshipsController < ApplicationController
     # send email
     user = User.find(Locallect.find(@friendship.locallect_id).user_id).id == current_user.id ? User.find(Explorer.find(@friendship.explorer_id).user_id) : User.find(Locallect.find(@friendship.locallect_id).user_id)
     mail = UserMailer.with(user: user, sender: current_user).friendrequest_approval
-    mail.deliver_now
+    mail.deliver_later
 
 
     authorize @friendship
