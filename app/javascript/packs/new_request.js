@@ -3,7 +3,7 @@ import places from 'places.js';
 
 const displayExtraField = (e) => {
   const page = document.querySelector('.to-be-darkened');
-  const requestField = document.querySelector('.friend-request-field');
+  const requestField = document.querySelector('.request-field');
   requestField.style.display = "block";
 
   const specificSearchField = document.querySelectorAll('.select2-selection.select2-selection--multiple')[0];
@@ -36,27 +36,9 @@ const displayExtraField = (e) => {
   }
 }
 
-// const fadeExtraField = (e) => {
-//   const page = document.querySelector('.to-be-darkened');
-//   const requestField = document.querySelector('.friend-request-field');
-//   requestField.style.display = "none";
-//   page.classList.remove("overlay");
-
-//   const coverByPopupBox = document.querySelectorAll(".cover-by-popup-box").forEach ((e) => {
-//     e.style.backgroundImage = "";
-//   })
-
-//   if (document.querySelector(".cover-by-popup-image-book")){
-//     document.querySelector(".cover-by-popup-image-book").style.backgroundImage =  `linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(${chatter.photo.url})`;
-//   } else {
-//     document.querySelector(".cover-by-popup-image").style.backgroundImage =  `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(${user.photo.url})`;
-//     document.querySelector(".cover-by-popup-banner").style.backgroundImage = `linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(${user.city_image})`;
-//   }
-// }
-
 
 const newRequest = () => {
-  const request = document.querySelector('.friendship-request-button');
+  const request = document.querySelector('.request-button');
   //const submit = document.querySelector('.submit-button-friendrequest');
   if(request) {
     request.addEventListener('click', displayExtraField );

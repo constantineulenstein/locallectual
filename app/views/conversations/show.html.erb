@@ -33,9 +33,9 @@
           <h3><%= @other_chatter.first_name %> unfortunately can not meet on <%= transaction.date.strftime("%A, %d %b %Y %l:%M %p") %></h3>
         <% end %>
       <% end %>
-      <p class=""><%= link_to "Change meeting", "#", class: "friendship-request-button btn btn-outline-dark m-2"%></p>
+      <p class=""><%= link_to "Change meeting", "#", class: "request-button btn btn-outline-dark m-2"%></p>
     <% else %>
-      <%= link_to "book #{@other_chatter.first_name}", "#", class: "friendship-request-button" %>
+      <%= link_to "book #{@other_chatter.first_name}", "#", class: "request-button" %>
     <% end %>
   </div>
   <div class="message-list col-sm-8">
@@ -82,7 +82,7 @@
   </div>
 </div>
 <!-- Will only pop up if meeting takes place -->
-<div class="container w-50 border-radius p-5 friend-request-field">
+<div class="container w-50 border-radius p-5 request-field">
   <h3 class="my-3">Arrange meeting</h3>
   <%= simple_form_for(@transaction, url: conversation_transactions_path(@conversation), method: :post) do |f| %>
     <%= f.error_notification %>

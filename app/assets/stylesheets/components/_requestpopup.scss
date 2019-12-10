@@ -1,0 +1,33 @@
+.friendrequest-text {
+  height: 200px;
+}
+
+.request-field {
+  position: absolute;
+  background-color: #343435;
+  top: 30%;
+  left: 25%;
+  display: none;
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  //z-index: 200000000000000;
+}
+
+.overlay {
+  position: fixed; /* Sit on top of the page content */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 75px;
+  left: 0;
+  background-color: rgba(0,0,0,0.7); /* Black background with opacity */
+}
+
+.cancel-cross {
+  color: white;
+  font-size: 25px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+

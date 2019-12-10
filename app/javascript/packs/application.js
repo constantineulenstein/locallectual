@@ -13,7 +13,7 @@ initSelect2();
 import { initAutocomplete } from '../plugins/init_autocomplete';
 initAutocomplete();
 
-import { newRequest } from './new_friendrequest';
+import { newRequest } from './new_request';
 newRequest();
 
 import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
