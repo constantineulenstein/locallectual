@@ -5,6 +5,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  padding: 0 20px;
   a {
     text-decoration: none !important;
     color: black;
@@ -48,6 +49,10 @@
 
 .card-friend .card-friend-infos {
   padding: 16px;
+}
+
+.card-friend-infos {
+  width: 50vw;
 }
 
 .card-friend-content {
