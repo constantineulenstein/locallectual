@@ -1,10 +1,11 @@
 <div class="to-be-darkened">
   <div class="messages-container">
     <div class="recipient-info col-sm-4">
-      <div class= "cover-by-popup-image-book chatter-photo ml-1" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= @other_chatter.photo %>);">
-      </div>
+      <%= link_to(locallect_path(@other_chatter.id)) do %>
+        <div class= "cover-by-popup-image-book chatter-photo ml-1" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= @other_chatter.photo %>);"></div>
+      <% end %>
       <%#= cl_image_tag @other_chatter.photo, class: "chatter-photo ml-1 cover-by-popup-image-book" %>
-      <h2><%= @other_chatter.first_name %> <%= @other_chatter.last_name %></h2>
+      <h2><%= link_to "#{@other_chatter.first_name} #{@other_chatter.last_name}", locallect_path(@other_chatter.id), class: "chatter-name-link" %></h2>
       <% if current_user.transactions.any? {|transaction| @other_chatter.transactions.include?(transaction) } %>
         <% @other_chatter.transactions.each do |transaction| %>
           <!-- Check if new transaction to be approved -->
