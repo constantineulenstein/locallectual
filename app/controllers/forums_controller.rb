@@ -16,7 +16,9 @@ class ForumsController < ApplicationController
     else
       @forums = policy_scope(Forum).all
     end
-
+    @forums = @forums.order(created_at: :desc)
+    # For new post
+    @forum = Forum.new
     @languages = ['Abkhaz',
                   'Afar',
                   'Afrikaans',
@@ -207,14 +209,12 @@ class ForumsController < ApplicationController
     authorize @forum
   end
 
-  def new
-    @forum = Forum.new
-  end
-
   def create
     @forum = Forum.create(forum_params)
+    @forum.user_id = current_user.id
     @forum.save
-    redirect_to forum_path(@forum)
+    redirect_to forums_path
+    authorize @forum
   end
 
 
@@ -228,6 +228,6 @@ class ForumsController < ApplicationController
   private
 
   def forum_params
-    params.require(:forum).permit(:title, :description)
+    params.require(:forum).permit(:title, :description, :location)
   end
 end
