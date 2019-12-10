@@ -2,6 +2,8 @@
 User.destroy_all
 Locallect.destroy_all
 Explorer.destroy_all
+Forum.destroy_all
+Comment.destroy_all
 
 languages = ['Abkhaz',
              'Afar',
@@ -186,7 +188,57 @@ languages = ['Abkhaz',
              'Yoruba',
              'Zhuang, Chuang']
 
-10.times do |i|
+hobbies = ['Reading',
+           'Watching TV',
+           'Family Time',
+           'Going to Movies',
+           'Fishing',
+           'Computers',
+           'Gardening',
+           'Walking',
+           'Exercise',
+           'Music',
+           'Night Entertainment',
+           'Hunting',
+           'Team Sports',
+           'Shopping',
+           'Traveling',
+           'Sleeping',
+           'Socializing',
+           'Sweing',
+           'Golf',
+           'Relaxing',
+           'Housework',
+           'Crafts',
+           'Watching Sports',
+           'Bicycling',
+           'Playing Cards',
+           'Hiking',
+           'Cooking',
+           'Swimming',
+           'Camping',
+           'Skiing',
+           'Working on Cars',
+           'Writing',
+           'Boating',
+           'Animal Care',
+           'Bowling',
+           'Painting',
+           'Running',
+           'Dancing',
+           'Horseback Riding',
+           'Tennis',
+           'Theater',
+           'Billards',
+           'Beach',
+           'Teaching',
+           'Volunteer Work']
+
+
+
+
+5.times do |i|
+
   user = User.create!(email: Faker::Internet.email,
                       password: "123456",
                       first_name: Faker::Name.first_name,
@@ -194,7 +246,7 @@ languages = ['Abkhaz',
                       birthday: Faker::Date.birthday,
                       job: Faker::Job.title,
                       gender: Faker::Gender.binary_type,
-                      hobby: ['Reading', 'Hiking', 'Fishing', 'Art', 'Theatre', 'Food', 'Animal Watching', 'Live Music', 'Night Life'].sample,
+                      hobby_list: hobbies.sample,
                       base_location: "Shanghai",
                       language_list: languages.sample,
                       birth_location: Faker::Address.city)
@@ -204,9 +256,14 @@ languages = ['Abkhaz',
 
   user.remote_photo_url = url
   user.save!
+
+  2.times do
+    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Shanghai", language_list: "English")
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id, user_id: user.id)
+  end
 end
 
-10.times do |i|
+5.times do |i|
   user = User.create!(email: Faker::Internet.email,
                       password: "123456",
                       first_name: Faker::Name.first_name,
@@ -214,7 +271,7 @@ end
                       birthday: Faker::Date.birthday,
                       job: Faker::Job.title,
                       gender: Faker::Gender.binary_type,
-                      hobby: ['Reading', 'Hiking', 'Fishing', 'Art', 'Theatre', 'Food', 'Animal Watching', 'Live Music', 'Night Life'].sample,
+                      hobby_list: hobbies.sample,
                       base_location: "Munich",
                       language_list: languages.sample,
                       birth_location: Faker::Address.city)
@@ -224,9 +281,14 @@ end
 
   user.remote_photo_url = url
   user.save!
+
+  2.times do
+    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Munich", language_list: "English")
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id, user_id: user.id)
+  end
 end
 
-10.times do |i|
+5.times do |i|
   user = User.create!(email: Faker::Internet.email,
                       password: "123456",
                       first_name: Faker::Name.first_name,
@@ -234,7 +296,7 @@ end
                       birthday: Faker::Date.birthday,
                       job: Faker::Job.title,
                       gender: Faker::Gender.binary_type,
-                      hobby: ['Reading', 'Hiking', 'Fishing', 'Art', 'Theatre', 'Food', 'Animal Watching', 'Live Music', 'Night Life'].sample,
+                      hobby_list: hobbies.sample,
                       base_location: "Los Angeles",
                       language_list: languages.sample,
                       birth_location: Faker::Address.city)
@@ -244,6 +306,11 @@ end
 
   user.remote_photo_url = url
   user.save!
+
+  2.times do
+    forum = Forum.create(title: Faker::Hipster.sentence, description: Faker::Hipster.paragraph, user_id: user.id, location: "Los Angeles", language_list: "English")
+    Comment.create(description: Faker::Hipster.paragraph, forum_id: forum.id, user_id: user.id)
+  end
 end
 
 
@@ -254,7 +321,7 @@ jeff = User.create(email: "jeff@gmail.com",
                    last_name: "Yeung",
                    job: "Fireman",
                    gender: "Male",
-                   hobby: "Swimming",
+                   hobby_list: hobbies.sample,
                    base_location: "Shanghai",
                    birthday: Faker::Date.birthday,
                    birth_location: "Paris",
@@ -267,7 +334,7 @@ elliot = User.create(email: "elliot@gmail.com",
                      last_name: "Tennison",
                      job: "Foot Specialist",
                      gender: "Male",
-                     hobby: "Scuba Diving",
+                     hobby_list: hobbies.sample,
                      base_location: "Shanghai",
                      birthday: Faker::Date.birthday,
                      birth_location: "Shanghai",
@@ -280,7 +347,7 @@ const = User.create(email: "constantin@gmail.com",
                     last_name: "Eulenstein",
                     job: "Programmer",
                     gender: "Male",
-                    hobby: "Hiking",
+                    hobby_list: hobbies.sample,
                     base_location: "Munich",
                     birthday: Faker::Date.birthday,
                     birth_location: "Munich",
@@ -293,7 +360,7 @@ dan = User.create(email: "dan@gmail.com",
                   last_name: "Galim",
                   job: "Waiter",
                   gender: "Male",
-                  hobby: "Sky Diving",
+                  hobby_list: hobbies.sample,
                   base_location: "Los Angeles",
                   birthday: Faker::Date.birthday,
                   birth_location: "Los Angeles",
@@ -308,7 +375,7 @@ dan = User.create(email: "dan@gmail.com",
                       birthday: Faker::Date.birthday,
                       job: Faker::Job.title,
                       gender: Faker::Gender.binary_type,
-                      hobby: ['Reading', 'Hiking', 'Fishing', 'Art', 'Theatre', 'Food', 'Animal Watching', 'Live Music', 'Night Life'].to_a.sample,
+                      hobby_list: hobbies.sample,
                       base_location: "Shanghai",
                       birth_location: Faker::Address.city)
 

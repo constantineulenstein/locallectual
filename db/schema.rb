@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_07_044542) do
+ActiveRecord::Schema.define(version: 2019_12_09_123510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text "description"
+    t.bigint "forum_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["forum_id"], name: "index_comments_on_forum_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "explorers", force: :cascade do |t|
     t.integer "count"
@@ -21,6 +31,16 @@ ActiveRecord::Schema.define(version: 2019_12_07_044542) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_explorers_on_user_id"
+  end
+
+  create_table "forums", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "location"
+    t.index ["user_id"], name: "index_forums_on_user_id"
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -143,6 +163,8 @@ ActiveRecord::Schema.define(version: 2019_12_07_044542) do
     t.datetime "updated_at", null: false
     t.boolean "approved"
     t.boolean "declined"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["explorer_id"], name: "index_transactions_on_explorer_id"
     t.index ["locallect_id"], name: "index_transactions_on_locallect_id"
   end
@@ -173,7 +195,10 @@ ActiveRecord::Schema.define(version: 2019_12_07_044542) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "forums"
+  add_foreign_key "comments", "users"
   add_foreign_key "explorers", "users"
+  add_foreign_key "forums", "users"
   add_foreign_key "friendships", "explorers"
   add_foreign_key "friendships", "locallects"
   add_foreign_key "locallects", "users"

@@ -28,6 +28,9 @@ gem 'carrierwave', '~> 1.2'
 gem 'json'
 gem 'mailboxer'
 
+
+gem 'geocoder'
+
 gem 'letter_opener', group: :development
 
 

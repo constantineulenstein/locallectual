@@ -1,24 +1,18 @@
-class LocallectsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
-  before_action :find_user, only: [:show]
+class ForumsController < ApplicationController
 
   def index
+    @forums = policy_scope(Forum).all
     search = params[:search]
-
-    if search[:base_location].present?
-      @locallects = policy_scope(User).search_by_base_location(search[:base_location]).order(created_at: :desc)
-      # @locallects = @locallects.where(age: params[:start_age]..params[:end_age]) if params[:age] != '' && params[:age].present?
-      @locallects = @locallects.where(age: (search[:start_age]..search[:end_age])) if search[:start_age] != '' && search[:start_age].present?
-      @locallects = @locallects.where(gender: search[:gender]) if search[:gender] != '' && search[:gender].present? && params[:gender] != 'All'
-      if search[:language_list] != [""]
-        @locallects = @locallects.tagged_with(search[:language_list], any: true)
-      end
-      if search[:hobby_list] != [""]
-        @locallects = @locallects.tagged_with(search[:hobby_list], any: true)
+    if search.present?
+      if search[:query].present?
+        @forums = @forums.search_by_all(search[:query])
+      elsif search[:location].present?
+        @forums = @forums.search_by_location(search[:location])
+      elsif search[:language_list] != [""]
+        @forums = @forums.tagged_with(search[:language_list], any: true)
       end
     else
-      @locallects = policy_scope(User).search_by_base_location(search[:query]).order(created_at: :desc)
-
+      @forums = policy_scope(Forum).all
     end
 
     @languages = ['Abkhaz',
@@ -203,74 +197,35 @@ class LocallectsController < ApplicationController
                   'Yiddish',
                   'Yoruba',
                   'Zhuang, Chuang']
-    @base_location = search[:query].present? ? search[:query] : search[:base_location]
-
-    @hobbies = ['Reading',
-                'Watching TV',
-                'Family Time',
-                'Going to Movies',
-                'Fishing',
-                'Computers',
-                'Gardening',
-                'Walking',
-                'Exercise',
-                'Music',
-                'Night Entertainment',
-                'Hunting',
-                'Team Sports',
-                'Shopping',
-                'Traveling',
-                'Sleeping',
-                'Socializing',
-                'Sweing',
-                'Golf',
-                'Relaxing',
-                'Housework',
-                'Crafts',
-                'Watching Sports',
-                'Bicycling',
-                'Playing Cards',
-                'Hiking',
-                'Cooking',
-                'Swimming',
-                'Camping',
-                'Skiing',
-                'Working on Cars',
-                'Writing',
-                'Boating',
-                'Animal Care',
-                'Bowling',
-                'Painting',
-                'Running',
-                'Dancing',
-                'Horseback Riding',
-                'Tennis',
-                'Theater',
-                'Billards',
-                'Beach',
-                'Teaching',
-                'Volunteer Work']
-    @hobby = search[:query].present? ? search[:query] : search[:hobby]
   end
 
   def show
-    authorize @locallect
-    @friendship = Friendship.new
+    @forum = Forum.find(params[:id])
+    @comment = Comment.new
+    authorize @forum
   end
 
-  def edit
-    @locallect = User.find(current_user.id)
-    authorize @locallect
+  def new
+    @forum = Forum.new
+  end
+
+  def create
+    @forum = Forum.create(forum_params)
+    @forum.save
+    redirect_to forum_path(@forum)
+  end
+
+
+  def destroy
+    @forum = Forum.find(params[:id])
+    @forum.destroy
+    redirect_to forums_path
+    authorize @forum
   end
 
   private
 
-  def find_user
-    @locallect = User.find(params[:id])
+  def forum_params
+    params.require(:forum).permit(:title, :description)
   end
-
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :age, :gender, :base_location, :arrival_date, :job, :birth_location, :mother_tongue)
-  end
-
 end
