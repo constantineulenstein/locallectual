@@ -14,23 +14,23 @@
       <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
+      <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(http://paidforgrades.org/wp-content/uploads/2017/02/volunteer-fb.jpg);">
         <div class="container">
           <div class="carousel-caption text-left">
-            <h1>Welcome to Locallectual</h1>
-            <p>This is a platform to connect those who have been displaced from their homes look for people who will help them integrate into their new ones.</p>
+            <h1>Be a Host in your City</h1>
+            <p>Have knowledge to share that can help newcommers to your city?</p>
             <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
           </div>
         </div>
       </div>
-      <div class="carousel-item"  style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Search for Hosts in your City </h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+      <div class="carousel-item active"  style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
+        <div class="container "=>
+          <div class="carousel-caption ">
+            <h1>Welcome to Locallectual</h1>
+            <p>Connecting those who have been displaced from their homes with people who can help them integrate into their new ones.</p>
             <%= simple_form_for :search, url: locallects_path, method: :get do |f| %>
               <div class="search-form-control form-group mt-5 banner-search">
-                <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search for a place..."/>
+                <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search for a host in your area..."/>
                 <button name="button" type="Search" class="btn p-0" id="home-button">
                   <i class="fas fa-search"></i>
                 </button>
@@ -39,12 +39,12 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);">
+      <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.lbcc.edu/sites/main/files/imagecache/carousel/main-images/hero-adult_education_copy.jpg?1563728376);">
         <div class="container">
           <div class="carousel-caption text-right">
-            <h1>One more for good measure.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+            <h1>Browse the Localletual Forum</h1>
+            <p>Search and share information about your city.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse Forum</a></p>
           </div>
         </div>
       </div>
@@ -65,20 +65,20 @@
     <!-- Three columns of text below the carousel -->
     <div class="row">
       <div class="col-lg-4">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+        <h2>About Locallectual</h2>
+        <p>Locallectual is a platform that connects those who have been displaced from their homes with people who can help them integrate into their new ones.</p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <h2>Be a Host, find a Host</h2>
+        <p>Connecting those who have been displaced from their homes with people who can help them integrate into their new ones.</p>
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div>
       <!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <h2>Heading</h2>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div>
-      <!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <h2>Search our Forum</h2>
+        <p>Search and share information about your city. Browse to learn what topics have already been discussed, current events or post a new topic</p>
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div>
       <!-- /.col-lg-4 -->
