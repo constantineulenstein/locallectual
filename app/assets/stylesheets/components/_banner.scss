@@ -35,6 +35,22 @@
   display: flex;
 }
 
+
+// profile show pages
+
+.profile-banner {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  position: relative;
+}
+
 .show-profile-image {
   position: absolute;
   left: 195px;
