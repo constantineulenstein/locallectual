@@ -210,11 +210,18 @@ class ForumsController < ApplicationController
   end
 
   def create
-    @forum = Forum.create(forum_params)
-    @forum.user_id = current_user.id
-    @forum.save
-    redirect_to forums_path
-    authorize @forum
+    @forum = Forum.new
+    if policy(@forum).create?
+      @forum = Forum.create(forum_params)
+      @forum.user_id = current_user.id
+      @forum.save
+      redirect_to forums_path
+      authorize @forum
+    else
+      skip_authorization
+      redirect_to edit_user_registration_path
+      flash[:alert] = "You need to add a picture and your birthday to do this!"
+    end
   end
 
 

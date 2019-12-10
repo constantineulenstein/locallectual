@@ -9,20 +9,8 @@ class ForumPolicy < ApplicationPolicy
     true
   end
 
-  def new?
-    true
-  end
-
   def create?
-    true
-  end
-
-  def edit?
-    true
-  end
-
-  def update?
-    true
+    (user.photo.present? && user.birthday.present?)
   end
 
   def destroy?
