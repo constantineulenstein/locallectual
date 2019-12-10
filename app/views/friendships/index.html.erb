@@ -1,9 +1,23 @@
 <div class="container">
 
+<!-- counts number of unresponded friend requests inside connection_count variable -->
+<% connection_count = 0 %>
+<% requests = [] %>
+<% current_user.locallect.friendships.each do |friendship| %>
+  <% requests << friendship if friendship.approved == false && friendship.declined == false %>
+<% end %>
+<% requests.each { connection_count += 1 } %>
+
 <nav>
   <div class="nav nav-tabs mt-3" id="nav-tab" role="tablist">
     <a class="nav-item nav-link tab-item active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Connections</a>
-    <a class="nav-item nav-link tab-item" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Friend requests</a>
+    <a class="nav-item nav-link tab-item" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Friend requests
+      <% if connection_count.nil? == false %>
+        <% if connection_count > 0 %>
+          &nbsp<span class="badge badge-danger"><%= connection_count %></span>
+      <% end %>
+    <% end %></a>
+
     <a class="nav-item nav-link tab-item" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Friend requests sent</a>
   </div>
 </nav>

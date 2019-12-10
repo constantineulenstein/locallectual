@@ -35,12 +35,13 @@
       <% end %>
       <%= link_to "Change meeting", "#", class: "friendship-request-button"%>
     <% else %>
-      <%= link_to "book person", "#", class: "friendship-request-button" %>
+      <%= link_to "book #{@other_chatter.first_name}", "#", class: "friendship-request-button" %>
     <% end %>
   </div>
   <div class="message-list col-sm-8">
-    <%= @conversation.subject %>
-    <% receipts = @conversation.receipts_for current_user%>
+    <% unordered = @conversation.receipts_for current_user%>
+    <% receipts = unordered.order(created_at: :desc) %>
+
     <div class="conversations-container">
       <% receipts.reverse.each do |receipt| %>
         <% if receipt.message.sender_id == current_user.id %>
@@ -48,7 +49,7 @@
             <div class="card-conversation cover-by-popup-box">
               <div class="card-product-infos">
                 <p><%= User.find(receipt.message.sender_id).first_name %></p>
-                <h4> <%= message = receipt.message.body %></h4>
+                <h4 class="message-co"> <%= message = receipt.message.body %></h4>
               </div>
             </div>
           </div>
@@ -63,11 +64,15 @@
           </div>
         <% end %>
       <% end %>
-      <div class="single-message-container r">
-        <div class="card-conversation cover-by-popup-box">
+      <div class="send-message-field">
+        <div class="">
           <%= form_tag(reply_path(id: @conversation.id), method: :get) do %>
-            <%= text_field_tag :send_message %>
-            <%= submit_tag "Send" %>
+            <div class="input-container">
+              <div class="message-box">
+                <%= text_field_tag :send_message %>
+              </div>
+                <%= submit_tag "Send" , class: "btn btn-primary send-btn"%>
+            </div>
           <% end %>
         </div>
       </div>
