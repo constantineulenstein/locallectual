@@ -27,7 +27,7 @@
           <% message_count = 0 %>
           <% unread_messages = [] %>
           <% conversation.receipts.each do |message| %>
-            <% unread_messages << message if message.is_read == false && message.mailbox_type == "inbox" %>
+            <% unread_messages << message if message.is_read == false && message.mailbox_type == "inbox" && message.message.sender_id != current_user.id %>
           <% end %>
           <% unread_messages.each { message_count += 1 } %>
 

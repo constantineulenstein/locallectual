@@ -25,6 +25,16 @@
   }
 }
 
+.flex {
+  display: flex;
+}
+
+.friendships-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
+
 .card-friend-image {
   height: 75%;
   width: 90px;
@@ -52,11 +62,11 @@
 }
 
 .card-friend-infos {
-  width: 50vw;
+  width: 100%;
 }
 
 .card-friend-content {
-  width: 85%;
+  width: 100%;
 }
 
 .response-btns {
