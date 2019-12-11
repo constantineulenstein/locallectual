@@ -25,7 +25,6 @@
 
   <!-- connections -->
   <div class="tab-pane fade mt-4 show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-
     <div class="friendships-grid">
       <!-- iterate over all friendships -->
       <% @friendships_approved.each do |friendship| %>
@@ -45,9 +44,14 @@
                   <div>
                     <!-- message button link logic -->
                     <% current_user.mailbox.conversations.each do |conversation| %>
-                      <% conversation.participants.each do |participant| %>
-                        <% if participant == user && participant != current_user %>
-                          <%= link_to "Message #{user.first_name}", conversation_path(conversation), class: "btn btn-outline-dark" %>
+                    <% conversation.participants.each do |participant| %>
+                      <% if participant == user && participant != current_user %>
+                        <%= link_to "Message #{user.first_name}", conversation_path(conversation), class: "btn btn-outline-dark" %>
+                        <% if policy(friendship).destroy? %>
+                           <%= link_to locallect_friendship_path(locallect_id: friendship.locallect_id, id: friendship.id), method: :delete, data: {confirm: "Are you sure you want to delete this freindship?"},class: "ml-3" do %>
+                          <i class="fas fa-user-minus"></i>
+                          <% end %>
+
                         <% end %>
                       <% end %>
                     <% end %>
