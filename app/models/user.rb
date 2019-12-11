@@ -49,7 +49,7 @@ class User < ApplicationRecord
   end
 
   def get_city_img_url
-    BackgroundImageJob.perform_later(self)
+    BackgroundImageJob.perform_later(self.id)
   end
 
 

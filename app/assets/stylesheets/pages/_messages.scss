@@ -96,3 +96,13 @@
 .single-message-container .r {
   text-align: right;
 }
+
+.chat-photo-user {
+  width: 40px;
+  height: 40px;
+  crop:fill;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+}
