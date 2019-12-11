@@ -22,6 +22,7 @@ class BackgroundImageJob < ApplicationJob
         uploaded = Cloudinary::Uploader.upload(api_image)
         user.update!(city_image: uploaded["url"])
         # uploads image from api to cloudinary and grabs url
+
       end
     end
   end
