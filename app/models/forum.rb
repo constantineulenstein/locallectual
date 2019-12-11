@@ -1,5 +1,6 @@
 class Forum < ApplicationRecord
   has_many :comments, dependent: :destroy
+  validates :title, :description, presence: true
 
   include PgSearch::Model
   pg_search_scope :search_by_location,

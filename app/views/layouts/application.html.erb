@@ -7,11 +7,19 @@
     <!-- <link rel="stylesheet" href="/node_modules/select2/dist/css/select2.css"> -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
     <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script> -->
-    <title>TODO</title>
+    <title>Locallectual - helping the displaced connect locally</title>
     <%= csrf_meta_tags %>
+    <%= favicon_link_tag asset_path('locallectuallogo.png') %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+
+    <meta property="og:title" content="Locallectual" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1200&h=630&amp;q=80" />
+    <meta property="og:description" content="Helping the displaced connect locally" />
+    <meta property="og:site_name" content="Locallectual" />
   </head>
   <body>
     <%= render 'shared/navbar' %>

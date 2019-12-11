@@ -20,7 +20,7 @@ class UserMailer < ApplicationMailer
     @user = User.find(params[:user]) # Instance variable => available in view
     @sender = User.find(params[:sender])
     @transaction = Transaction.find(params[:transaction])
-    current_user.mailbox.conversations.each do |conversation|
+    @sender.mailbox.conversations.each do |conversation|
       if conversation.id == params[:conv].to_i
         @conversation = conversation
       end
@@ -32,7 +32,7 @@ class UserMailer < ApplicationMailer
     @user = User.find(params[:user])# Instance variable => available in view
     @sender = User.find(params[:sender])
     @transaction = Transaction.find(params[:transaction])
-    current_user.mailbox.conversations.each do |conversation|
+    @sender.mailbox.conversations.each do |conversation|
       if conversation.id == params[:conv].to_i
         @conversation = conversation
       end

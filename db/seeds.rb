@@ -234,9 +234,7 @@ hobbies = ['Reading',
            'Teaching',
            'Volunteer Work']
 
-
-
-jeff = User.create(email: "jeff@gmail.com",
+jeff = User.create(email: "jeff.yeung23@gmail.com",
                    password: "123456",
                    first_name: "Jeff",
                    last_name: "Yeung",
@@ -251,7 +249,7 @@ jeff = User.create(email: "jeff@gmail.com",
                    remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012068/nxzy7fjsjght1mowd3t0.jpg"
                    )
 
-elliot = User.create(email: "elliot@gmail.com",
+elliot = User.create(email: "elliot.s.tennison@gmail.com",
                      password: "123456",
                      first_name: "Elliot",
                      last_name: "Tennison",
@@ -266,7 +264,7 @@ elliot = User.create(email: "elliot@gmail.com",
                      remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012083/btt73tsfl2zdap0mqerq.jpg"
                      )
 
-const = User.create(email: "constantin@gmail.com",
+const = User.create(email: "constantin.eulenstein@t-online.de",
                     password: "123456",
                     first_name: "Constantin",
                     last_name: "Eulenstein",
@@ -281,7 +279,7 @@ const = User.create(email: "constantin@gmail.com",
                     remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575011826/btpnaxpn2tebv1hhznt0.jpg"
                     )
 
-dan = User.create(email: "dan@gmail.com",
+dan = User.create(email: "dangaligato@gmail.com",
                   password: "123456",
                   first_name: "Dan",
                   last_name: "Galim",
@@ -307,13 +305,11 @@ female1 = User.create(email: Faker::Internet.email,
                   birthday: Faker::Date.birthday,
                   birth_location: Faker::Address.city,
                   admin: true,
-                  bio: "Kaitlin Fasse arrived at  Volunteer Center office last fall seeking a volunteer position, or as it turned out, several volunteer positions. After six years in an uninspiring office job, Kaitlin was longing to dive into work that excited her on a soul level. For Kaitlin, that work was educating and mentoring youth, even if it meant squeezing in a volunteer position during her lunch breaks.
+                  bio: "I arrived at  Volunteer Center office last fall seeking a volunteer position, or as it turned out, several volunteer positions. After six years in an uninspiring office job, I was longing to dive into work that excited her on a soul level. For me, that work was educating and mentoring youth, even if it meant squeezing in a volunteer position during my lunch breaks.
 
-Armed with several referrals to local tutoring programs, Kaitlin left our MATCH appointment and quickly began volunteering with a local educational enrichment project, The Young Writers Program.
+Armed with several referrals to local tutoring programs, I left our MATCH appointment and quickly began volunteering with a local educational enrichment project, The Young Writers Program.
 
-Soon after our meeting, Kaitlin’s job was outsourced and she found herself with a modest severance package and a lot more flexibility in her schedule. While she might have viewed the lay off as a harrowing obstacle, she instead saw it as the “perfect opportunity” to pursue more of the volunteer work she enjoying.
-
-We recently caught up with Kaitlin, now volunteering for a total of four non-profit programs, to discuss how her experiences volunteering are helping her understand how to effect real change, say no to fear-based decisions, and lead a life she loves.",
+Soon after our meeting, my job was outsourced and she found herself with a modest severance package and a lot more flexibility in my schedule. While I might have viewed the lay off as a harrowing obstacle, I instead saw it as the “perfect opportunity” to pursue more of the volunteer work.",
                   remote_photo_url: "https://www.larutadelsorigens.cat/wallpic/full/204-2045121_sweet-stylish-indian-girl-with-goggles-wallpaper-1920x1280p.jpg"
                   )
 
@@ -328,9 +324,7 @@ male1 = User.create(email: Faker::Internet.email,
                   birthday: Faker::Date.birthday,
                   birth_location: Faker::Address.city,
                   admin: true,
-                  bio: "Jacob Martinez is a committed advocate for youth in Santa Cruz County. Over the past decade, he has introduced Watsonville teens to technology through after-school engineering and computer classes in the Pajaro Valley School District. As Project Director at ETR’s Watsonville TEC, Jacob led a variety of technology programs that supported youth from rural communities to pursue higher education. Under his leadership, students and programs went on to receive local and national recognition.
-
-Despite his successes, he still saw a gap in the number of current and former students that didn’t have access to computers or the internet for their school work and in their professional lives. Out of this need, “Digital Nest” was born. Located in Watsonville, “Digital Nest” aims to provide a high-tech space for young people ages 12 to 24 to gain marketable technology skills.",
+                  bio: "I am a committed advocate for youth in Santa Cruz County. Over the past decade, I have introduced Watsonville teens to technology through after-school engineering and computer classes in the Pajaro Valley School District. As Project Director at ETR’s Watsonville TEC, I led a variety of technology programs that supported youth from rural communities to pursue higher education. Under my leadership, students and programs went on to receive local and national recognition.",
                   remote_photo_url: "http://news.bbc.co.uk/nol/shared/spl/hi/pop_ups/05/europe_poles_react/img/6.jpg"
                   )
 
@@ -578,9 +572,18 @@ male9 = User.create(email: Faker::Internet.email,
 
 
 
+constPost = Forum.create(title: "What can I do?", description: "Pray for those who are afraid. Pray against xenophobia or abuse and those who would seek to exploit people’s misery for profit. Pray for those who care for refugees and are worn down. You probably cannot go to the worst places and help but you can support and encourage those who do work there.
+Find out more. There is a lot of fear. There is a lot of misinformation. So make a decision to find out reliable information and share it in your conversations and on social media. Be an advocate for truth. Reassure. Ask questions to help friends consider what is right. Challenge falsehood. If politics is your thing, look at our advocacy materials and get ready to speak up. Pray for the politics of the situation.
+Are there refugees or asylum seekers living near you? Can you befriend them? Can you volunteer with a local NGO or persuade your church to get involved? If not, be sensible and don’t act alone but you and a friend can still say hello to refugees (of your gender).
+What simple things will make a difference? Helping someone understand the bus timetable or how to find what they want in the supermarket or how to fill in a form. Encouraging them in their language learning. Enjoying the local park / museum together. Accompanying a mum and child to a parent and toddler club. Playing sport or games together. Cooking for one another and sharing meals.", user_id: jeff.id)
 
+Comment.create(forum_id: constPost.id, user_id: male9.id, description: "Thanks for the info!")
 
+Forum.create(title: "Playstation to give", description: "Hey everyone, I've got a playstation to give for free. Send me a friend request if interested", user_id: male7.id, location: "Shanghai")
 
+quest = Forum.create(title: "Questions regarding metro", description: "Good day, can someone tell me where to buy the metro cards if I do not have weChat yet?", location: "Shanghai", user_id: male3.id)
+Comment.create(forum_id: quest.id, user_id: dan.id, description: "Hi, you can just go to the service points and ask where the ticket booths are. Keep in mind some ticket booths only take coins. Which Metro station are you looking to buy the ticket? Maybe I can help you out?")
+Comment.create(forum_id: quest.id, user_id: male3.id, description: "Jin an temple. is that close to you? Want to try out for the first time this weekend")
 
 # 5.times do |i|
 

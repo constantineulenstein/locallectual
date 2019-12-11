@@ -3,6 +3,8 @@ class User < ApplicationRecord
   has_one :explorer, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :forums, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,6 +12,7 @@ class User < ApplicationRecord
   after_create :data_assignment
   after_create :get_city_img_url
   after_update :get_city_img_url, if: :saved_change_to_base_location?
+  # before_update :get_city_img_url, if: :base_location_changed?
   after_update :calculate_age
 
   # Utilizing pg_search for searching baselocation of locallects
@@ -49,7 +52,7 @@ class User < ApplicationRecord
   end
 
   def get_city_img_url
-    BackgroundImageJob.perform_later(self)
+    BackgroundImageJob.perform_later(self.id)
   end
 
 

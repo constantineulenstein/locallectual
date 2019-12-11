@@ -7,10 +7,9 @@
 }
 
 .card-conversation {
-  min-width: 50px;
-  max-width: 350px;
+  min-width: 40px;
+  max-width: 400px;
   overflow: hidden;
-  box-shadow: 0 0 15px rgba(200,200,200,0.2);
   background: #f2f0f1;
   display: flex;
   padding: 5px 10px;
@@ -21,6 +20,7 @@
 .avatar {
   width: 40px;
   height: 40px;
+  margin-top: 5px;
 }
 
 .card-conversation h2 {
@@ -52,6 +52,7 @@
 }
 
 .convo-info {
+  width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;

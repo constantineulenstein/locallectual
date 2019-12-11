@@ -1,28 +1,40 @@
 <div class="container w-50 mt-5 p-5 bg-light">
   <div class="post pb-3 ">
-    <h2 class="d-flex">
-      <%= @forum.title %>
-      <% if policy(@forum).destroy? %>
-        <%= link_to forum_path(@forum.id), method: :delete, data: {confirm: "Arey you sure?"} do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
+    <div class="d-flex align-items-center my-3"> <!-- photo and tags and title and delete -->
+      <%= link_to locallect_path(User.find(@forum.user_id)) do  %>
+      <div class= "avatar post-photo-user cover-by-popup-image-book-me ml-1" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= User.find(@forum.user_id).photo %>);"></div>
       <% end %>
-    </h2>
-    <br>
+      <div class="title-and-tags ml-3"> <!-- title and tags -->
+        <div class="title-and-delete d-flex align-items-center">
+          <h3 class="mt-3 mr-3 h3"><%= @forum.title %></h3>
+          <% if policy(@forum).destroy? %>
+            <%= link_to forum_path(@forum), method: :delete, data: {confirm: "Arey you sure?"} do %>
+              <i class="fas fa-trash-alt h6"></i>
+            <% end %>
+          <% end %>
+        </div>
+        <p><em>Published by: <%= User.find(@forum.user_id).first_name %>  <%= User.find(@forum.user_id).last_name %>- <%= @forum.created_at.strftime("%A, %d %b %Y %l:%M %p") %></em></p>
+      </div>
+    </div>
     <p><%= @forum.description %></p>
   </div>
   <div class="comments py-3">
-    <h3>Comments</h3>
-    <% @forum.comments.each do |comment| %>
-    <div class="d-flex">
-      <p class="mb-0 mr-3"><%= comment.description %></p>
-      <% if policy(comment).destroy? %>
-        <%= link_to forum_comment_path(comment.id), method: :delete, data: {confirm: "Arey you sure?"} do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      <% end %>
-    </div>
-      <p class="mt-0">Commented on <%= comment.created_at.strftime("%A, %d %b %Y %l:%M %p") %> by <%= User.find(comment.user_id).first_name %> <%= User.find(comment.user_id).last_name %></p>
+    <h4 class="h4">Comments</h4>
+    <% @forum.comments.order(created_at: :asc).each do |comment| %>
+      <div class="comment border-bottom">
+        <div class="d-flex align-items-center my-3"> <!-- photo and tags delete -->
+          <%= link_to locallect_path(User.find(comment.user_id)) do  %>
+          <div class= "avatar comment-photo-user ml-1" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= User.find(comment.user_id).photo %>);"></div>
+          <% end %>
+          <p class="mx-3 mb-0"><em>Commented by: <%= User.find(comment.user_id).first_name %>  <%= User.find(comment.user_id).last_name %>- <%= comment.created_at.strftime("%A, %d %b %Y %l:%M %p") %></em></p>
+          <% if policy(comment).destroy? %>
+            <%= link_to forum_comment_path(comment), method: :delete, data: {confirm: "Arey you sure?"} do %>
+              <i class="fas fa-trash-alt h6"></i>
+            <% end %>
+          <% end %>
+        </div>
+        <p><%= comment.description %></p>
+      </div>
     <% end %>
   </div>
   <%= simple_form_for(@comment, url: forum_comments_path(@forum), method: :post) do |f| %>
@@ -32,6 +44,6 @@
     </div>
   <% end %>
   <br>
-  <%= link_to "Go back", forums_path  %>
+  <%= link_to "Go back", forums_path, class: "back-link"  %>
 </div>
 

@@ -2,8 +2,8 @@ class ConversationsController < ApplicationController
   before_action :find_convo, only: [:show, :reply]
 
   def index
-    @conversations = current_user.mailbox.conversations
-    @messages = policy_scope(User)
+    @conversations = current_user.mailbox.conversations.order(updated_at: :desc)
+    skip_policy_scope
   end
 
   def show

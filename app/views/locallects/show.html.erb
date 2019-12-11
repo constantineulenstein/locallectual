@@ -1,58 +1,80 @@
 <div class="to-be-darkened">
-  <div class="profile-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @locallect.city_image %>);">
+  <div class="cover-by-popup-banner profile-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @locallect.city_image %>);">
     <div class="home-banner-container">
     </div>
-    <div class= "cover-by-popup-image show-profile-image" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= @locallect.photo %>);">
-    </div>
+    <% if current_user.photo.file.nil? %>
+      <div class= "cover-by-popup-image show-profile-image" style="background-image: url('<%= image_path 'default-avatar.png' %>');"></div>
+    <% else %>
+      <div class= "cover-by-popup-image show-profile-image" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= @locallect.photo %>);"></div>
+    <% end %>
   </div>
   <div class="mgt50"></div>
-  <div class="page-bottom" >
-    <div class="cover-by-popup-box left-box text-center pt-5 w-25">
-      <h2><%= @locallect.first_name %> <%= @locallect.last_name %></h2>
+  <div class="page-bottom">
+    <div class="cover-by-popup-box left-box text-center w-25">
+      <h2 class="profile-name"><%= @locallect.first_name %> <%= @locallect.last_name %></h2>
       <br>
-      <p><%= @locallect.gender %> - <%= @locallect.age %></p>
-      <p>Lives in <%= @locallect.base_location %> <!-- since --> <%#= @locallect.arrival_date.strftime("%B %Y") %></p>
-      <p>Languages: <%  @locallect.languages.each do |language| %>
-          <%= language.name %>
-        <% end  %>
-        <p>Interests: <%  @locallect.hobbies.each do |hobby| %>
-            <%= hobby.name %>
-          <% end %>
-        </p>
-        <!-- Check if you are friends and friendship was approved -->
-        <% if current_user.friendships.any? {|friendship| @locallect.friendships.include?(friendship) && friendship.approved } %>
-          <% current_user.mailbox.conversations.each do |conversation| %>
-            <% conversation.participants.each do |participant| %>
-              <% if participant == @locallect && participant != current_user %>
-                <%= link_to "Message #{@locallect.first_name}", conversation_path(conversation), class: "btn btn-outline-dark" %>
-              <% end %>
+      <p class="icon-text"><i class="fas fa-home"></i>  <%= @locallect.base_location %></p>
+      <!-- since --> <%#= @locallect.arrival_date.strftime("%B %Y") %>
+      <p class="icon-text"><%= @locallect.gender %>  <%= @locallect.age %></p>
+      <!-- Check if you are friends and friendship was approved -->
+      <% if current_user.friendships.any? {|friendship| @locallect.friendships.include?(friendship) && friendship.approved } %>
+        <% current_user.mailbox.conversations.each do |conversation| %>
+          <% conversation.participants.each do |participant| %>
+            <% if participant == @locallect && participant != current_user %>
+              <%= link_to "Message #{@locallect.first_name}", conversation_path(conversation), class: "btn btn-outline-dark" %>
             <% end %>
           <% end %>
-          <!-- Check if friend request was sent -->
-        <% elsif current_user.friendships.any? {|friendship| @locallect.friendships.include?(friendship)} %>
-          <p class="border">Friend request sent</p>
-          <!-- else show button to send friend request -->
-        <% else %>
-          <%= link_to "Get to know #{@locallect.first_name}", "#", class: "btn btn-outline-dark request-button" %>
         <% end %>
-      </div>
-      <div class="cover-by-popup-box right-box pt-5">
-        <h2>Bio</h2>
-        <p><%= @locallect.bio %></p>
-      </div>
-    </div>
-    <!-- Will only pop up if friend request will be send -->
-    <div class="container w-50 border-radius p-5 request-field">
-      <h3 class="my-3">Become friends with <%= @locallect.first_name %></h3>
-      <%= simple_form_for(@friendship, url: locallect_friendships_path(@locallect), method: :post) do |f| %>
-        <%= f.input :request_message, label: "Tell something about you", class: "friendrequest-text" %>
-        <%= f.button :submit, "Send friend request", class: "btn btn-outline-light" %>
-      <% end %>
-      <%= link_to locallect_path(@locallect) do %>
-        <i class="fas fa-times cancel-cross"></i>
+        <!-- Check if friend request was sent -->
+      <% elsif current_user.friendships.any? {|friendship| @locallect.friendships.include?(friendship)} %>
+        <p class="border">Friend request sent</p>
+        <!-- else show button to send friend request -->
+      <% elsif current_user.id != @locallect.id %>
+        <%= link_to "Get to know #{@locallect.first_name}", "#", class: "btn btn-outline-dark request-button" %>
       <% end %>
     </div>
-    <!-- pass both images as variables -->
-    <script>
-      const user = <%= @locallect.to_json.to_s.html_safe %>
-    </script>
+    <div class="rightside w-75">
+      <div class="cover-by-popup-box right-box">
+        <div class="aboutme">
+          <h2>About Me</h2>
+          <br>
+          <p class="bio-text"><%= @locallect.bio %></p>
+        </div>
+      </div>
+      <div class="language-hobbies d-flex">
+        <div class="cover-by-popup-box center-box mt-3 ">
+          <i class="fas fa-language"></i>
+          <% slash1 = @locallect.languages.count > 1 ? " |" : nil %>
+          <% string = ""  %>
+          <% if slash1 %>
+            <% @locallect.languages.each do |language| %>
+              <% string << " #{language.name}#{slash1}" %>
+            <% end  %>
+          <% end  %>
+          <p class="mt-1"><%= string.delete_suffix(" |") %></p>
+        </div>
+        <div class="cover-by-popup-box center-box mt-3">
+          <i class="fas fa-dumbbell"></i>
+          <% slash2 = @locallect.hobbies.count > 1 ? " |" : nil %>
+          <p class="mt-1"><%  @locallect.hobbies.each do |hobby| %>
+              <%= "#{hobby.name}#{slash2}" %>
+            <% end %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Will only pop up if friend request will be send -->
+  <div class="container w-50 border-radius p-5 request-field">
+    <h3 class="my-3">Become friends with <%= @locallect.first_name %></h3>
+    <%= simple_form_for(@friendship, url: locallect_friendships_path(@locallect), method: :post) do |f| %>
+      <%= f.input :request_message, label: "Tell something about you", class: "friendrequest-text" %>
+      <%= f.button :submit, "Send friend request", class: "btn btn-outline-light" %>
+    <% end %>
+    <%= link_to locallect_path(@locallect) do %>
+      <i class="fas fa-times cancel-cross"></i>
+    <% end %>
+  </div>
+  <!-- pass both images as variables -->
+  <script>
+    const user = <%= @locallect.to_json.to_s.html_safe %>
+  </script>
