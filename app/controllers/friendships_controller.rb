@@ -56,4 +56,12 @@ class FriendshipsController < ApplicationController
     authorize @friendship
     redirect_to locallect_friendships_path(current_user)
   end
+
+  def destroy
+    @friendship = Friendship.find(params[:id])
+    @friendship.destroy
+    redirect_to locallect_friendships_path(current_user)
+    authorize @friendship
+  end
+
 end
