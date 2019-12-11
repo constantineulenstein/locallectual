@@ -18,11 +18,13 @@
         <% end %>
         <div class="convo-info">
           <div class="card-friend-infos ml-5">
-            <h4><%= link_to "#{@other_chatter.first_name} #{@other_chatter.last_name}", conversation_path(conversation.id) %></h4>
-            <% if conversation.receipts.last.message.sender_id == current_user.id %>
-              <h6>You: <%= conversation.receipts.last.message.body %></h6>
-            <% else %>
-              <h6><%= @other_chatter.first_name %>: <%= conversation.receipts.last.message.body %></h6>
+            <%= link_to conversation_path(conversation.id) do %>
+              <h4><%= @other_chatter.first_name %> <%= @other_chatter.last_name %></h4>
+              <% if conversation.receipts.last.message.sender_id == current_user.id %>
+                <h6>You: <%= conversation.receipts.last.message.body %></h6>
+              <% else %>
+                <h6><%= @other_chatter.first_name %>: <%= conversation.receipts.last.message.body %></h6>
+              <% end %>
             <% end %>
           </div>
           <div>

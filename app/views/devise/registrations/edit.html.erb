@@ -8,7 +8,6 @@
           <%= f.input :first_name, input_html: {value: current_user.first_name} %>
           <%= f.input :last_name, input_html: {value: current_user.last_name} %>
           <%= f.input :birthday, as: :string, input_html: {class: "datepicker bg-white", value: current_user.birthday} %>
-          <%= f.input :job, input_html: {value: current_user.job} %>
           <%= f.input :gender, collection: ["Male", "Female", "Diverse"], input_html: {value: current_user.gender} %>
           <%= f.input :base_location, label: "Where do you consider yourself to be a locallectual / Where do you seek to get to know locals?", input_html: {value: current_user.base_location} %>
           <%= f.input :arrival_date, label: "How long have you been in this city for?", input_html: {value: current_user.arrival_date}, discard_day: true, discard_hour: true, start_year: Date.today.year - 50, end_year: Date.today.year %>
