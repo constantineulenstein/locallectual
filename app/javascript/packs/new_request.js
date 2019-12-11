@@ -26,7 +26,14 @@ const displayExtraField = (e) => {
   page.classList.add("overlay");
   const coverByPopupBox = document.querySelectorAll(".cover-by-popup-box").forEach ((e) => {
     e.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7))";
+    e.style.border = "none";
   })
+
+  if (document.querySelector(".post-photo-user")){
+    document.querySelectorAll(".post-photo-user").forEach ((e) => {
+      e.style.display = "none"
+    })
+  }
 
   if (document.querySelector(".cover-by-popup-image-book")){
 
@@ -40,11 +47,11 @@ const displayExtraField = (e) => {
     document.querySelector(".cover-by-popup-button").classList.remove("btn-secondary");
     document.querySelector(".cover-by-popup-button").classList.add("btn-outline-dark");
 
-
   } else if (document.querySelector(".cover-by-popup-image")) {
     document.querySelector(".cover-by-popup-image").style.backgroundImage =  `linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(${user.photo.url})`;
     document.querySelector(".cover-by-popup-banner").style.backgroundImage = `linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(${user.city_image})`;
   }
+
 }
 
 
