@@ -29,7 +29,7 @@
       <% elsif current_user.friendships.any? {|friendship| @locallect.friendships.include?(friendship)} %>
         <p class="border">Friend request sent</p>
         <!-- else show button to send friend request -->
-      <% else %>
+      <% elsif current_user.id != @locallect.id %>
         <%= link_to "Get to know #{@locallect.first_name}", "#", class: "btn btn-outline-dark request-button" %>
       <% end %>
     </div>
