@@ -66,6 +66,11 @@
                   </div>
                 </div>
               </div>
+              <% date = receipt.message.created_at.to_s.split(" ") %>
+              <% time = date[1].split(":") %>
+              <div class="ml-5 pl-4">
+                <p class="small"><%= time[0]%>:<%= time[1] %>, <%= date[0] %></p>
+              </div>
             <% end %>
           <% end %>
         </div>
