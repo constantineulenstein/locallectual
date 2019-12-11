@@ -5,37 +5,41 @@
     <h3>You have no conversations yet</h3>
   <% end %>
 
-  <% @conversations.each do |conversation| %>
-    <div class="card-friend m-3">
-      <% conversation.participants.each do |participant| %>
-        <% if current_user.id != participant.id %>
-          <% @other_chatter = participant %>
+  <div class="friendships-grid">
+    <% @conversations.each do |conversation| %>
+      <div class="card-friend m-3">
+        <% conversation.participants.each do |participant| %>
+          <% if current_user.id != participant.id %>
+            <% @other_chatter = participant %>
+          <% end %>
         <% end %>
-      <% end %>
-      <%= cl_image_tag @other_chatter.photo, class: "card-friend-image ml-1" %>
-      <div class="convo-info">
-        <div class="card-friend-infos ml-5">
-          <h4><%= link_to "#{@other_chatter.first_name} #{@other_chatter.last_name}", conversation_path(conversation.id) %></h4>
-          <% if conversation.receipts.last.message.sender_id == current_user.id %>
-            <h6>You: <%= conversation.receipts.last.message.body %></h6>
-          <% else %>
-            <h6><%= @other_chatter.first_name %>: <%= conversation.receipts.last.message.body %></h6>
-          <% end %>
-        </div>
-        <div>
-          <!-- counts number of unopened messages inside message_count variable -->
-          <% message_count = 0 %>
-          <% unread_messages = [] %>
-          <% conversation.receipts.each do |message| %>
-            <% unread_messages << message if message.is_read == false && message.mailbox_type == "inbox" && message.message.sender_id != current_user.id %>
-          <% end %>
-          <% unread_messages.each { message_count += 1 } %>
+        <%= link_to conversation_path(conversation.id) do %>
+          <%= cl_image_tag @other_chatter.photo, class: "card-friend-image ml-1" %>
+        <% end %>
+        <div class="convo-info">
+          <div class="card-friend-infos ml-5">
+            <h4><%= link_to "#{@other_chatter.first_name} #{@other_chatter.last_name}", conversation_path(conversation.id) %></h4>
+            <% if conversation.receipts.last.message.sender_id == current_user.id %>
+              <h6>You: <%= conversation.receipts.last.message.body %></h6>
+            <% else %>
+              <h6><%= @other_chatter.first_name %>: <%= conversation.receipts.last.message.body %></h6>
+            <% end %>
+          </div>
+          <div>
+            <!-- counts number of unopened messages inside message_count variable -->
+            <% message_count = 0 %>
+            <% unread_messages = [] %>
+            <% conversation.receipts.each do |message| %>
+              <% unread_messages << message if message.is_read == false && message.mailbox_type == "inbox" && message.message.sender_id != current_user.id %>
+            <% end %>
+            <% unread_messages.each { message_count += 1 } %>
 
-          <% if message_count > 0 %>
-            <span class="badge badge-danger h-25"><%= message_count %></span>
-          <% end %>
+            <% if message_count > 0 %>
+              <span class="badge badge-danger h-25"><%= message_count %></span>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
