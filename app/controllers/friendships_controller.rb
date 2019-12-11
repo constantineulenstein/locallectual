@@ -44,7 +44,7 @@ class FriendshipsController < ApplicationController
 
 
     authorize @friendship
-    current_user.send_message(User.find(@friendship.explorer_id), "Hey, you've got a new connection! Start talking to #{current_user.first_name}!", "Conversation between #{@friendship.users.first.first_name} and #{@friendship.users.last.first_name}")
+    current_user.send_message(User.find(@friendship.explorer_id), "Hey, I've accepted your friend request. Let's chat!", "Conversation between #{@friendship.users.first.first_name} and #{@friendship.users.last.first_name}")
     redirect_to locallect_friendships_path(current_user)
   end
 
