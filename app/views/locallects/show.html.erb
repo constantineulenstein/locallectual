@@ -8,9 +8,11 @@
   <div class="mgt50"></div>
   <div class="page-bottom">
     <div class="cover-by-popup-box left-box text-center w-25">
-      <h2><%= @locallect.first_name %> <%= @locallect.last_name %></h2>
-      <p><%= @locallect.gender %> / <%= @locallect.age %></p>
-      <p>Lives in <%= @locallect.base_location %> <!-- since --> <%#= @locallect.arrival_date.strftime("%B %Y") %></p>
+      <h2 class="profile-name"><%= @locallect.first_name %> <%= @locallect.last_name %></h2>
+      <br>
+      <p class="icon-text"><i class="fas fa-home"></i>  <%= @locallect.base_location %></p>
+      <!-- since --> <%#= @locallect.arrival_date.strftime("%B %Y") %>
+      <p class="icon-text"><i class="fas fa-genderless"></i>  <%= @locallect.gender %> | <%= @locallect.age %></p>
       <!-- Check if you are friends and friendship was approved -->
       <% if current_user.friendships.any? {|friendship| @locallect.friendships.include?(friendship) && friendship.approved } %>
         <% current_user.mailbox.conversations.each do |conversation| %>
@@ -28,23 +30,28 @@
         <%= link_to "Get to know #{@locallect.first_name}", "#", class: "btn btn-outline-dark request-button" %>
       <% end %>
     </div>
-    <div class="cover-by-popup-box right-box">
-      <h2>About Me</h2>
-      <br>
-      <p><%= @locallect.bio %></p>
-    </div>
-  </div>
-  <div class="page-bottom">
-    <div class="cover-by-popup-box center-box mt-3">
-      <i class="fas fa-language"></i>
-      <p><%  @locallect.languages.each do |language| %>
-          <%= language.name %> |
-        <% end  %>  </p>
-      <i class="fas fa-dumbbell"></i>
-      <p><%  @locallect.hobbies.each do |hobby| %>
-          <%= hobby.name %> |
-        <% end %>
-      </p>
+    <div class="rightside">
+      <div class="cover-by-popup-box right-box">
+        <div class="aboutme">
+          <h2>About Me</h2>
+          <br>
+          <p class="bio-text"><%= @locallect.bio %></p>
+        </div>
+      </div>
+      <div class="language-hobbies d-flex">
+        <div class="cover-by-popup-box center-box mt-3 ">
+          <i class="fas fa-language"></i>
+          <p class="mt-1"><%  @locallect.languages.each do |language| %>
+              <%= language.name %> |
+            <% end  %>  </p>
+        </div>
+        <div class="cover-by-popup-box center-box mt-3">
+          <i class="fas fa-dumbbell"></i>
+          <p class="mt-1"><%  @locallect.hobbies.each do |hobby| %>
+              <%= hobby.name %> |
+            <% end %></p>
+        </div>
+      </div>
     </div>
   </div>
   <!-- Will only pop up if friend request will be send -->
