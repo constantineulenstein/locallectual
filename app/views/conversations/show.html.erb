@@ -53,7 +53,12 @@
                 </div>
                 <div class="p-1"></div>
                   <%#= cl_image_tag @logged_in_chatter.photo, class: "avatar ml-1 cover-by-popup-image-book" %>
-                  <div class= "avatar chat-photo-user cover-by-popup-image-book-me ml-1" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= current_user.photo %>);"></div>
+                <div class= "avatar chat-photo-user cover-by-popup-image-book-me ml-1" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= current_user.photo %>);"></div>
+              </div>
+              <% date = receipt.message.created_at.to_s.split(" ") %>
+              <% time = date[1].split(":") %>
+              <div class="text-right mr-5 pr-4">
+                <p class="small mb-1"><%= time[0]%>:<%= time[1] %>, <%= date[0] %></p>
               </div>
             <% else %>
               <div class="single-message-container l">
@@ -69,7 +74,7 @@
               <% date = receipt.message.created_at.to_s.split(" ") %>
               <% time = date[1].split(":") %>
               <div class="ml-5 pl-4">
-                <p class="small"><%= time[0]%>:<%= time[1] %>, <%= date[0] %></p>
+                <p class="small mb-1"><%= time[0]%>:<%= time[1] %>, <%= date[0] %></p>
               </div>
             <% end %>
           <% end %>
