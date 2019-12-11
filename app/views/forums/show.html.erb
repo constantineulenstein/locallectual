@@ -20,7 +20,7 @@
   </div>
   <div class="comments py-3">
     <h4 class="h4">Comments</h4>
-    <% @forum.comments.each do |comment| %>
+    <% @forum.comments.order(created_at: :asc).each do |comment| %>
       <div class="comment border-bottom">
         <div class="d-flex align-items-center my-3"> <!-- photo and tags delete -->
           <%= link_to locallect_path(User.find(comment.user_id)) do  %>
