@@ -25,7 +25,7 @@ const displayExtraField = (e) => {
 
   page.classList.add("overlay");
   const coverByPopupBox = document.querySelectorAll(".cover-by-popup-box").forEach ((e) => {
-    e.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7))"
+    e.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7))";
   })
 
   if (document.querySelector(".cover-by-popup-image-book")){
@@ -36,6 +36,10 @@ const displayExtraField = (e) => {
     document.querySelectorAll(".cover-by-popup-image-book-me").forEach ((e) => {
       e.style.backgroundImage =  `linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(${current_user.photo.url})`
     })
+
+    document.querySelector(".cover-by-popup-button").classList.remove("btn-secondary");
+    document.querySelector(".cover-by-popup-button").classList.add("btn-outline-dark");
+
 
   } else if (document.querySelector(".cover-by-popup-image")) {
     document.querySelector(".cover-by-popup-image").style.backgroundImage =  `linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(${user.photo.url})`;
