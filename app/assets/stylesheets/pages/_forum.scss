@@ -1,3 +1,36 @@
 .post a {
-  color: black;
+  color: #454545;
+}
+
+.comment a {
+  color: #454545;
+}
+
+.post-photo-user {
+  width: 60px;
+  height: 60px;
+  crop:fill;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+}
+
+.comment-photo-user {
+  width: 40px;
+  height: 40px;
+  crop:fill;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+}
+
+.back-link {
+  color: #5A5A5A;
+}
+
+
+.forum-new {
+  margin-left: 80px !important;
 }

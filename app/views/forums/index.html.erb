@@ -1,31 +1,38 @@
 <div class="to-be-darkened">
   <div class="mx-5 bg-light col-sm-9 forum-search cover-by-popup-box">
     <%= simple_form_for :search, url: forums_path, method: :get do |f| %>
-      <div class="form-inputs p-3 form-inline mt-5 d-flex">
+      <div class="form-inputs p-3 form-inline mt-5">
         <%= f.input :query, label: false, placeholder: "Specify content", input_html: { class: 'cover-by-popup-box' } %>
         <%= f.input :location, label: false, placeholder: "Specify location", input_html: { class: 'cover-by-popup-box' } %>
         <%= f.input :language_list, collection: @languages, input_html: {class: "select2 ml-3 cover-by-popup-box",  multiple: "multiple"}, label: false %> <!-- placeholder is  in JS file -->
         <%= f.button :submit, "Search", class: "btn btn-outline-dark" %>
+        <%= link_to "Add a new post", "#", class: "btn btn-outline-dark forum-new request-button" %>
       </div>
     <% end %>
-    <%= link_to "Add a new post", "#", class: "btn btn-outline-dark forum-new request-button"  %>
   </div>
 
   <div class="px-5 mt-3 d-flex">
     <div class="posts col-sm-9">
       <% @forums.each do |forum| %>
-      <div class="post border-bottom">
-        <div class="d-flex align-items-center">
-        <h2 class="mt-3 mr-3"><%= link_to forum.title, forum_path(forum.id) %></h2>
-        <% if policy(forum).destroy? %>
-          <%= link_to forum_path(forum), method: :delete, data: {confirm: "Arey you sure?"} do %>
-            <i class="fas fa-trash-alt"></i>
-          <% end %>
-        <% end %>
+        <div class="post border-bottom">
+          <div class="d-flex align-items-center my-3"> <!-- photo and tags and title and delete -->
+            <%= link_to locallect_path(User.find(forum.user_id)) do  %>
+            <div class= "avatar post-photo-user ml-1" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= User.find(forum.user_id).photo %>);"></div>
+            <% end %>
+            <div class="title-and-tags ml-3"> <!-- title and tags -->
+              <div class="title-and-delete d-flex align-items-center">
+                <h3 class="mt-3 mr-3 h3"><%= link_to forum.title, forum_path(forum.id) %></h3>
+                <% if policy(forum).destroy? %>
+                  <%= link_to forum_path(forum), method: :delete, data: {confirm: "Arey you sure?"} do %>
+                    <i class="fas fa-trash-alt h6"></i>
+                  <% end %>
+                <% end %>
+              </div>
+              <p><em>Published by: <%= User.find(forum.user_id).first_name %>  <%= User.find(forum.user_id).last_name %>- <%= forum.created_at.strftime("%A, %d %b %Y %l:%M %p") %> - Comments (<%= forum.comments.count %>)</em></p>
+            </div>
+          </div>
+          <p><%= forum.description %></p>
         </div>
-        <p><%= forum.description %></p>
-        <p><em>Published by: <%= User.find(forum.user_id).first_name %>  <%= User.find(forum.user_id).last_name %>- <%= forum.created_at.strftime("%A, %d %b %Y %l:%M %p") %> - Comments (<%= forum.comments.count %>)</em></p>
-      </div>
       <% end %>
     </div>
   </div>
@@ -39,7 +46,7 @@
     <div class="form-inputs">
       <%= f.input :title, as: :string%>
       <%= f.input :description, as: :text, label: "Content"%>
-      <%= f.input :location, as: :string, label: "Which city does this question concern?" %>
+      <%= f.input :location, as: :string, label: "Which city does this question relate to?" %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, "Post", class: "btn btn-outline-light" %>
@@ -49,4 +56,3 @@
     <i class="fas fa-times cancel-cross"></i>
   <% end %>
 </div>
-
