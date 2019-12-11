@@ -10,15 +10,7 @@ class ConversationsController < ApplicationController
     authorize current_user
     @transaction = Transaction.new
 
-    # need to find existing transaction between 2 user to update the record
-    @transactions = current_user.transactions
-    @transactions = Transaction.geocoded
-    @markers = @transactions.map do |t|
-      {
-        lat: t.latitude,
-        lng: t.longitude
-      }
-    end
+
 
     @conversation.participants.each do |participant|
       if current_user.id == participant.id
@@ -27,6 +19,23 @@ class ConversationsController < ApplicationController
         @other_chatter = participant
       end
     end
+
+    @transactions = current_user.transactions
+    @transactions.each do |transaction|
+      if current_user.transactions.include?(transaction) && @other_chatter.transactions.include?(transaction)
+        @transaction = transaction
+      end
+    end
+
+    # need to find existing transaction between 2 user to update the record
+    # @transaction = @transaction.geocode
+    @markers = [
+      {
+        lat: @transaction.latitude,
+        lng: @transaction.longitude
+      }
+    ]
+
 
     # marks conversation as read when user opens convo
     inbox = @conversation.receipts.where(mailbox_type: "inbox", receiver_id: @logged_in_chatter)
