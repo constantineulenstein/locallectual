@@ -1,7 +1,8 @@
 class BackgroundImageJob < ApplicationJob
   queue_as :default
 
-  def perform(user)
+  def perform(user_id)
+    user = User.find(user_id)
     unless user.base_location.nil?
       location = user.base_location.split(",")[0].downcase
       url = open("https://api.unsplash.com/search/photos?page=1&query=#{location}&per_page=1&client_id=#{ENV['UNSPLASH_URL']}").read
@@ -21,6 +22,7 @@ class BackgroundImageJob < ApplicationJob
         uploaded = Cloudinary::Uploader.upload(api_image)
         user.update!(city_image: uploaded["url"])
         # uploads image from api to cloudinary and grabs url
+
       end
     end
   end

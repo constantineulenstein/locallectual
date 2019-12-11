@@ -35,7 +35,7 @@
         <% end %>
         <p class=""><%= link_to "Change meeting", "#", class: "request-button btn btn-outline-dark m-2"%></p>
       <% else %>
-        <%= link_to "book #{@other_chatter.first_name}", "#", class: "request-button" %>
+        <%= link_to "Meet #{@other_chatter.first_name}", "#", class: "request-button btn btn-outline-dark m-2" %>
       <% end %>
     </div>
     <div class="message-list-container col-sm-8 px-0">
@@ -53,11 +53,13 @@
                   </div>
                 </div>
                 <div class="p-1"></div>
-                  <%= cl_image_tag @logged_in_chatter.photo, class: "avatar ml-1 cover-by-popup-image-book" %>
+                  <%#= cl_image_tag @logged_in_chatter.photo, class: "avatar ml-1 cover-by-popup-image-book" %>
+                  <div class= "avatar chat-photo-user cover-by-popup-image-book-me ml-1" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= current_user.photo %>);"></div>
               </div>
             <% else %>
               <div class="single-message-container l">
-                <%= cl_image_tag @other_chatter.photo, class: "avatar ml-1 cover-by-popup-image-book" %>
+                <%#= cl_image_tag @other_chatter.photo, class: "avatar ml-1 cover-by-popup-image-book" %>
+                <div class= "avatar chat-photo-user cover-by-popup-image-book ml-1" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= @other_chatter.photo %>);"></div>
                 <div class="p-1"></div>
                 <div class="card-conversation cover-by-popup-box bg-dark text-white">
                   <div class="card-product-infos">
@@ -100,5 +102,6 @@
   <% end %>
 </div>
 <script>
-  const chatter = <%= @other_chatter.to_json.to_s.html_safe %>
+  const chatter = <%= @other_chatter.to_json.to_s.html_safe %>;
+  const current_user = <%= current_user.to_json.to_s.html_safe %>;
 </script>
