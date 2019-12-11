@@ -13,7 +13,7 @@
     <div class="cover-by-popup-box left-box text-center w-25">
       <h2 class="profile-name"><%= @locallect.first_name %> <%= @locallect.last_name %></h2>
       <br>
-      <p class="icon-text"><i class="fas fa-home"></i>  <%= @locallect.base_location %></p>
+      <p class="icon-text"><i class="fas fa-home"></i><% if @locallect.base_location.present? %> <%= @locallect.base_location.split(",")[0] %> <% else %> <%= @locallect.seek_location.split(",")[0] %> <% end %> </p>
       <!-- since --> <%#= @locallect.arrival_date.strftime("%B %Y") %>
       <p class="icon-text"><%= @locallect.gender %>  <%= @locallect.age %></p>
       <!-- Check if you are friends and friendship was approved -->

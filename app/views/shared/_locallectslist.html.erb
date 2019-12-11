@@ -18,7 +18,7 @@
       </svg>
       <div class="info bg-light">
         <div class="name"><%= user.first_name %> <%= user.last_name %></div>
-        <p class="text-center"><%= user.base_location %> - <%= user.gender %> - <%= user.age %></p>
+        <p class="text-center"><%= user.base_location.split(",")[0] %> - <%= user.gender %> - <%= user.age %></p>
         <div class="job d-flex justify-content-between">
         </div>
       </div>
