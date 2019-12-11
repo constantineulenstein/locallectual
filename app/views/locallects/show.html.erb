@@ -1,5 +1,5 @@
 <div class="to-be-darkened">
-  <div class="profile-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @locallect.city_image %>);">
+  <div class="cover-by-popup-banner profile-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @locallect.city_image %>);">
     <div class="home-banner-container">
     </div>
     <div class= "cover-by-popup-image show-profile-image" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= @locallect.photo %>);">
@@ -12,7 +12,7 @@
       <br>
       <p class="icon-text"><i class="fas fa-home"></i>  <%= @locallect.base_location %></p>
       <!-- since --> <%#= @locallect.arrival_date.strftime("%B %Y") %>
-      <p class="icon-text"><i class="fas fa-genderless"></i>  <%= @locallect.gender %> | <%= @locallect.age %></p>
+      <p class="icon-text"><%= @locallect.gender %>  <%= @locallect.age %></p>
       <!-- Check if you are friends and friendship was approved -->
       <% if current_user.friendships.any? {|friendship| @locallect.friendships.include?(friendship) && friendship.approved } %>
         <% current_user.mailbox.conversations.each do |conversation| %>
@@ -30,7 +30,7 @@
         <%= link_to "Get to know #{@locallect.first_name}", "#", class: "btn btn-outline-dark request-button" %>
       <% end %>
     </div>
-    <div class="rightside">
+    <div class="rightside w-75">
       <div class="cover-by-popup-box right-box">
         <div class="aboutme">
           <h2>About Me</h2>
@@ -41,14 +41,20 @@
       <div class="language-hobbies d-flex">
         <div class="cover-by-popup-box center-box mt-3 ">
           <i class="fas fa-language"></i>
-          <p class="mt-1"><%  @locallect.languages.each do |language| %>
-              <%= language.name %> |
-            <% end  %>  </p>
+          <% slash1 = @locallect.languages.count > 1 ? " |" : nil %>
+          <% string = ""  %>
+          <% if slash1 %>
+            <% @locallect.languages.each do |language| %>
+              <% string << " #{language.name}#{slash1}" %>
+            <% end  %>
+          <% end  %>
+          <p class="mt-1"><%= string.delete_suffix(" |") %></p>
         </div>
         <div class="cover-by-popup-box center-box mt-3">
           <i class="fas fa-dumbbell"></i>
+          <% slash2 = @locallect.hobbies.count > 1 ? " |" : nil %>
           <p class="mt-1"><%  @locallect.hobbies.each do |hobby| %>
-              <%= hobby.name %> |
+              <%= "#{hobby.name}#{slash2}" %>
             <% end %></p>
         </div>
       </div>
