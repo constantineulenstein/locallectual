@@ -10,13 +10,13 @@
           <%= f.input :birthday, as: :string, input_html: {class: "datepicker bg-white", value: current_user.birthday} %>
           <%= f.input :gender, collection: ["Male", "Female", "Diverse"], input_html: {value: current_user.gender} %>
           <%= f.input :base_location, label: "Where do you consider yourself to be a locallectual?", input_html: {value: current_user.base_location, class: "small-added"} %>
-          <small id="emailHelp" class="form-text text-muted mb-3">Please only fill this out if you have been living in the city for more than three years. </small>
+          <small class="form-text text-muted mb-3">Please only fill this out if you have been living in the city for more than three years. </small>
           <%= f.input :seek_location, label: "Where do you seek to get to know locals?", input_html: {value: current_user.seek_location} %>
-          <small id="emailHelp" class="form-text text-muted mb-3">Please only fill this out if you are searching for local connections.</small>
+          <small class="form-text text-muted mb-3">Please only fill this out if you are searching for local connections.</small>
           <%= f.input :arrival_date, label: "How long have you been in this city for?", input_html: {value: current_user.arrival_date}, discard_day: true, discard_hour: true, start_year: Date.today.year - 50, end_year: Date.today.year %>
           <%= f.input :photo, label: "Please upload a photo of you", input_html: {value: @user.photo} %>
           <%= f.input :photo_cache, as: :hidden %>
-          <%= f.input :language_list, collection: @languages, input_html: {class: "select2",  multiple: "multiple", value: current_user.language_list} %>
+          <%= f.input :language_list, collection: @languages, label: "Which languages do you speak?", input_html: {class: "select2",  multiple: "multiple", value: current_user.language_list} %>
           <%= f.input :hobby_list, collection: @hobbies, input_html: {class: "select2",  multiple: "multiple", value: current_user.hobby_list} %>
           <%= f.input :bio, input_html: {value: current_user.bio} %>
         </div>

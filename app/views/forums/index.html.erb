@@ -5,8 +5,8 @@
         <%= f.input :query, label: false, placeholder: "Specify content", input_html: { class: 'cover-by-popup-box' } %>
         <%= f.input :location, label: false, placeholder: "Specify location", input_html: { class: 'cover-by-popup-box' } %>
         <%= f.input :language_list, collection: @languages, input_html: {class: "select2 ml-3 cover-by-popup-box",  multiple: "multiple"}, label: false %> <!-- placeholder is  in JS file -->
-        <%= f.button :submit, "Search", class: "btn btn-outline-dark" %>
-        <%= link_to "Add a new post", "#", class: "btn btn-outline-dark forum-new request-button" %>
+        <%= f.button :submit, "Search", class: "btn btn-outline-dark forum-search" %>
+        <%= link_to "Add a new post", "#", class: "btn btn-outline-dark request-button" %>
       </div>
     <% end %>
   </div>
@@ -47,6 +47,7 @@
       <%= f.input :title, as: :string%>
       <%= f.input :description, as: :text, label: "Content"%>
       <%= f.input :location, as: :string, label: "Which city does this question relate to?" %>
+      <%= f.input :language_list, collection: @languages, label: "In which language is this post?", input_html: {value: current_user.language_list[0]} %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, "Post", class: "btn btn-outline-light" %>
