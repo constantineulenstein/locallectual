@@ -544,6 +544,8 @@ quest = Forum.create(title: "Questions regarding metro", description: "Good day,
 Comment.create(forum_id: quest.id, user_id: dan.id, description: "Hi, you can just go to the service points and ask where the ticket booths are. Keep in mind some ticket booths only take coins. Which Metro station are you looking to buy the ticket? Maybe I can help you out?")
 Comment.create(forum_id: quest.id, user_id: male3.id, description: "Jin an temple. is that close to you? Want to try out for the first time this weekend")
 
+
+Forum.create(title: "", description: "", )
 # 5.times do |i|
 
 #   user = User.create!(email: Faker::Internet.email,

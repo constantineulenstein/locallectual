@@ -1,39 +1,45 @@
 <div class="to-be-darkened">
-  <div class="mx-5 bg-light col-sm-9 forum-search cover-by-popup-box">
-    <%= simple_form_for :search, url: forums_path, method: :get do |f| %>
-      <div class="form-inputs p-3 form-inline mt-5">
-        <%= f.input :query, label: false, placeholder: "Specify content", input_html: { class: 'cover-by-popup-box' } %>
-        <%= f.input :location, label: false, placeholder: "Specify location", input_html: { class: 'cover-by-popup-box' } %>
-        <%= f.input :language_list, collection: @languages, input_html: {class: "select2 ml-3 cover-by-popup-box",  multiple: "multiple"}, label: false %> <!-- placeholder is  in JS file -->
-        <%= f.button :submit, "Search", class: "btn btn-outline-dark forum-search" %>
-        <%= link_to "Add a new post", "#", class: "btn btn-outline-dark request-button" %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="px-5 mt-3 d-flex">
-    <div class="posts col-sm-9">
-      <% @forums.each do |forum| %>
-        <div class="post border-bottom">
-          <div class="d-flex align-items-center my-3"> <!-- photo and tags and title and delete -->
-            <%= link_to locallect_path(User.find(forum.user_id)) do  %>
-            <div class= "avatar post-photo-user ml-1" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= User.find(forum.user_id).photo %>);"></div>
-            <% end %>
-            <div class="title-and-tags ml-3"> <!-- title and tags -->
-              <div class="title-and-delete d-flex align-items-center">
-                <h3 class="mt-3 mr-3 h3"><%= link_to forum.title, forum_path(forum.id) %></h3>
-                <% if policy(forum).destroy? %>
-                  <%= link_to forum_path(forum), method: :delete, data: {confirm: "Arey you sure?"} do %>
-                    <i class="fas fa-trash-alt h6"></i>
-                  <% end %>
-                <% end %>
-              </div>
-              <p><em>Published by: <%= User.find(forum.user_id).first_name %>  <%= User.find(forum.user_id).last_name %>- <%= forum.created_at.strftime("%A, %d %b %Y %l:%M %p") %> - Comments (<%= forum.comments.count %>)</em></p>
-            </div>
-          </div>
-          <p><%= forum.description %></p>
+  <div class="forum-banner cover-by-popup-box" style="background-color: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1572195761804-b8dbe2b62816?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);">
+    <div class="forum-banner-container">
+      <h1 class= " text-center pt-5"><strong>Welcome to the Locallectual Community!</strong></h1>
+      <p class= "text-center">Search the community or add a question!</p>
+      <%= simple_form_for :search, url: forums_path, method: :get do |f| %>
+        <div class="form-inputs pb-5 pt-3 form-inline mt-3 center_div justify-content-center">
+          <%= f.input :query, label: false, placeholder: "Specify content", input_html: { class: 'cover-by-popup-box' } %>
+          <%= f.input :location, label: false, placeholder: "Specify location", input_html: { class: 'cover-by-popup-box' } %>
+          <%= f.input :language_list, collection: @languages, input_html: {class: "select2 ml-3 cover-by-popup-box",  multiple: "multiple"}, label: false %> <!-- placeholder is  in JS file -->
+          <%= f.button :submit, "Search", class: "btn btn-outline-light forum-search" %>
+          <%= link_to "Add a new post", "#", class: "btn btn-outline-light request-button" %>
         </div>
       <% end %>
+    </div>
+  </div>
+
+  <div class="center_div">
+    <div class="px-5 mt-3 d-flex">
+      <div class="posts">
+        <% @forums.each do |forum| %>
+          <div class="post border-bottom">
+            <div class="d-flex align-items-center my-3"> <!-- photo and tags and title and delete -->
+              <%= link_to locallect_path(User.find(forum.user_id)) do  %>
+              <div class= "avatar post-photo-user ml-1" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= User.find(forum.user_id).photo %>);"></div>
+              <% end %>
+              <div class="title-and-tags ml-3"> <!-- title and tags -->
+                <div class="title-and-delete d-flex align-items-center">
+                  <h3 class="mt-3 mr-3 h3"><%= link_to forum.title, forum_path(forum.id) %></h3>
+                  <% if policy(forum).destroy? %>
+                    <%= link_to forum_path(forum), method: :delete, data: {confirm: "Arey you sure?"} do %>
+                      <i class="fas fa-trash-alt h6"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+                <p><em>Published by: <%= User.find(forum.user_id).first_name %>  <%= User.find(forum.user_id).last_name %> - <%= forum.created_at.strftime("%A, %d %b %Y %l:%M %p") %> - Comments (<%= forum.comments.count %>)</em></p>
+              </div>
+            </div>
+            <p style="margin-left: 80px;"><%= forum.description %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
