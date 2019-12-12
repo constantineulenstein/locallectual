@@ -1,20 +1,19 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container">
     <div>
-    <!-- brand logo -->
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://res.cloudinary.com/dd8gqkm50/image/upload/v1575428610/locallectuallogo_ocbhoy.png" %>
-    <% end %>
-    <% if user_signed_in? %>
-          <%= link_to "Forum", forums_path, class: "navbar-text mt-2 mx-3" %>
-    <% end %>
-
+      <!-- brand logo -->
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "https://res.cloudinary.com/dd8gqkm50/image/upload/v1575428610/locallectuallogo_ocbhoy.png" %>
+      <% end %>
+      <!-- add locallectual -->
     </div>
     <!-- navbar paths -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
-
+          <% if user_signed_in? %>
+            <%= link_to "Forum", forums_path, class: "btn btn-warning navbar-button-text mt-2 mx-3" %>
+          <% end %>
           <!-- counts number of unresponded friend requests inside connection_count variable -->
           <% connection_count = 0 %>
           <% requests = [] %>
@@ -22,7 +21,6 @@
             <% requests << friendship if friendship.approved == false && friendship.declined == false %>
           <% end %>
           <% requests.each { connection_count += 1 } %>
-
           <!-- counts number of unopened messages inside message_count variable -->
           <% message_count = 0 %>
           <% unread_messages = [] %>
@@ -30,7 +28,6 @@
             <% unread_messages << message if message.is_read == false && message.mailbox_type == "inbox" %>
           <% end %>
           <% unread_messages.each { message_count += 1 } %>
-
           <%= link_to "Messages", conversations_path, class: "navbar-text mt-2 mr-1 ml-3" %>
           <% if message_count.nil? == false %>
             <% if message_count > 0 %>
