@@ -48,19 +48,30 @@
 
 .show-profile-image {
   position: relative;
-  left: -30%;
+  left: -37%;
   bottom: -110px;
   height: 200px;
   width: 200px;
   border-radius: 100px;
   background-size: cover;
   background-position: center;
+  border: solid white thick;
 }
 
 .mgt50 {
-  margin-top: 70px;
+  margin-top: 50px;
 }
 
 i {
   font-size: 30px;
+}
+
+.gender-icon {
+ font-size: 20px;
+}
+
+.attributes {
+  margin: 0 auto;
+  width: 40%;
+  margin-bottom: 30%;
 }
