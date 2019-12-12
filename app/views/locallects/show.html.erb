@@ -16,7 +16,7 @@
       <div class="attributes">
         <p class="text-left"><i class="fas fa-home"></i> &nbsp<% if @locallect.base_location.present? %> <%= @locallect.base_location.split(",")[0] %> <% else %> <%= @locallect.seek_location.split(",")[0] %> <% end %> </p>
         <!-- since --> <%#= @locallect.arrival_date.strftime("%B %Y") %>
-        <p class="text-left"><i class="fas fa-user gender-icon"></i> &nbsp &nbsp</i><%= @locallect.gender %>  <%= @locallect.age %></p>
+        <p class="text-left"><i class="fas fa-user gender-icon"></i> &nbsp &nbsp</i><%= @locallect.gender %> - <%= @locallect.age %></p>
       </div>
       <!-- Check if you are friends and friendship was approved -->
       <% if current_user.friendships.any? {|friendship| @locallect.friendships.include?(friendship) && friendship.approved } %>
