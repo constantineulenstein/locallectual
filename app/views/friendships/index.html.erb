@@ -31,7 +31,7 @@
               <div class="card-friend">
                 <!-- user-card/clickable to go to their profile -->
                 <%= link_to locallect_path(user.id) do %>
-                  <%= user.photo.url.nil? ? (image_tag "user-solid.svg", class: "card-friend-image ml-1") : (cl_image_tag user.photo, width: 90, height: 90, crop: :fill, class: "card-friend-image ml-1") %>
+                  <%= cl_image_tag user.photo, width: 90, height: 90, crop: :fill, class: "card-friend-image ml-1" %>
                   <div class="d-flex justify-content-between card-friend-content align-items-center">
                     <div class="card-friend-infos ml-3">
                       <h2><%= user.first_name %> <%= user.last_name %></h2>
