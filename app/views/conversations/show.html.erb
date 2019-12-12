@@ -101,7 +101,7 @@
   <%= simple_form_for(@transaction, url: conversation_transactions_path(@conversation), method: :post) do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
-      <%= f.input :date, as: :string, input_html: {class: "datepicker bg-white"} %>
+      <%= f.input :date, as: :string, input_html: {class: "datepicker2 bg-white"} %>
       <%= f.input :location, as: :string %>
     </div>
     <div class="form-actions">

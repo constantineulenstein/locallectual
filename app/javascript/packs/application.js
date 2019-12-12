@@ -6,6 +6,7 @@ scroll();
 import flatpickr from "flatpickr"
 import "flatpickr/dist/flatpickr.min.css"
 flatpickr(".datepicker", {dateFormat: "Y-m-d"});
+flatpickr(".datepicker2", {enableTime: true, dateFormat: "Y-m-d H:i"});
 
 import { initSelect2 } from '../plugins/init_select2';
 initSelect2();
