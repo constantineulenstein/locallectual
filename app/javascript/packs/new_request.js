@@ -35,6 +35,10 @@ const displayExtraField = (e) => {
     })
   }
 
+  if (document.querySelector("#map")){
+    document.querySelector("#map").style.display = "none";
+  }
+
   if (document.querySelector(".cover-by-popup-image-book")){
 
     document.querySelectorAll(".cover-by-popup-image-book").forEach ((e) => {
