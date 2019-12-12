@@ -11,8 +11,8 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :validatable
   after_create :data_assignment
   after_create :get_city_img_url
-  after_update :get_city_img_url, if: :saved_change_to_base_location?
-  after_update :get_city_img_url, if: :saved_change_to_seek_location?
+  before_update :get_city_img_url
+  before_update :get_city_img_url
   # before_update :get_city_img_url, if: :base_location_changed?
   before_update :calculate_age
 
