@@ -1,7 +1,21 @@
+.to-be-darkened {
+  width: 75vw;
+  margin: 0 auto;
+}
+
+.bio-title, .profile-name {
+  font-weight: 600;
+}
+
+.profile-banner {
+  width: 65vw;
+  margin: 0 auto;
+}
+
 .page-bottom {
   display: flex;
   justify-content: space-between;
-  margin: auto 160px;
+  margin: auto 75px;
 }
 
 .left-box {
