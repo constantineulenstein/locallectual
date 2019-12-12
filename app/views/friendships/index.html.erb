@@ -27,7 +27,7 @@
           <!-- iterate over both users connected to this friendship -->
           <% friendship.users.each do |user| %>
             <!-- dont show yourself -->
-            <% unless user.id == current_user.id %>
+            <% if user.id != current_user.id %>
               <div class="card-friend">
                 <!-- user-card/clickable to go to their profile -->
                 <%= link_to locallect_path(user.id) do %>
