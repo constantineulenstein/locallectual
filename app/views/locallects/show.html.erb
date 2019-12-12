@@ -14,7 +14,9 @@
       <h2 class="profile-name"><%= @locallect.first_name %> <%= @locallect.last_name %></h2>
       <br>
       <div class="attributes text-center">
-        <p class=""><i class="fas fa-home"></i> &nbsp<% if @locallect.base_location.present? %> <%= @locallect.base_location.split(",")[0] %> <% else %> <%= @locallect.seek_location.split(",")[0] %> <% end %> </p>
+        <% unless @locallect.base_location.nil? && @locallect.seek_location.nil? %>
+          <p class=""><i class="fas fa-home"></i> &nbsp<% if @locallect.base_location.present? %> <%= @locallect.base_location.split(",")[0] %> <% else %> <%= @locallect.seek_location.split(",")[0] %> <% end %> </p>
+        <% end %>
         <!-- since --> <%#= @locallect.arrival_date.strftime("%B %Y") %>
         <p class=""><i class="fas fa-user gender-icon"></i> &nbsp &nbsp</i><%= @locallect.gender %> - <%= @locallect.age %></p>
       </div>
