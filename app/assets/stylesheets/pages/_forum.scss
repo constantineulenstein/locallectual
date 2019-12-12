@@ -1,5 +1,6 @@
 .post a {
   color: #454545;
+  font-weight: bold;
 }
 
 .comment a {
@@ -16,6 +17,10 @@
   display: inline-block;
 }
 
+.em {
+  opacity: 0.7;
+}
+
 .comment-photo-user {
   width: 40px;
   height: 40px;
@@ -30,6 +35,11 @@
   color: #5A5A5A;
 }
 
+.forum-details{
+  opacity: 0.6;
+  font-size: 13px;
+}
+
 
 // .forum-search {
 //   margin-right: 30px !important;
@@ -42,10 +52,10 @@
 
 .forum-banner {
   background-color: black;
-  height: 45vh;
+  height: 35vh;
   width: 100vw;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   padding: 30px 0;
 }
 
