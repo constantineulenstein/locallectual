@@ -1,6 +1,8 @@
 <%= link_to locallect_path(user.id) do %>
   <div id="curve" class="card mb-4">
-    <%= user.photo.url.nil? ? (image_tag "user-solid.svg") : (cl_image_tag user.photo, width: 300, height: 350, crop: :fill) %>
+    <div class="index-circle-photo-container  h-75">
+    <%= user.photo.url.nil? ? (image_tag "user-solid.svg") : (cl_image_tag user.photo, class: "index-circle-photo", width: 250, height: 220, crop: :fill) %>
+    </div>
     <div class="footer-up p-0">
       <svg id="curve">
         <path id="p" d="M0,200 Q80,100 400,200 V150 H0 V50" transform="translate(0 300)" />
