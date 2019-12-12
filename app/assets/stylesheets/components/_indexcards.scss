@@ -137,3 +137,16 @@ svg#curve {
     margin-top: 10px;
 }
 
+.sticky-top {
+  // position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  height: 100vh;
+  // position: fixed;
+  // margin-top: 10px;
+  // top: 200px;
+  // right: 34px;
+  // z-index: 1020;
+
+}
+

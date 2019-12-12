@@ -24,8 +24,11 @@
       </div>
     </div>
     <!-- filter menu -->
-    <div class="filter col-sm-3">
+
+    <div class="filter col-sm-3 sticky-top">
       <%= simple_form_for :search, url: locallects_path, method: "GET" do |f| %>
+
+
         <div class="form-inputs bg-light p-3">
           <div class="inline-block d-flex">
             <%= f.input :start_age, input_html: {value: params[:search][:start_age]} %><%= f.input :end_age, input_html: {value: params[:search][:start_age]} %>
@@ -36,6 +39,7 @@
           <%= f.input :hobby_list, collection: @hobbies, input_html: {class: "select2",  multiple: "multiple"} %>
           <%= f.button :submit, "Search", class: "btn btn-outline-dark" %>
         </div>
+
       <% end %>
     </div>
   </div>
