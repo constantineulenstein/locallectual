@@ -35,7 +35,7 @@
                   <div class="d-flex justify-content-between card-friend-content align-items-center">
                     <div class="card-friend-infos ml-3">
                       <h2><%= user.first_name %> <%= user.last_name %></h2>
-                      <p>Connected since <strong><%= friendship.created_at.strftime("%A, %d %b %Y %l:%M %p") %></strong></p>
+                      <p>Connected since <strong><%= friendship.created_at.strftime("%A, %b %d") %></strong></p>
                     </div>
                     <div class="d-flex align-items-center">
                       <!-- message button link logic -->

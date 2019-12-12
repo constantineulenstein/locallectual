@@ -13,7 +13,6 @@
 }
 
 .navbar-text {
-  font-weight: bolder;
   font-size: 18px;
 }
 .navbar-text:hover {
@@ -26,4 +25,8 @@
 
 .navbar-nav {
   align-items: center;
+}
+
+.navbar-button-text {
+  font-color: white;
 }

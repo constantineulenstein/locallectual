@@ -1,10 +1,8 @@
-
 <div class="container my-4">
-  <h1>Conversations</h1>
+  <h1 class="p-3">Conversations</h1>
   <% if @conversations == [] %>
     <h3>You have no conversations yet</h3>
   <% end %>
-
   <div class="friendships-grid">
     <% @conversations.each do |conversation| %>
       <div class="card-friend m-3">
@@ -35,7 +33,6 @@
               <% unread_messages << message if message.is_read == false && message.mailbox_type == "inbox" && message.message.sender_id != current_user.id %>
             <% end %>
             <% unread_messages.each { message_count += 1 } %>
-
             <% if message_count > 0 %>
               <span class="badge badge-danger h-25"><%= message_count %></span>
             <% end %>
