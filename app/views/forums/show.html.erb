@@ -1,3 +1,4 @@
+
 <div class="container w-50 mt-5 p-5 bg-light">
   <div class="post pb-3 ">
     <div class="d-flex align-items-center my-3"> <!-- photo and tags and title and delete -->
@@ -16,13 +17,13 @@
         <p><em>Published by: <%= User.find(@forum.user_id).first_name %>  <%= User.find(@forum.user_id).last_name %>- <%= @forum.created_at.strftime("%A, %d %b %Y %l:%M %p") %></em></p>
       </div>
     </div>
-    <p><%= @forum.description %></p>
+    <p style="margin-left: 80px;"><%= @forum.description %></p>
   </div>
   <div class="comments py-3">
-    <h4 class="h4">Comments</h4>
+    <h4 class="h4" style="margin-left: 80px;">Comments</h4>
     <% @forum.comments.order(created_at: :asc).each do |comment| %>
       <div class="comment border-bottom">
-        <div class="d-flex align-items-center my-3"> <!-- photo and tags delete -->
+        <div class="d-flex align-items-center mt-3" style="margin-left: 20px;"> <!-- photo and tags delete -->
           <%= link_to locallect_path(User.find(comment.user_id)) do  %>
           <div class= "avatar comment-photo-user ml-1" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= User.find(comment.user_id).photo %>);"></div>
           <% end %>
@@ -33,17 +34,19 @@
             <% end %>
           <% end %>
         </div>
-        <p><%= comment.description %></p>
+        <p style="margin-left: 80px;"><%= comment.description %></p>
       </div>
     <% end %>
   </div>
   <%= simple_form_for(@comment, url: forum_comments_path(@forum), method: :post) do |f| %>
-    <div class="form-inline">
+    <div class="form-inline" style="margin-left: 80px;">
       <%= f.text_field :description, class: "w-75 mr-3" %>
       <%= f.button :submit, "Post", class: 'btn btn-outline-dark py-1' %>
     </div>
   <% end %>
   <br>
+  <div style="margin-left: 80px;">
   <%= link_to "Go back", forums_path, class: "back-link"  %>
+  </div>
 </div>
 

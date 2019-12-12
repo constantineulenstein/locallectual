@@ -31,6 +31,36 @@
 }
 
 
-.forum-new {
-  margin-left: 80px !important;
+// .forum-search {
+//   margin-right: 30px !important;
+// }
+
+.center_div{
+    margin: 0 auto;
+    width:80% /* value of your choice which suits your alignment */
 }
+
+.forum-banner {
+  background-color: black;
+  height: 45vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  padding: 30px 0;
+}
+
+.forum-banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 50px;
+  font-weight: bold;
+
+}
+
+.forum-banner p {
+  font-size: 22px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+

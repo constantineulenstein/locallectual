@@ -14,8 +14,8 @@ class User < ApplicationRecord
   after_update :get_city_img_url, if: :saved_change_to_base_location?
   after_update :get_city_img_url, if: :saved_change_to_seek_location?
   # before_update :get_city_img_url, if: :base_location_changed?
+  before_update :calculate_age
 
-  after_update :calculate_age
 
   # Utilizing pg_search for searching baselocation of locallects
   include PgSearch::Model
