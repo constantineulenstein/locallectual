@@ -21,7 +21,7 @@
   <div class="tab-content" id="nav-tabContent">
     <!-- connections -->
     <div class="tab-pane fade mt-4 show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-      <div class="friendships-grid">
+
         <!-- iterate over all friendships -->
         <% @friendships_approved.each do |friendship| %>
           <!-- iterate over both users connected to this friendship -->
@@ -60,7 +60,7 @@
             <% end %>
           <% end %>
         <% end %>
-      </div>
+
     </div>
     <!-- friend requests -->
     <div class="tab-pane mt-4 fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
