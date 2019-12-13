@@ -5,6 +5,6 @@ class Friendship < ApplicationRecord
   validates :locallect_id, uniqueness: {scope: :explorer_id}
 
   def users
-    User.joins("LEFT JOIN explorers e ON e.user_id = users.id LEFT JOIN locallects l ON l.user_id = users.id LEFT JOIN friendships fe ON fe.explorer_id = e.id LEFT JOIN friendships fl ON fl.locallect_id = l.id ").where("fe.id = ? OR fl.id = ?", self.id, self.id)
+    User.joins("LEFT JOIN explorers e ON e.user_id = users.id LEFT JOIN locallects l ON l.user_id = users.id LEFT JOIN friendships fe ON fe.explorer_id = e.id LEFT JOIN friendships fl ON fl.locallect_id = l.id ").where("fe.id = ? OR fl.id = ?", self.id, self.id).uniq
   end
 end
