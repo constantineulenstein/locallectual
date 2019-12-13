@@ -21,13 +21,15 @@
   <div class="tab-content" id="nav-tabContent">
     <!-- connections -->
     <div class="tab-pane fade mt-4 show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-
+      <div class="friendships-grid">
         <!-- iterate over all friendships -->
         <% @friendships_approved.each do |friendship| %>
           <!-- iterate over both users connected to this friendship -->
           <% friendship.users.each do |user| %>
             <!-- dont show yourself -->
             <% if user.id != current_user.id %>
+              <%= user.id %>
+              <div class="card-friend">
                 <!-- user-card/clickable to go to their profile -->
                 <%= link_to locallect_path(user.id) do %>
                   <%= cl_image_tag user.photo, width: 90, height: 90, crop: :fill, class: "card-friend-image ml-1" %>
@@ -55,9 +57,11 @@
                     </div>
                   </div>
                 <% end %>
+              </div>
             <% end %>
           <% end %>
         <% end %>
+      </div>
     </div>
     <!-- friend requests -->
     <div class="tab-pane mt-4 fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
