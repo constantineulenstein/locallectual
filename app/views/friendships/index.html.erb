@@ -25,11 +25,8 @@
         <!-- iterate over all friendships -->
         <% @friendships_approved.each do |friendship| %>
           <!-- iterate over both users connected to this friendship -->
-          Friendship: <%= friendship %>
-          Friendship.users: <%= friendship.users %>
           <% friendship.users.each do |user| %>
             <!-- dont show yourself -->
-            user: <%= user %>
             <% if user.id != current_user.id %>
               <div class="card-friend">
                 <!-- user-card/clickable to go to their profile -->
