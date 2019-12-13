@@ -2,9 +2,8 @@ class FriendshipsController < ApplicationController
 
   def index
     @friendship_requests = current_user.friendships.where("friendships.approved = ? and friendships.locallect_id = ? and friendships.declined = ?", false, current_user.id, false).order(created_at: :desc)
-    @friendship_requests_sent = current_user.friendships.where("friendships.approved = ? and friendships.explorer_id = ? and friendships.declined = ?", false, current_user.id, false).order(created_at: :desc)
-    @friendships_approved = current_user.friendships.where("friendships.approved = ?", true).order(created_at: :desc)
-    skip_policy_scope
+    @friendship_requests_sent = policy_scope(current_user.friendships).where("friendships.approved = ? and friendships.explorer_id = ? and friendships.declined = ?", false, current_user.id, false).order(created_at: :desc)
+    @friendships_approved = policy_scope(current_user.friendships).where("friendships.approved = ?", true).order(created_at: :desc)
   end
 
   def create

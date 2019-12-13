@@ -30,32 +30,8 @@
             <%# if user.id != current_user.id %>
               <div class="card-friend">
                 <!-- user-card/clickable to go to their profile -->
-                <%= link_to locallect_path(user.id) do %>
-                  <%= cl_image_tag user.photo, width: 90, height: 90, crop: :fill, class: "card-friend-image ml-1" %>
-                  <div class="d-flex justify-content-between card-friend-content align-items-center">
-                    <div class="card-friend-infos ml-3">
-                      <h2><%= user.first_name %> <%= user.last_name %></h2>
-                      <p>Connected since <strong><%= friendship.created_at.strftime("%A, %b %d") %></strong></p>
-                    </div>
-                    <div class="d-flex align-items-center">
-                      <!-- message button link logic -->
-                      <% current_user.mailbox.conversations.each do |conversation| %>
-                        <% conversation.participants.each do |participant| %>
-                          <% if participant == user && participant != current_user %>
-                            <%= link_to "Message #{user.first_name}", conversation_path(conversation), class: "btn btn-outline-dark" %>
-                            <% if policy(friendship).destroy? %>
-                              <%= link_to locallect_friendship_path(locallect_id: friendship.locallect_id, id: friendship.id), method: :delete, data: {confirm: "Are you sure you want to delete this freindship?"},class: "ml-3" do %>
-                                <div class ="delete-user">
-                                  <i class="fas fa-user-minus"></i>
-                                </div>
-                              <% end %>
-                            <% end %>
-                          <% end %>
-                        <% end %>
-                      <% end %>
-                    </div>
-                  </div>
-                <% end %>
+                <%= user.first_name %>
+
               </div>
             <%# end %>
           <% end %>
