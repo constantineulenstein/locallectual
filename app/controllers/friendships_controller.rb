@@ -60,6 +60,13 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship = Friendship.find(params[:id])
     @friendship.destroy
+    current_user.mailbox.conversations.each do |conversation|
+      conversation.participants.each do |participant|
+        if participant == User.find(Locallect.find(params[:locallect_id]).user_id)
+          conversation.destroy
+        end
+      end
+    end
     redirect_to locallect_friendships_path(current_user)
     authorize @friendship
   end
