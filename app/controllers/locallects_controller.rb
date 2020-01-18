@@ -7,9 +7,8 @@ class LocallectsController < ApplicationController
 
     if search[:base_location].present?
       @locallects = policy_scope(User).search_by_base_location(search[:base_location]).order(created_at: :desc)
-      # @locallects = @locallects.where(age: params[:start_age]..params[:end_age]) if params[:age] != '' && params[:age].present?
       @locallects = @locallects.where(age: (search[:start_age]..search[:end_age])) if search[:start_age] != '' && search[:start_age].present?
-      @locallects = @locallects.where(gender: search[:gender]) if search[:gender] != '' && search[:gender].present? && params[:gender] != 'All'
+      @locallects = @locallects.where(gender: search[:gender]) if search[:gender] != 'All' && search[:gender].present? #&& params[:gender] != ''
       if search[:language_list] != [""]
         @locallects = @locallects.tagged_with(search[:language_list], any: true)
       end
