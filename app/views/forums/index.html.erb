@@ -9,7 +9,9 @@
           <%= f.input :location, label: false, placeholder: "Specify location", input_html: { class: 'cover-by-popup-box' } %>
           <%= f.input :language_list, collection: @languages, input_html: {class: "select2 ml-3 cover-by-popup-box w-50",  multiple: "multiple"}, label: false %> <!-- placeholder is  in JS file -->
           <%= f.button :submit, "Search", class: "btn btn-outline-light forum-search" %>
-          <%= link_to "Add a new post", "#", class: "btn btn-outline-light request-button" %>
+          <% if user_signed_in? %>
+            <%= link_to "Add a new post", "#", class: "btn btn-outline-light request-button" %>
+            <% end %>
         </div>
       <% end %>
     </div>
@@ -34,11 +36,14 @@
                     <% end %>
                   <% end %>
                 </div>
-                <p class="forum-details"><em>Published by: <%= User.find(forum.user_id).first_name %>  <%= User.find(forum.user_id).last_name %>
+                <p class="forum-details mb-0"><em>Published by: <%= User.find(forum.user_id).first_name %>  <%= User.find(forum.user_id).last_name %>
                     <%= forum.created_at.strftime("%A, %d %b %Y %l:%M %p") %> - Comments (<%= forum.comments.count %>)</em></p>
+                <% if forum.location.present? %>
+                  <p class="forum-details my-0"><em> Concerns: <%= forum.location %></em></p>
+                <% end %>
               </div>
             </div>
-            <p style="margin-left: 80px;"><%= forum.description %></p>
+            <p class="mt-4" style="margin-left: 80px;"><%= forum.description %></p>
           </div>
         <% end %>
       </div>
