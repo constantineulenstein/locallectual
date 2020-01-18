@@ -7,7 +7,7 @@
         <div class="form-inputs pb-5 pt-3 form-inline mt-3 center_div justify-content-center">
           <%= f.input :query, label: false, placeholder: "Specify content", input_html: { class: 'cover-by-popup-box' } %>
           <%= f.input :location, label: false, placeholder: "Specify location", input_html: { class: 'cover-by-popup-box' } %>
-          <%= f.input :language_list, collection: @languages, input_html: {class: "select2 ml-3 cover-by-popup-box",  multiple: "multiple"}, label: false %> <!-- placeholder is  in JS file -->
+          <%= f.input :language_list, collection: @languages, input_html: {class: "select2 ml-3 cover-by-popup-box w-50",  multiple: "multiple"}, label: false %> <!-- placeholder is  in JS file -->
           <%= f.button :submit, "Search", class: "btn btn-outline-light forum-search" %>
           <%= link_to "Add a new post", "#", class: "btn btn-outline-light request-button" %>
         </div>
@@ -26,9 +26,11 @@
               <div class="title-and-tags ml-3"> <!-- title and tags -->
                 <div class="title-and-delete d-flex align-items-center">
                   <h3 class="mt-3 mr-3 h3"><%= link_to forum.title, forum_path(forum.id) %></h3>
-                  <% if policy(forum).destroy? %>
-                    <%= link_to forum_path(forum), method: :delete, data: {confirm: "Arey you sure?"} do %>
-                      <i class="fas fa-trash-alt h6"></i>
+                  <% if user_signed_in? %>
+                    <% if policy(forum).destroy? %>
+                      <%= link_to forum_path(forum), method: :delete, data: {confirm: "Arey you sure?"} do %>
+                        <i class="fas fa-trash-alt h6"></i>
+                      <% end %>
                     <% end %>
                   <% end %>
                 </div>
@@ -52,7 +54,7 @@
       <%= f.input :title, as: :string%>
       <%= f.input :description, as: :text, label: "Content"%>
       <%= f.input :location, as: :string, label: "Which city does this question relate to?" %>
-      <%= f.input :language_list, collection: @languages, label: "In which language is this post?", input_html: {value: current_user.language_list[0]} %>
+      <%= f.input :language_list, collection: @languages, label: "In which language is this post?" %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, "Post", class: "btn btn-outline-light" %>

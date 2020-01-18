@@ -48,6 +48,7 @@
           </li>
         <% else %>
           <!-- if not signed in -->
+          <%= link_to "Forum", forums_path, class: "btn btn-warning navbar-button-text mx-3" %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
