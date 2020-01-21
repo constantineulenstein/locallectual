@@ -245,7 +245,7 @@ jeff = User.create(email: "jeff.yeung23@gmail.com",
 
                    admin: true,
                    bio: "French social reformer who loves charity. I invested my business profits in providing better conditions for my workers while also campaigning for social change. I have also invested money in our local community experiment in America.",
-                   remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012068/nxzy7fjsjght1mowd3t0.jpg"
+                   remote_photo_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/e5oa1zri0w0tdyzj3gjk.jpg"
                    )
 
 elliot = User.create(email: "elliot.s.tennison@gmail.com",
@@ -259,7 +259,7 @@ elliot = User.create(email: "elliot.s.tennison@gmail.com",
 
                      admin: true,
                      bio: "Born in London to poor parents. I then moved to Shanghai where I found a job in the foot industry. After selling my foot business, I devoted the rest of my life to giving away my belongings to projects such as libraries, world peace and education.",
-                     remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575012083/btt73tsfl2zdap0mqerq.jpg"
+                     remote_photo_url: "https://avatars2.githubusercontent.com/u/48684392?v=4"
                      )
 
 const = User.create(email: "constantin.eulenstein@t-online.de",
@@ -273,7 +273,7 @@ const = User.create(email: "constantin.eulenstein@t-online.de",
 
                     admin: true,
                     bio: "I worked from an early age to improve the welfare of the displaced in Munich. In particular, I set up housing associations to offer good quality housing to former slum tenants. I also took an active role in the management and responsibility of the housing.",
-                    remote_photo_url: "http://res.cloudinary.com/constantineulenstein/image/upload/c_fill,h_300,w_300/v1575011826/btpnaxpn2tebv1hhznt0.jpg"
+                    remote_photo_url: "https://avatars0.githubusercontent.com/u/55740765?v=4"
                     )
 
 dan = User.create(email: "dangaligato@gmail.com",

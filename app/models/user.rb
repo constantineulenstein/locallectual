@@ -10,9 +10,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
   after_create :data_assignment
-  after_create :get_city_img_url
+  # after_create :get_city_img_url
   # before_update :get_city_img_url
-  before_save :get_city_img_url, if: :will_save_change_to_base_location?
+  after_commit :get_city_img_url1, on: [:update, :create], if: :saved_change_to_base_location?
+  after_commit :get_city_img_url2, on: [:update, :create], if: :saved_change_to_seek_location?
   # before_update :get_city_img_url, if: :base_location_changed?
   before_update :calculate_age
 
@@ -53,8 +54,13 @@ class User < ApplicationRecord
     Transaction.joins("JOIN explorers e ON e.id = transactions.explorer_id JOIN locallects l ON l.id = transactions.locallect_id JOIN users ue on ue.id = e.user_id JOIN users ul ON ul.id = l.user_id").where("ue.id = ? OR ul.id = ?", self.id, self.id)
   end
 
-  def get_city_img_url
-    BackgroundImageJob.perform_later(self.id)
+
+  def get_city_img_url1
+      BackgroundImageJob.perform_later(self.id)
+  end
+
+  def get_city_img_url2
+      BackgroundImageJob.perform_later(self.id)
   end
 
 
