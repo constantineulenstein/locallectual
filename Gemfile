@@ -9,6 +9,8 @@ gem 'puma'
 gem 'rails', '5.2.3'
 gem 'redis'
 
+gem 'rails-i18n', '~> 5.1'
+
 gem 'pg_search', '~> 2.3.0'
 
 gem 'pundit'
