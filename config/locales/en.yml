@@ -42,3 +42,13 @@ en:
   what_solve: "What we offer"
   what_solve_starting_letter: "L"
   what_solve_text: "ocallectual is a friendly platform that provides flexible ways to provide aid and assistance to forcibly displaced people. We put those looking for local insight directly in touch with those looking to help. Locallectual currently features a forum to provide a safe place to have discussions and look for support. Anyone who wants to help can simply do so by creating an account. Afterwards people looking for local insights or contacts can reach out by searching for their perfect match and sending a friendship request. As soon as that one his accepted, you can start chatting and setting up a meeting."
+
+#navbar
+  login: "Login"
+  signup: "Signup"
+  forum: "Forum"
+  messages: "Messages"
+  connections: "Connections"
+  view_profile: "View your profile"
+  edit_profile: "Edit your profile"
+  logout: "Logout"

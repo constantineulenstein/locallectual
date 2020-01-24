@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon d-flex">
   <div class="container">
     <div>
       <!-- brand logo -->
@@ -12,7 +12,7 @@
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
           <% if user_signed_in? %>
-            <%= link_to "Forum", forums_path, class: "btn btn-warning navbar-button-text mx-3" %>
+            <%= link_to t(:forum), forums_path, class: "btn btn-warning navbar-button-text mx-3" %>
           <% end %>
           <!-- counts number of unresponded friend requests inside connection_count variable -->
           <% connection_count = 0 %>
@@ -28,36 +28,52 @@
             <% unread_messages << message if message.is_read == false && message.mailbox_type == "inbox" %>
           <% end %>
           <% unread_messages.each { message_count += 1 } %>
-          <%= link_to "Messages", conversations_path, class: "navbar-text mr-1 ml-3" %>
+          <%= link_to t(:messages), conversations_path, class: "navbar-text mr-1 ml-3" %>
           <% if message_count.nil? == false %>
             <% if message_count > 0 %>
               <span class="badge badge-danger h-25"><%= message_count %></span>
             <% end %>
           <% end %>
-          <%= link_to "Connections", locallect_friendships_path(current_user.id), class: "navbar-text mr-1 ml-3" %>
+          <%= link_to t(:connections), locallect_friendships_path(current_user.id), class: "navbar-text mr-1 ml-3" %>
           <% if connection_count > 0 %>
             <span class="badge badge-danger h-25"><%= connection_count %></span>
           <% end %>
           <li class="nav-item dropdown ml-4">
             <%= current_user.photo.file.nil? ? (image_tag "default-avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) : (cl_image_tag current_user.photo, width: 60, height: 60, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to "View your profile", locallect_path(current_user), class: "dropdown-item" %>
-              <%= link_to "Edit your profile", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <%= link_to t(:view_profile), locallect_path(current_user), class: "dropdown-item" %>
+              <%= link_to t(:edit_profile), edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to t(:logout), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
         <% else %>
           <!-- if not signed in -->
-          <%= link_to "Forum", forums_path, class: "btn btn-warning navbar-button-text mx-3" %>
+          <%= link_to t(:forum), forums_path, class: "btn btn-warning navbar-button-text mx-3" %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to t(:login), new_user_session_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Signup", new_user_registration_path, class: "nav-link" %>
+            <%= link_to t(:signup), new_user_registration_path, class: "nav-link" %>
           </li>
+          <!-- <li class="nav-item dropdown ml-4">
+            <i class="fas fa-globe-americas dropdown-toggle", id= "navbarDropdown2", data= { toggle= "dropdown" }, 'aria-haspopup'= true, 'aria-expanded'= false></i>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown1">
+              <%= link_to "en", root_path("en"), class: "dropdown-item" %>
+
+            </div>
+          </li> -->
         <% end %>
       </ul>
     </div>
   </div>
+  <div class="dropdown">
+    <i class="fas fa-globe-americas mr-3 language-dropdown" id="languageDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropDown">
+      <%= link_to "Deutsch", root_path("de"), class: "dropdown-item" %>
+      <%= link_to "English", root_path("en"), class: "dropdown-item" %>
+      <%= link_to "French", root_path("en"), class: "dropdown-item" %>
+      <%= link_to "العربية", root_path("en"), class: "dropdown-item" %>
+    </div>
+  </div>
 </div>
-</div>
+
