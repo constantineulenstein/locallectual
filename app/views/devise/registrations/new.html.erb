@@ -1,5 +1,5 @@
 <div class="container w-25">
-  <h2 class="my-3">Sign up</h2>
+  <h2 class="my-3"><%= t(:signup) %></h2>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs bg-light p-3">
@@ -7,18 +7,26 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
-      <%= f.input :first_name %>
-      <%= f.input :last_name %>
+      <%= f.input :first_name,
+                  label: t(:first_name),
+                  required: true,
+                  autofocus: true %>
+      <%= f.input :last_name,
+                  label: t(:last_name),
+                  required: true,
+                  autofocus: true %>
       <%= f.input :password,
+                  label: t(:password),
                   required: true,
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :password_confirmation,
+                  label: t(:password_confirmation),
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
     </div>
     <div class="form-actions my-3">
-      <%= f.button :submit, "Sign up", class: "btn btn-outline-dark" %>
+      <%= f.button :submit, t(:signup), class: "btn btn-outline-dark" %>
     </div>
   <% end %>
 </div>

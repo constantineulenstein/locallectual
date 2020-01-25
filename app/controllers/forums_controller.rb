@@ -5,11 +5,11 @@ skip_before_action :authenticate_user!, only: [:index, :show]
     @forums = policy_scope(Forum).all
     search = params[:search]
     if search.present?
-      if search[:query].present?
-        @forums = @forums.search_by_all(search[:query])
+      if search[:content].present?
+        @forums = @forums.search_by_all(search[:content])
       end
       if search[:location].present?
-        @forums = @forums.search_by_location(search[:location])
+        @forums = @forums.search_by_location(search[:location].split(", ").first)
       end
       if search[:language_list] != [""]
         @forums = @forums.tagged_with(search[:language_list], any: true)
