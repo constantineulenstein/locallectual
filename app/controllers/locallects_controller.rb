@@ -4,9 +4,8 @@ class LocallectsController < ApplicationController
 
   def index
     search = params[:search]
-
     if search[:base_location].present?
-      @locallects = policy_scope(User).search_by_base_location(search[:base_location]).order(created_at: :desc)
+      @locallects = policy_scope(User).search_by_base_location(search[:base_location].split(", ").first).order(created_at: :desc)
       @locallects = @locallects.where(age: (search[:start_age]..search[:end_age])) if search[:start_age] != '' && search[:start_age].present?
       @locallects = @locallects.where(gender: search[:gender]) if search[:gender] != 'All' && search[:gender].present? #&& params[:gender] != ''
       if search[:language_list] != [""]
@@ -16,7 +15,7 @@ class LocallectsController < ApplicationController
         @locallects = @locallects.tagged_with(search[:hobby_list], any: true)
       end
     else
-      @locallects = policy_scope(User).search_by_base_location(search[:query]).order(created_at: :desc)
+      @locallects = policy_scope(User).search_by_base_location(search[:query].split(", ").first).order(created_at: :desc)
 
     end
 

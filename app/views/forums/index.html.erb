@@ -5,7 +5,7 @@
       <p class= "text-center">Search the community or add a question!</p>
       <%= simple_form_for :search, url: forums_path, method: :get do |f| %>
         <div class="form-inputs pb-5 pt-3 form-inline mt-3 center_div justify-content-center">
-          <%= f.input :query, label: false, placeholder: "Specify content", input_html: { class: 'cover-by-popup-box' } %>
+          <%= f.input :content, label: false, placeholder: "Specify content", input_html: { class: 'cover-by-popup-box' } %>
           <%= f.input :location, label: false, placeholder: "Specify location", input_html: { class: 'cover-by-popup-box' } %>
           <%= f.input :language_list, collection: @languages, input_html: {class: "select2 ml-3 cover-by-popup-box w-50",  multiple: "multiple"}, label: false %> <!-- placeholder is  in JS file -->
           <%= f.button :submit, "Search", class: "btn btn-outline-light forum-search" %>
