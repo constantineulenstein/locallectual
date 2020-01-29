@@ -25,25 +25,24 @@
         <% current_user.mailbox.conversations.each do |conversation| %>
           <% conversation.participants.each do |participant| %>
             <% if participant == @locallect && participant != current_user %>
-              <%= link_to "Message #{@locallect.first_name}", conversation_path(conversation), class: "btn btn-outline-dark" %>
+              <%= link_to t(:message_profile, locallect: @locallect.first_name), conversation_path(conversation), class: "btn btn-outline-dark" %>
             <% end %>
           <% end %>
         <% end %>
-        <% if current_user.id == @locallect.id %>
-          <%= link_to "Edit your profile", edit_user_registration_path, class: "btn btn-outline-dark" %>
-        <% end %>
+      <% elsif current_user.id == @locallect.id %>
+        <%= link_to t(:edit_profile), edit_user_registration_path, class: "btn btn-outline-dark" %>
         <!-- Check if friend request was sent -->
       <% elsif current_user.friendships.any? {|friendship| @locallect.friendships.include?(friendship)} %>
-        <p class="border">Friend request sent</p>
+        <p class="border"><%= t(:request_sent) %></p>
         <!-- else show button to send friend request -->
       <% elsif current_user.id != @locallect.id %>
-        <%= link_to "Get to know #{@locallect.first_name}", "#", class: "btn btn-outline-dark request-button" %>
+        <%= link_to t(:gettoknow_profile, locallect: @locallect.first_name), "#", class: "btn btn-outline-dark request-button" %>
       <% end %>
     </div>
     <div class="rightside w-75">
       <div class="cover-by-popup-box right-box">
         <div class="aboutme">
-          <h2 class="bio-title">About Me</h2>
+          <h2 class="bio-title"><%= t(:about_me) %></h2>
           <br>
           <p class="bio-text"><%= @locallect.bio %></p>
         </div>
@@ -58,24 +57,28 @@
               <% string << " #{language.name}#{slash1}" %>
             <% end  %>
           <% end  %>
-          <p class="mt-1"><%= string.delete_suffix(" |") %></p>
+          <p class="mt-1"><%= string.delete_suffix!(" |") %></p>
         </div>
         <div class="cover-by-popup-box center-box mt-3">
           <i class="fas fa-dumbbell"></i>
           <% slash2 = @locallect.hobbies.count > 1 ? " |" : nil %>
-          <p class="mt-1"><%  @locallect.hobbies.each do |hobby| %>
-              <%= "#{hobby.name}#{slash2}" %>
-            <% end %></p>
+          <% string2 = ""  %>
+          <% if slash2 %>
+            <% @locallect.hobbies.each do |hobby| %>
+              <% string2 << " #{hobby.name}#{slash2}" %>
+            <% end  %>
+          <% end  %>
+          <p class="mt-1"><%= string2.delete_suffix!(" |") %></p>
         </div>
       </div>
     </div>
   </div>
   <!-- Will only pop up if friend request will be send -->
   <div class="container w-50 border-radius p-5 request-field">
-    <h3 class="my-3">Become friends with <%= @locallect.first_name %></h3>
+    <h3 class="my-3"><%= t(:become_friends, locallect: @locallect.first_name)%></h3>
     <%= simple_form_for(@friendship, url: locallect_friendships_path(@locallect), method: :post) do |f| %>
-      <%= f.input :request_message, label: "Tell something about you", class: "friendrequest-text" %>
-      <%= f.button :submit, "Send friend request", class: "btn btn-outline-light" %>
+      <%= f.input :request_message, label: t(:about_you), class: "friendrequest-text" %>
+      <%= f.button :submit, t(:send_request), class: "btn btn-outline-light" %>
     <% end %>
     <%= link_to locallect_path(@locallect) do %>
       <i class="fas fa-times cancel-cross"></i>

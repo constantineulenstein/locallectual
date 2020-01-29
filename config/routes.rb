@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/:locale/conversations/:conversation_id/transactions/:transaction_id/reject', to: 'transactions#reject', as: 'transaction_request_reject'
   get '/:locale/conversations/:id/reply', to: 'conversations#reply', as: 'reply'
 
-  scope "(:locale)", locale: /en|de/ do
+  scope "(:locale)", locale: /en|de|fr/ do
     root to: 'pages#home'
     resources :conversations do
       resources :transactions
