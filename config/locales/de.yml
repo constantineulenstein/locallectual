@@ -47,4 +47,13 @@ de:
   back: "Zurück"
   unhappy: "Unzufrieden?"
 
+#profilepage
+  message_profile: "Sende %{locallect} eine Nachricht"
+  gettoknow_profile: "Lerne %{locallect} kennen"
+  request_sent: "Freundschaftsanfrage gesendet"
+  about_me: "Meine Info"
+  become_friends: "Werde Freunde mit %{locallect}"
+  send_request: "Sende Freundschaftsanfrage"
+  about_you: "Erzähl etwas über dich"
+
 

@@ -78,3 +78,12 @@ en:
   account_cancel: "Cancel my account"
   back: "Back"
   unhappy: "Unhappy?"
+
+#profilepage
+  message_profile: "Message %{locallect}"
+  gettoknow_profile: "Get to know %{locallect}"
+  request_sent: "Friend request sent"
+  about_me: "About me"
+  become_friends: "Become friends with %{locallect}"
+  send_request: "Send friend request"
+  about_you: "Tell something about you"
