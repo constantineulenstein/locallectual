@@ -4,17 +4,20 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :forums, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :user_translations
+  translates :gender, :fallbacks_for_empty_translations => true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
   after_create :data_assignment
-  # after_create :get_city_img_url
-  # before_update :get_city_img_url
+
+  #get background banner
   after_commit :get_city_img_url1, on: [:update, :create], if: :saved_change_to_base_location?
   after_commit :get_city_img_url2, on: [:update, :create], if: :saved_change_to_seek_location?
-  # before_update :get_city_img_url, if: :base_location_changed?
+
+  #calculate the age from the birthday
   before_update :calculate_age
 
 
@@ -24,6 +27,11 @@ class User < ApplicationRecord
     against: [ :base_location ],
   using: {
     tsearch: { prefix: true }
+  }
+  pg_search_scope :search_by_gender,
+    :associated_against  => {:user_translations => :gender},
+  using: {
+    tsearch: { any_word: true }
   }
   mount_uploader :photo, PhotoUploader
 

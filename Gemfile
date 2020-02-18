@@ -11,7 +11,9 @@ gem 'redis'
 
 gem 'rails-i18n', '~> 5.1'
 
-gem 'pg_search', '~> 2.3.0'
+gem 'pg_search', '~> 2.3.s0'
+
+gem 'globalize', git: 'https://github.com/globalize/globalize'
 
 gem 'pundit'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
