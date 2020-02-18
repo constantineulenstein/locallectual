@@ -46,6 +46,10 @@ de:
   account_cancel: "Lösche meinen Account"
   back: "Zurück"
   unhappy: "Unzufrieden?"
+  gender_array:
+    - "Männlich"
+    - "Weiblich"
+    - "Divers"
 
 #profilepage
   message_profile: "Sende %{locallect} eine Nachricht"

@@ -78,6 +78,10 @@ en:
   account_cancel: "Cancel my account"
   back: "Back"
   unhappy: "Unhappy?"
+  gender_array:
+    - "Male"
+    - "Female"
+    - "Diverse"
 
 #profilepage
   message_profile: "Message %{locallect}"
