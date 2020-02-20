@@ -16,7 +16,7 @@
           <%= f.input :arrival_date, label: t(:arrival_question), input_html: {value: current_user.arrival_date}, discard_day: true, discard_hour: true, start_year: Date.today.year - 50, end_year: Date.today.year %>
           <%= f.input :photo, label: t(:photo_upload), input_html: {value: @user.photo} %>
           <%= f.input :photo_cache, as: :hidden %>
-          <%= f.input :language_list, collection: @languages, label: t(:language_question), input_html: {class: "select2",  multiple: "multiple", value: current_user.language_list} %>
+          <%= f.input :language_list, collection: t(:language_array), label: t(:language_question), input_html: {class: "select2",  multiple: "multiple", value: current_user.language_list} %>
           <%= f.input :hobby_list, label: t(:hobbies_question), collection: @hobbies, input_html: {class: "select2",  multiple: "multiple", value: current_user.hobby_list} %>
           <%= f.input :bio, input_html: {value: current_user.bio} %>
         </div>

@@ -7,7 +7,7 @@
         <div class="form-inputs pb-5 pt-3 form-inline mt-3 center_div justify-content-center">
           <%= f.input :content, label: false, placeholder: "Specify content", input_html: { class: 'cover-by-popup-box' } %>
           <%= f.input :location, label: false, placeholder: "Specify location", input_html: { class: 'cover-by-popup-box' } %>
-          <%= f.input :language_list, collection: @languages, input_html: {class: "select2 ml-3 cover-by-popup-box w-50",  multiple: "multiple"}, label: false %> <!-- placeholder is  in JS file -->
+          <%= f.input :language_list, collection: t(:language_array), input_html: {class: "select2 ml-3 cover-by-popup-box w-50",  multiple: "multiple"}, label: false %> <!-- placeholder is  in JS file -->
           <%= f.button :submit, "Search", class: "btn btn-outline-light forum-search" %>
           <% if user_signed_in? %>
             <%= link_to "Add a new post", "#", class: "btn btn-outline-light request-button" %>
@@ -59,7 +59,7 @@
       <%= f.input :title, as: :string%>
       <%= f.input :description, as: :text, label: "Content"%>
       <%= f.input :location, as: :string, label: "Which city does this question relate to?" %>
-      <%= f.input :language_list, collection: @languages, label: "In which language is this post?" %>
+      <%= f.input :language_list, collection: t(:language_array), label: "In which language is this post?" %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, "Post", class: "btn btn-outline-light" %>
