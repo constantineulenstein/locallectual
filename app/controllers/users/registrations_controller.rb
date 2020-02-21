@@ -15,55 +15,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  def edit
-
-    @hobbies = ['Reading',
-                'Watching TV',
-                'Family Time',
-                'Going to Movies',
-                'Fishing',
-                'Computers',
-                'Gardening',
-                'Walking',
-                'Exercise',
-                'Music',
-                'Night Entertainment',
-                'Hunting',
-                'Team Sports',
-                'Shopping',
-                'Traveling',
-                'Sleeping',
-                'Socializing',
-                'Sweing',
-                'Golf',
-                'Relaxing',
-                'Housework',
-                'Crafts',
-                'Watching Sports',
-                'Bicycling',
-                'Playing Cards',
-                'Hiking',
-                'Cooking',
-                'Swimming',
-                'Camping',
-                'Skiing',
-                'Working on Cars',
-                'Writing',
-                'Boating',
-                'Animal Care',
-                'Bowling',
-                'Painting',
-                'Running',
-                'Dancing',
-                'Horseback Riding',
-                'Tennis',
-                'Theater',
-                'Billards',
-                'Beach',
-                'Teaching',
-                'Volunteer Work']
-              super
-  end
+  # def edit
+  #             super
+  # end
 
   # PUT /resource
   # def update
