@@ -50,7 +50,7 @@
       <div class="language-hobbies d-flex">
         <div class="cover-by-popup-box center-box mt-3 ">
           <i class="fas fa-language"></i>
-          <% slash1 = @locallect.languages.count > 1 ? " |" : nil %>
+          <% slash1 = @locallect.languages.count >= 1 ? " |" : nil %>
           <% string = ""  %>
           <% if slash1 %>
             <% @locallect.languages.each do |language| %>
@@ -61,7 +61,7 @@
         </div>
         <div class="cover-by-popup-box center-box mt-3">
           <i class="fas fa-dumbbell"></i>
-          <% slash2 = @locallect.hobbies.count > 1 ? " |" : nil %>
+          <% slash2 = @locallect.hobbies.count >= 1 ? " |" : nil %>
           <% string2 = ""  %>
           <% if slash2 %>
             <% @locallect.hobbies.each do |hobby| %>

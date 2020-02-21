@@ -140,3 +140,52 @@ de:
     - 'Uzbekisch'
     - 'Vietnamesisch'
     - 'Walisisch'
+
+  hobby_array:
+    - 'Lesen'
+    - 'Fernsehen'
+    - 'Familie'
+    - 'Kino'
+    - 'Fischen'
+    - 'Fußball'
+    - 'Computer'
+    - 'Trainieren'
+    - 'Musik'
+    - 'Team Sport'
+    - 'Shoppen'
+    - 'Reisen'
+    - 'Freunde'
+    - 'Golf'
+    - 'Sport anschauen'
+    - 'Fahrrad fahren'
+    - 'Wandern'
+    - 'Kochen'
+    - 'Schwimmen'
+    - 'Campen'
+    - 'Ski fahren'
+    - 'Schreiben'
+    - 'Bowlen'
+    - 'Malen'
+    - 'Laufen'
+    - 'Tanzen'
+    - 'Reiten'
+    - 'Tennis'
+    - 'Theater'
+    - 'Billard'
+
+  people_in: "Hilfsbereite in"
+  start_age: "Anfangsalter"
+  end_age: "Endalter"
+  base_loc: "Ort"
+  languages: "Sprachen"
+  hobbies: "Hobbies"
+  search: "Suche"
+
+#friends
+  friend_requests: "Freundschaftsanfragen"
+  friend_requests_sent: "Freundschaftanfragen gesendet"
+  connected_since: "Befreundet seit"
+  confirmation_question_destroy: "Bist du dir sicher, dass du diese Freundschaft beenden möchtest?"
+  approve: "Annehmen"
+  reject: "Ablehnen"
+

@@ -1,5 +1,5 @@
 <div class="p-5">
-  <h2 class="ml-5 pl-3">People in <%= @base_location %> </h2>
+  <h2 class="ml-5 pl-3"><%= t(:people_in) %> <%= @base_location %> </h2>
   <div class="d-flex m-5">
     <!-- user cards  -->
     <div class="col-sm-9">
@@ -31,13 +31,13 @@
 
         <div class="form-inputs bg-light p-3">
           <div class="inline-block d-flex">
-            <%= f.input :start_age, input_html: {value: params[:search][:start_age]} %><%= f.input :end_age, input_html: {value: params[:search][:start_age]} %>
+            <%= f.input :start_age, label: t(:start_age), input_html: {value: params[:search][:start_age]}, required: false %><%= f.input :end_age, label: t(:end_age), input_html: {value: params[:search][:start_age]}, required: false %>
           </div>
-          <%= f.input :gender, collection: ['All'].concat(t(:gender_array)), selected: params[:search][:gender] %>
-          <%= f.input :base_location, input_html: {value: @base_location} %>
-          <%= f.input :language_list, collection: t(:language_array), input_html: {class: "select2",  multiple: "multiple"} %>
-          <%= f.input :hobby_list, collection: @hobbies, input_html: {class: "select2",  multiple: "multiple"} %>
-          <%= f.button :submit, "Search", class: "btn btn-outline-dark" %>
+          <%= f.input :gender, label: t(:gender), collection: ['All'].concat(t(:gender_array)), selected: params[:search][:gender], required: false %>
+          <%= f.input :base_location, label: t(:base_loc), input_html: {value: @base_location}, required: false %>
+          <%= f.input :language_list, label: t(:languages), collection: t(:language_array), input_html: {class: "select2",  multiple: "multiple"}, required: false %>
+          <%= f.input :hobby_list, label: t(:hobbies), collection: t(:hobby_array), input_html: {class: "select2",  multiple: "multiple"}, required: false %>
+          <%= f.button :submit, t(:search), class: "btn btn-outline-dark" %>
         </div>
 
       <% end %>
