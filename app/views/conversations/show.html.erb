@@ -10,9 +10,9 @@
         <% @other_chatter.transactions.each do |transaction| %>
           <!-- Check if new transaction to be approved -->
           <% if current_user.transactions.include?(transaction) && transaction.approved == false && transaction.declined == false %>
-            <h4>Proposed meeting:</h4>
-            <p class="font-weight-bold mb-0">Date: <%= transaction.date.strftime("%A, %d %b %Y ") %></p>
-            <p class="font-weight-bold">Time: <%= transaction.date.strftime("%I:%M %p") %></p>
+            <h4><%= t(:proposed_meeting) %>:</h4>
+            <p class="font-weight-bold mb-0"><%= t(:date) %>: <%= transaction.date.strftime("%A, %d %b %Y ") %></p>
+            <p class="font-weight-bold"><%= t(:time) %>: <%= transaction.date.strftime("%I:%M %p") %></p>
             <p class="font-weight-bold">Location: <%= transaction.location %></p>
             <% if current_user.id == transaction.locallect_id %>
               <%= link_to 'Approve', transaction_request_approve_path(@conversation.id, transaction.id), class: "btn btn-outline-success mr-3" %>
@@ -26,17 +26,17 @@
             <h3>Your next meeting:</h3>
             <p class="font-weight-bold mb-0">Date: <%= transaction.date.strftime("%A, %d %b %Y ") %></p>
             <p class="font-weight-bold">Time: <%= transaction.date.strftime("%I:%M %p") %></p>
-            <p>Location: <%= transaction.location %></p>
+            <p><%= t(:location) %>: <%= transaction.location %></p>
             <div id="map" style="width: 100%; height: 44%;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
           <% end %>
           <!-- Check if new transaction that has been declined -->
           <% if current_user.transactions.include?(transaction) && transaction.declined == true && current_user.id == transaction.explorer_id%>
-            <h3><%= @other_chatter.first_name %> unfortunately can not meet on <%= transaction.date.strftime("%A, %d %b %Y %l:%M %p") %></h3>
+            <h3><%= @other_chatter.first_name %> <%= t(:unfortunately_no_time) %> <%= transaction.date.strftime("%A, %d %b %Y %l:%M %p") %></h3>
           <% end %>
         <% end %>
-        <p class=""><%= link_to "Change meeting", "#", class: "request-button btn btn-outline-dark m-2"%></p>
+        <p class=""><%= link_to t(:change_meeting), "#", class: "request-button btn btn-outline-dark m-2"%></p>
       <% else %>
-        <%= link_to "Meet #{@other_chatter.first_name}", "#", class: "request-button btn btn-outline-dark m-2" %>
+        <%= link_to t(:meet) "#{@other_chatter.first_name}", "#", class: "request-button btn btn-outline-dark m-2" %>
       <% end %>
     </div>
     <div class="message-list-container col-sm-8 px-0">
@@ -97,15 +97,15 @@
 </div>
 <!-- Will only pop up if meeting takes place -->
 <div class="container w-50 border-radius p-5 request-field">
-  <h3 class="my-3">Arrange meeting</h3>
+  <h3 class="my-3"><%= t(:arrange_meeting) %></h3>
   <%= simple_form_for(@transaction, url: conversation_transactions_path(@conversation), method: :post) do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
-      <%= f.input :date, as: :string, input_html: {class: "datepicker2 bg-white"} %>
-      <%= f.input :location, as: :string %>
+      <%= f.input :date, as: :string, input_html: {class: "datepicker2 bg-white"}, label: t(:date) %>
+      <%= f.input :location, as: :string, label: t(:location) %>
     </div>
     <div class="form-actions">
-      <%= f.button :submit, "Book", class: "btn btn-outline-light" %>
+      <%= f.button :submit, t(:send), class: "btn btn-outline-light" %>
     </div>
   <% end %>
   <%= link_to conversation_path(@conversation) do %>

@@ -221,3 +221,16 @@ en:
   approve: "Approve"
   reject: "Reject"
 
+#conversations
+  conversations: "Conversations"
+  no_conv_yet: "You have no conversations yet"
+  conversations_you: "You:"
+  proposed_meeting: "Proposed meeting"
+  date: "Date"
+  time: "Time"
+  location: "Location"
+  unfortunately_no_time: "unfortunately can not meet on"
+  change_meeting: "Change meeting"
+  meet: "Meet"
+  arrange_meeting: "Arrange meeting"
+  send: "Send"
