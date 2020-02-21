@@ -189,3 +189,16 @@ de:
   approve: "Annehmen"
   reject: "Ablehnen"
 
+#conversations
+  conversations: "Postfach"
+  no_conv_yet: "Dein Postfach ist noch leer"
+  conversations_you: "Du:"
+  proposed_meeting: "Vorgeschlagenes Treffen"
+  date: "Datum"
+  time: "Uhrzeit"
+  location: "Ort"
+  unfortunately_no_time: "kann dich leider nicht treffen am"
+  change_meeting: "Schlage anderes Treffen vor"
+  meet: "Triff"
+  arrange_meeting: "Treffen vereinbaren"
+  send: "Senden"

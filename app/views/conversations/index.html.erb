@@ -1,7 +1,7 @@
 <div class="container my-4">
-  <h1 class="p-3">Conversations</h1>
+  <h1 class="py-3"><%= t(:conversations) %></h1>
   <% if @conversations == [] %>
-    <h3>You have no conversations yet</h3>
+    <h3><%= t(:no_conv_yet) %></h3>
   <% end %>
   <div class="friendships-grid">
     <% @conversations.each do |conversation| %>
@@ -19,7 +19,7 @@
             <%= link_to conversation_path(conversation.id) do %>
               <h4><%= @other_chatter.first_name %> <%= @other_chatter.last_name %></h4>
               <% if conversation.receipts.last.message.sender_id == current_user.id %>
-                <h6>You: <%= conversation.receipts.last.message.body %></h6>
+                <h6><%= t(:conversations_you) %> <%= conversation.receipts.last.message.body %></h6>
               <% else %>
                 <h6><%= @other_chatter.first_name %>: <%= conversation.receipts.last.message.body %></h6>
               <% end %>
