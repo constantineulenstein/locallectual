@@ -4,6 +4,7 @@ skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @forums = policy_scope(Forum).all
     search = params[:search]
+    language_array = t("language_array", locale: :en).zip(t("language_array", locale: :de), t("language_array", locale: :fr))
     if search.present?
       if search[:content].present?
         @forums = @forums.search_by_all(search[:content])
@@ -12,7 +13,8 @@ skip_before_action :authenticate_user!, only: [:index, :show]
         @forums = @forums.search_by_location(search[:location].split(", ").first)
       end
       if search[:language_list] != [""]
-        @forums = @forums.tagged_with(search[:language_list], any: true)
+        picked_languages = language_array.find_all { |sub_language| (sub_language & search[:language_list]).present? }
+        @forums = @forums.tagged_with(picked_languages, any: true)
       end
     else
       @forums = policy_scope(Forum).all

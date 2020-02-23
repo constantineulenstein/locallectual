@@ -1,16 +1,16 @@
 <div class="to-be-darkened">
   <div class="forum-banner cover-by-popup-box" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1507026050002-b9207a0e880c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=952&q=80);">
     <div class="forum-banner-container">
-      <h1 class= " text-center pt-5"><strong>Welcome to the Locallectual Community!</strong></h1>
-      <p class= "text-center">Search the community or add a question!</p>
+      <h1 class= " text-center pt-5"><strong><%= t(:welcome_forum) %></strong></h1>
+      <p class= "text-center"><%= t(:search_forum) %></p>
       <%= simple_form_for :search, url: forums_path, method: :get do |f| %>
         <div class="form-inputs pb-5 pt-3 form-inline mt-3 center_div justify-content-center">
-          <%= f.input :content, label: false, placeholder: "Specify content", input_html: { class: 'cover-by-popup-box' } %>
-          <%= f.input :location, label: false, placeholder: "Specify location", input_html: { class: 'cover-by-popup-box' } %>
-          <%= f.input :language_list, collection: t(:language_array), input_html: {class: "select2 ml-3 cover-by-popup-box w-50",  multiple: "multiple"}, label: false %> <!-- placeholder is  in JS file -->
-          <%= f.button :submit, "Search", class: "btn btn-outline-light forum-search" %>
+          <%= f.input :content, label: false, placeholder: t(:specify_content), input_html: { class: 'cover-by-popup-box' } %>
+          <%= f.input :location, label: false, placeholder: t(:specify_location), input_html: { class: 'cover-by-popup-box' } %>
+          <%= f.input :language_list, collection: t(:language_array), input_html: {class: "select2 select-language ml-3 cover-by-popup-box w-75",  multiple: "multiple"}, label: false %> <!-- placeholder is  in JS file -->
+          <%= f.button :submit, t(:search), class: "btn btn-outline-light forum-search" %>
           <% if user_signed_in? %>
-            <%= link_to "Add a new post", "#", class: "btn btn-outline-light request-button" %>
+            <%= link_to t(:add_new_post), "#", class: "btn btn-outline-light request-button" %>
             <% end %>
         </div>
       <% end %>
@@ -30,16 +30,16 @@
                   <h3 class="mt-3 mr-3 h3"><%= link_to forum.title, forum_path(forum.id) %></h3>
                   <% if user_signed_in? %>
                     <% if policy(forum).destroy? %>
-                      <%= link_to forum_path(forum), method: :delete, data: {confirm: "Arey you sure?"} do %>
+                      <%= link_to forum_path(forum), method: :delete, data: {confirm: t(:are_you_sure)} do %>
                         <i class="fas fa-trash-alt h6"></i>
                       <% end %>
                     <% end %>
                   <% end %>
                 </div>
-                <p class="forum-details mb-0"><em>Published by: <%= User.find(forum.user_id).first_name %>  <%= User.find(forum.user_id).last_name %>
-                    <%= forum.created_at.strftime("%A, %d %b %Y %l:%M %p") %> - Comments (<%= forum.comments.count %>)</em></p>
+                <p class="forum-details mb-0"><em><%= t(:published_by) %> <%= User.find(forum.user_id).first_name %>  <%= User.find(forum.user_id).last_name %> -
+                    <%= I18n.l(forum.created_at, format: :long) %> - <%= t(:comments) %> (<%= forum.comments.count %>)</em></p>
                 <% if forum.location.present? %>
-                  <p class="forum-details my-0"><em> Concerns: <%= forum.location %></em></p>
+                  <p class="forum-details my-0"><em> <%= t(:concerns) %> <%= forum.location %></em></p>
                 <% end %>
               </div>
             </div>
@@ -52,20 +52,27 @@
 </div>
 <!-- Will only pop up if add a new post is clicked -->
 <div class="container w-50 border-radius p-5 request-field">
-  <h3 class="my-3">Add a new post</h3>
+  <h3 class="my-3"><%= t(:add_new_post) %></h3>
   <%= simple_form_for(@forum, url: forums_path, method: :post) do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
-      <%= f.input :title, as: :string%>
-      <%= f.input :description, as: :text, label: "Content"%>
-      <%= f.input :location, as: :string, label: "Which city does this question relate to?" %>
-      <%= f.input :language_list, collection: t(:language_array), label: "In which language is this post?" %>
+      <%= f.input :title, as: :string, label: t(:title)%>
+      <%= f.input :description, as: :text, label: t(:content)%>
+      <%= f.input :location, as: :string, label: t(:forum_location_question) %>
+      <%= f.input :language_list, collection: t(:language_array), label: t(:forum_language_question) %>
     </div>
     <div class="form-actions">
-      <%= f.button :submit, "Post", class: "btn btn-outline-light" %>
+      <%= f.button :submit, t(:post), class: "btn btn-outline-light" %>
     </div>
   <% end %>
   <%= link_to forums_path do %>
     <i class="fas fa-times cancel-cross"></i>
   <% end %>
 </div>
+
+<!-- pass translation to js file -->
+  <script>
+    var specify_language = <%= t(:specify_language).to_json.to_s.html_safe %>;
+    var specify_hobby = <%= t(:specify_hobby).to_json.to_s.html_safe %>;
+  </script>
+

@@ -234,3 +234,43 @@ en:
   meet: "Meet"
   arrange_meeting: "Arrange meeting"
   send: "Send"
+
+#forum
+  welcome_forum: "Welcome to the Locallectual Community!"
+  search_forum: "Search the community or add a question!"
+  specify_content: "Specify content"
+  specify_location: "Specify location"
+  specify_language: "Specify language"
+  specify_hobby: "Specify hobby"
+  add_new_post: "Add a new post"
+  are_you_sure: "Are you sure?"
+  published_by: "Published by:"
+  comments: "Comments"
+  concerns: "Concerns:"
+  title: "Title"
+  content: "Content"
+  forum_location_question: "Which city does this question relate to?"
+  forum_language_question: "In which language is this post?"
+  post: "Post"
+  commented_by: "Commented by:"
+
+#dates
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"
