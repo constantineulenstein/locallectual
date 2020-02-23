@@ -35,11 +35,17 @@
           </div>
           <%= f.input :gender, label: t(:gender), collection: ['All'].concat(t(:gender_array)), selected: params[:search][:gender], required: false %>
           <%= f.input :base_location, label: t(:base_loc), input_html: {value: @base_location}, required: false %>
-          <%= f.input :language_list, label: t(:languages), collection: t(:language_array), input_html: {class: "select2",  multiple: "multiple"}, required: false %>
-          <%= f.input :hobby_list, label: t(:hobbies), collection: t(:hobby_array), input_html: {class: "select2",  multiple: "multiple"}, required: false %>
+          <%= f.input :language_list, label: t(:languages), collection: t(:language_array), input_html: {class: "select2 select-language",  multiple: "multiple"}, required: false %>
+          <%= f.input :hobby_list, label: t(:hobbies), collection: t(:hobby_array), input_html: {class: "select2 select-hobby",  multiple: "multiple"}, required: false %>
           <%= f.button :submit, t(:search), class: "btn btn-outline-dark" %>
         </div>
 
       <% end %>
     </div>
   </div>
+
+  <!-- pass translation to js file -->
+  <script>
+    var specify_language = <%= t(:specify_language).to_json.to_s.html_safe %>;
+    var specify_hobby = <%= t(:specify_hobby).to_json.to_s.html_safe %>;
+  </script>
