@@ -123,7 +123,7 @@ en:
     - 'German'
     - 'Greek, Modern'
     - 'Haitian; Haitian Creole'
-    - Hebrew (modern)'
+    - 'Hebrew (modern)'
     - 'Hindi'
     - 'Hungarian'
     - 'Indonesian'
@@ -172,3 +172,105 @@ en:
     - 'Uzbek'
     - 'Vietnamese'
     - 'Welsh'
+
+  hobby_array:
+    - 'Reading'
+    - 'Watching TV'
+    - 'Family Time'
+    - 'Going to Movies'
+    - 'Fishing'
+    - 'Soccer'
+    - 'Computers'
+    - 'Exercise'
+    - 'Music'
+    - 'Team Sports'
+    - 'Shopping'
+    - 'Traveling'
+    - 'Socializing'
+    - 'Golf'
+    - 'Watching Sports'
+    - 'Bicycling'
+    - 'Hiking'
+    - 'Cooking'
+    - 'Swimming'
+    - 'Camping'
+    - 'Skiing'
+    - 'Writing'
+    - 'Bowling'
+    - 'Painting'
+    - 'Running'
+    - 'Dancing'
+    - 'Horseback Riding'
+    - 'Tennis'
+    - 'Theater'
+    - 'Billards'
+
+  people_in: "People in"
+  start_age: "Start age"
+  end_age: "End age"
+  base_loc: "Base location"
+  languages: "Languages"
+  hobbies: "Hobbies"
+  search: "Search"
+
+#friends
+  friend_requests: "Friend requests"
+  friend_requests_sent: "Friend requests sent"
+  connected_since: "Connected since"
+  confirmation_question_destroy: "Are you sure you want to delete this freindship?"
+  approve: "Approve"
+  reject: "Reject"
+
+#conversations
+  conversations: "Conversations"
+  no_conv_yet: "You have no conversations yet"
+  conversations_you: "You:"
+  proposed_meeting: "Proposed meeting"
+  date: "Date"
+  time: "Time"
+  location: "Location"
+  unfortunately_no_time: "unfortunately can not meet on"
+  change_meeting: "Change meeting"
+  meet: "Meet"
+  arrange_meeting: "Arrange meeting"
+  send: "Send"
+
+#forum
+  welcome_forum: "Welcome to the Locallectual Community!"
+  search_forum: "Search the community or add a question!"
+  specify_content: "Specify content"
+  specify_location: "Specify location"
+  specify_language: "Specify language"
+  specify_hobby: "Specify hobby"
+  add_new_post: "Add a new post"
+  are_you_sure: "Are you sure?"
+  published_by: "Published by:"
+  comments: "Comments"
+  concerns: "Concerns:"
+  title: "Title"
+  content: "Content"
+  forum_location_question: "Which city does this question relate to?"
+  forum_language_question: "In which language is this post?"
+  post: "Post"
+  commented_by: "Commented by:"
+
+#dates
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"

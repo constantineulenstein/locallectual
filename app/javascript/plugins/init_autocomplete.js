@@ -12,7 +12,8 @@ const initAutocomplete = () => {
   //home page search
   const addressInput5 = document.getElementById('search_query');
   if (addressInput5) {
-    places({ container: addressInput5 });
+    places({ container: addressInput5,
+             language: "en" });
   };
   // Locallects index location search when filtering
   const addressInput6 = document.getElementById('search_base_location');
