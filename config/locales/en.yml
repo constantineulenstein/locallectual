@@ -78,6 +78,7 @@ en:
   account_cancel: "Cancel my account"
   back: "Back"
   unhappy: "Unhappy?"
+  gender_all: "All"
   gender_array:
     - "Male"
     - "Female"

@@ -1,258 +1,227 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
-en:
-#homepage
-  slogan: "Helping the displaced to connect locally"
-  homepage_search_placeholder: "Search for a host in your area..."
-  who_we_are: "What's Locallectual"
-  who_we_are_starting_letter: "I"
-  who_we_are_text: "n 2018, over 70.8 million individuals have been forcibly displaced from their homes either by persecution, conflict, violence, or human rights violations. This is a record high, and the numbers are only expected to be greater for future years to come. Locallectual is a platform that enables people who want to help to simply do so by showing them the need-to-knows of their local city. Anywhere from showing someone how to take the bus, to introducing community events or posting information on our forum, Locallectual makes it easy to get involved and make friends along the way. Sign up, create a profile and easily offer your help!"
-  why_platform: "Why we created this platform"
-  why_platform_starting_letter: "C"
-  why_platform_text: "urrently there are a lack of resources to satisfy the total number of forcibly displaced people. Traditional organizations may also have limitations when identifying some specific needs, disabilities, or other barriers that cannot be addressed on a more micro level. Locallectual aims to bridge this gap by putting both sides directly in touch. Creating friendships and connections that are both authentic, lasting, and fruitful."
-  what_solve: "What we offer"
+fr:
+  #homepage
+  slogan: "Aide les personnes expulsées de leur pays, de trouver des amis locaux"
+  homepage_search_placeholder: "Cherche des personnes dans ton pays..."
+  who_we_are: "Qu'est-ce que Locallectual"
+  who_we_are_starting_letter: "E"
+  who_we_are_text: "n 2018 plus de 70,8 millions de personnes ont dû fuir leur pays natal en raison de persécutions, de conflits, de violences ou de violations des droits de l'homme. C'est un record et pour l'instant on n'en voit pas la fin . Locallectual permet aux habitants dévoués d'interagir avec les migrants venants d'arriver et de leur montrer les coins et les choses à savoir dans leurs villes. Il peut s'agir d'expliquer des choses simples comme le réseau de métro de la ville, de montrer des événements locaux ou d'aider avec la publication d'informations sur notre forum. Avec Locallectual il est facile de s'impliquer, de s'enrichir par l'échange avec des personnes de toutes cultures et dans le meilleur cas de trouver des amis. Inscrivez-vous, créez un profil et aider les autres à faciliter leur arriver dans votre ville!"
+  why_platform: "Pourquoi notre aide est-elle ´nécessaire?"
+  why_platform_starting_letter: "B"
+  why_platform_text: "eaucoup d'aide est déjà offert pour faciliter l'arrivée  et l'intégration  dans une nouvelle ville des personnes expulsées de leur pays. Cependant, les organisations traditionnelles ont souvent du mal à identifier et à résoudre les besoins et problèmes individuels des personnes expulsées. En particulier les réfugiés sont souvent vu comme  groupe collectif ce qui mène à négliger les besoins individuels pour assurer une bonne arrivée. Locallectual essaie de  combler ce fossé afin de mettre les deux parties en contact direct. Cela peut créer des relations à la fois authentiques, durables et efficaces."
+  what_solve: "Ce que nous offrons"
   what_solve_starting_letter: "L"
-  what_solve_text: "ocallectual is a friendly platform that provides flexible ways to provide aid and assistance to forcibly displaced people. We put those looking for local insight directly in touch with those looking to help. Locallectual currently features a forum to provide a safe place to have discussions and look for support. Anyone who wants to help can simply do so by creating an account. Afterwards people looking for local insights or contacts can reach out by searching for their perfect match and sending a friendship request. As soon as that one his accepted, you can start chatting and setting up a meeting."
-
+  what_solve_text: "ocallectual est une plate-forme sociale qui offre des moyens flexibles pour aider les personnes expulsées à s'intégrer et à reconstruire leur vie. Nous connectons ceux qui recherchent des informations sur leur ville et ceux qui proposent leur aide.  Locallectual dispose d'un forum pour fournir un lieu d'échanges sûr, discret et non intrusive. Tous ceux qui souhaitent tendre la main peuvent tous simplement offrir leur aide en créant un profil.  Les personnes à la recherche d'aide peuvent trouver une grande variété de personnes dans leur nouvelle ville et leur envoyer une demande d'amitié. Une fois acceptées, ils peuvent s'envoyer des messages et organiser un rendez-vous."
 #navbar
-  login: "Login"
-  signup: "Signup"
+  login: "Connecter"
+  signup: "Inscrire"
   forum: "Forum"
-  messages: "Messages"
-  connections: "Connections"
-  view_profile: "View your profile"
-  edit_profile: "Edit your profile"
-  logout: "Logout"
+  messages: "Message"
+  connections: "Amis"
+  view_profile: "Ton profil"
+  edit_profile: "Modifiez votre profil"
+  logout: "déconnecter"
 
-#devise/user
-  username: "Username"
+#devise
+  username: "Nom d'utilisateur"
   email: "Email"
-  password: "Password"
-  password_confirmation: "Confirm Password"
-  password_hint: "leave it blank if you don't want to change it"
-  current_password: "Current password"
-  current_password_hint: "we need your current password to confirm your changes"
-  first_name: "Firstname"
-  last_name: "Lastname"
-  birthday: "Birthday"
-  gender: "Gender"
-  remember_me: "Remember me"
-  forgot_pw: "Forgot your password?"
-  base_loc_question: "Where do you consider yourself to be a locallectual?"
-  base_loc_question_addon: "Please only fill this out if you want to offer your help."
-  seek_loc_question: "Where do you seek to get to know locals?"
-  seek_loc_question_addon: "Please only fill this out if you are searching for local connections."
-  arrival_question: "How long have you been in this city for?"
-  photo_upload: "Please upload a photo of you"
-  language_question: "Which languages do you speak?"
-  hobbies_question: "Tell us your hobbies"
-  account_cancel: "Cancel my account"
-  back: "Back"
-  unhappy: "Unhappy?"
+  password: "Mot de passe"
+  password_confirmation: "Mot de passe confirmé"
+  password_hint: "Remplissez uniquement si vous souhaitez modifier votre mot de passe"
+  current_password: "Ancien mot de passe"
+  current_password_hint: "Nous avons besoin de votre ancien mot de passe pour confirmer les modifications. "
+  first_name: "Prénom"
+  last_name: "Nom"
+  birthday: "Anniversaire"
+  gender: "Sexe"
+  remember_me: "se rappeler de la connexion"
+  forgot_pw: "Mot de passe oublier?"
+  base_loc_question: "Dans quelle ville vous voyez-vous comme Locallectuel et souhaitez offrir votre aide? "
+  base_loc_question_addon: "Veuillez remplir uniquement si vous souhaitez offrir votre aide."
+  seek_loc_question: "Dans quelle ville souhaitez-vous rencontrer des locaux? "
+  seek_loc_question_addon: "Veuillez remplir uniquement si vous recherchez des connexions locales."
+  arrival_question: "Depuis combien de temps vivez-vous dans cette ville?"
+  photo_upload: "Veuillez publier une photo de vous"
+  language_question: "Quelles langues parlez-vous?"
+  hobbies_question: "Quels sont vos hobbies?"
+  account_cancel: "Effacer mon profil"
+  back: "Retour"
+  unhappy: " pas satisfait?"
+  gender_all: "Toutes"
   gender_array:
-    - "Male"
-    - "Female"
-    - "Diverse"
+    - "Masculin"
+    - "Féminin"
+    - "Divers"
 
 #profilepage
-  message_profile: "Message %{locallect}"
-  gettoknow_profile: "Get to know %{locallect}"
-  request_sent: "Friend request sent"
-  about_me: "About me"
-  become_friends: "Become friends with %{locallect}"
-  send_request: "Send friend request"
-  about_you: "Tell something about you"
+  message_profile: "envoye %{locallect} un message"
+  gettoknow_profile: "fais connaissance à %{locallect} "
+  request_sent: "demande d'amitié envoyé"
+  about_me: "Mes Informations"
+  become_friends: "Deviens amis avec %{locallect}"
+  send_request: "envoyer demande d'amitié"
+  about_you: "raconte quelque chose sur toi"
 
 #indexpage
   language_array:
     - 'Afrikaans'
-    - 'Albanian'
-    - 'Arabic'
-    - 'Armenian'
-    - 'Azerbaijani'
+    - 'Albanaus'
+    - 'Arabe'
+    - 'Arménien'
+    - 'Azerbaïdjanais'
     - 'Basque'
-    - 'Belarusian'
+    - 'Belorussian'
     - 'Bengali'
-    - 'Bosnian'
-    - 'Bulgarian'
-    - 'Burmese'
-    - 'Catalan; Valencian'
-    - 'Chechen'
-    - 'Chinese'
-    - 'Corsican'
-    - 'Croatian'
-    - 'Czech'
-    - 'Danish'
-    - 'Dutch'
-    - 'English'
-    - 'Estonian'
-    - 'Fijian'
-    - 'Finnish'
-    - 'French'
-    - 'Galician'
-    - 'Georgian'
-    - 'German'
-    - 'Greek, Modern'
-    - 'Haitian; Haitian Creole'
-    - 'Hebrew (modern)'
+    - 'Bosnie'
+    - 'Bulgare'
+    - 'Birmane'
+    - 'Catalan'
+    - 'Tchétchène'
+    - 'Chinois'
+    - 'Corse'
+    - 'Croate'
+    - 'Tchèque'
+    - 'Danois'
+    - 'Hollandais'
+    - 'Anglais'
+    - 'Estonien'
+    - 'fidjien'
+    - 'Finnois'
+    - 'Français'
+    - 'Galicienne'
+    - 'Géorgien'
+    - 'Allemand'
+    - 'Grecque'
+    - 'Haïtien'
+    - 'Hébreu'
     - 'Hindi'
-    - 'Hungarian'
-    - 'Indonesian'
-    - 'Irish'
-    - 'Icelandic'
-    - 'Italian'
-    - 'Japanese'
+    - 'Hongrois'
+    - 'Indonésien'
+    - 'Irlandais'
+    - 'Islandais'
+    - 'Italien'
+    - 'Japonais'
     - 'Kashmiri'
     - 'Kazakh'
     - 'Kinyarwanda'
-    - 'Kongo'
-    - 'Korean'
-    - 'Kurdish'
-    - 'Luxembourgish, Letzeburgesch'
+    - 'Congo'
+    - 'Coréen'
+    - 'Kurde'
+    - 'Luxembourgeoise'
     - 'Luganda'
-    - 'Lithuanian'
-    - 'Latvian'
-    - 'Macedonian'
-    - 'Maltese'
-    - 'Mongolian'
-    - 'Nepali'
-    - 'Norwegian'
-    - 'Persian'
-    - 'Polish'
-    - 'Portuguese'
+    - 'Lituanien'
+    - 'Letton'
+    - 'Macédonien'
+    - 'Maltais'
+    - 'Mongol'
+    - 'Népalais'
+    - 'Norvégien'
+    - 'Perse'
+    - 'Polonais'
+    - 'Portugais'
     - 'Quechua'
-    - 'Romansh'
-    - 'Romanian, Moldavian, Moldovan'
-    - 'Russian'
-    - 'Sardinian'
-    - 'Samoan'
-    - 'Serbian'
-    - 'Scottish Gaelic; Gaelic'
-    - 'Slovak'
-    - 'Slovene'
+    - 'Romanche'
+    - 'Roumain, Moldavian'
+    - 'Russe'
+    - 'Sardaigne'
+    - 'Samoan/e'
+    - 'Serbe'
+    - 'Écossais'
+    - 'Slovaque'
+    - 'Slovène'
     - 'Somali'
-    - 'Spanish; Castilian'
-    - 'Sundanese'
+    - 'Espagnol'
+    - 'Sundanais'
     - 'Swahili'
-    - 'Swedish'
+    - 'Suédois'
     - 'Thai'
-    - 'Tibetan Standard, Tibetan, Central'
-    - 'Turkmen'
-    - 'Turkish'
-    - 'Ukrainian'
-    - 'Uzbek'
-    - 'Vietnamese'
-    - 'Welsh'
+    - 'Tibetien'
+    - 'Turkmène'
+    - 'Turque'
+    - 'Ukrainien'
+    - 'Ouzbek'
+    - 'Vietnamien'
+    - 'Gallois'
 
   hobby_array:
-    - 'Reading'
-    - 'Watching TV'
-    - 'Family Time'
-    - 'Going to Movies'
-    - 'Fishing'
-    - 'Soccer'
-    - 'Computers'
-    - 'Exercise'
-    - 'Music'
-    - 'Team Sports'
+    - 'Lecture'
+    - 'Television'
+    - 'Famille'
+    - 'Cinema'
+    - 'Pèche'
+    - 'Foot'
+    - 'Ordinateur'
+    - 'Fitness'
+    - 'Musique'
+    - "Sport d'equipe"
     - 'Shopping'
-    - 'Traveling'
-    - 'Socializing'
+    - 'Voyager'
+    - 'Amis'
     - 'Golf'
-    - 'Watching Sports'
-    - 'Bicycling'
-    - 'Hiking'
-    - 'Cooking'
-    - 'Swimming'
+    - 'Regarder du Sport'
+    - 'Faire du vélo'
+    - 'Randonner'
+    - 'Cuisiner'
+    - 'Natation'
     - 'Camping'
-    - 'Skiing'
-    - 'Writing'
+    - 'Ski'
+    - 'Écriture'
     - 'Bowling'
-    - 'Painting'
-    - 'Running'
-    - 'Dancing'
-    - 'Horseback Riding'
+    - 'Dessiner'
+    - 'Courir'
+    - 'Dancer'
+    - 'Équitation'
     - 'Tennis'
-    - 'Theater'
-    - 'Billards'
+    - 'Theatre'
+    - 'Billard'
 
-  people_in: "People in"
-  start_age: "Start age"
-  end_age: "End age"
-  base_loc: "Base location"
-  languages: "Languages"
-  hobbies: "Hobbies"
-  search: "Search"
+  people_in: "Personnes en "
+  start_age: "âge minimum "
+  end_age: " âge maximum"
+  base_loc: "Lieux"
+  languages: "Langues"
+  hobbies: "Loisirs"
+  search: "Recherche"
 
 #friends
-  friend_requests: "Friend requests"
-  friend_requests_sent: "Friend requests sent"
-  connected_since: "Connected since"
-  confirmation_question_destroy: "Are you sure you want to delete this freindship?"
-  approve: "Approve"
-  reject: "Reject"
+  friend_requests: "Demander en amis "
+  friend_requests_sent: "Demandes d'amitié envoyées"
+  connected_since: "Amis depuis"
+  confirmation_question_destroy: "Etes vous sûr de vouloir mettre fin à cette amitié? "
+  approve: "Accepter"
+  reject: "Rejecter"
 
 #conversations
-  conversations: "Conversations"
-  no_conv_yet: "You have no conversations yet"
-  conversations_you: "You:"
-  proposed_meeting: "Proposed meeting"
+  conversations: "Message"
+  no_conv_yet: "Tu n'as pas encore de messages "
+  conversations_you: "Toi:"
+  proposed_meeting: "Rendez-vous proposé"
   date: "Date"
-  time: "Time"
-  location: "Location"
-  unfortunately_no_time: "unfortunately can not meet on"
-  change_meeting: "Change meeting"
-  meet: "Meet"
-  arrange_meeting: "Arrange meeting"
-  send: "Send"
+  time: "Temps"
+  location: "Lieux"
+  unfortunately_no_time: "Malheureusement, je ne peux pas vous rencontrer le"
+  change_meeting: "Propose un autre rendez-vous "
+  meet: "rencontre"
+  arrange_meeting: "Organiser un rendez-vous"
+  send: "Envoyer"
 
 #forum
-  welcome_forum: "Welcome to the Locallectual Community!"
-  search_forum: "Search the community or add a question!"
-  specify_content: "Specify content"
-  specify_location: "Specify location"
-  specify_language: "Specify language"
-  specify_hobby: "Specify hobby"
-  add_new_post: "Add a new post"
-  are_you_sure: "Are you sure?"
-  published_by: "Published by:"
-  comments: "Comments"
-  concerns: "Concerns:"
-  title: "Title"
-  content: "Content"
-  forum_location_question: "Which city does this question relate to?"
-  forum_language_question: "In which language is this post?"
-  post: "Post"
-  commented_by: "Commented by:"
+  welcome_forum: "Bienvenue dans la communauté de Locallectual!"
+  search_forum: "Recherche la communauté et publier quelque chose!"
+  specify_content: "Rechercher le contenu"
+  specify_location: "Où?"
+  specify_language: "Quels languages?"
+  specify_hobby: "Quels loisirs?"
+  add_new_post: "Publier quelque chose "
+  are_you_sure: " Vous êtes sûr?"
+  published_by: "publier par :"
+  comments: "Commentaires"
+  concerns: "concerne:"
+  title: "Titre"
+  content: "Contenue"
+  forum_location_question: "À quelle ville cette question se rapporte-t-elle?"
+  forum_language_question: "Dans quelle langue est cette publication?"
+  post: "Publication"
+  commented_by: "commenté par"
 
 #dates
   date:
@@ -261,11 +230,11 @@ en:
       short: "%b %d"
       long: "%B %d, %Y"
 
-    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
-    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+    day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
+    abbr_day_names: [Dim, Lun, Mar, Mer, Jeu, Ven, Sam]
 
-    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
-    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    month_names: [~, Janvier, Février, Mars, Avril, Mai, Juin, Juillet, Aout, Septembre, Octobre, Novembre, Décembre]
+    abbr_month_names: [~, Jan, Fév, Mar, Avr, Mai, Juin, Juil, Aout, Sept, Oct, Nov, Déc]
 
   time:
     formats:

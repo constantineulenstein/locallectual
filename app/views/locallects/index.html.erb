@@ -33,7 +33,7 @@
           <div class="inline-block d-flex">
             <%= f.input :start_age, label: t(:start_age), input_html: {value: params[:search][:start_age]}, required: false %><%= f.input :end_age, label: t(:end_age), input_html: {value: params[:search][:start_age]}, required: false %>
           </div>
-          <%= f.input :gender, label: t(:gender), collection: ['All'].concat(t(:gender_array)), selected: params[:search][:gender], required: false %>
+          <%= f.input :gender, label: t(:gender), collection: [t(:gender_all)].concat(t(:gender_array)), selected: params[:search][:gender], required: false %>
           <%= f.input :base_location, label: t(:base_loc), input_html: {value: @base_location}, required: false %>
           <%= f.input :language_list, label: t(:languages), collection: t(:language_array), input_html: {class: "select2 select-language",  multiple: "multiple"}, required: false %>
           <%= f.input :hobby_list, label: t(:hobbies), collection: t(:hobby_array), input_html: {class: "select2 select-hobby",  multiple: "multiple"}, required: false %>

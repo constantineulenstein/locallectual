@@ -46,6 +46,7 @@ de:
   account_cancel: "Lösche meinen Account"
   back: "Zurück"
   unhappy: "Unzufrieden?"
+  gender_all: "Alle"
   gender_array:
     - "Männlich"
     - "Weiblich"
